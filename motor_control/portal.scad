@@ -57,22 +57,12 @@ module HGH20CA_plate(){
     difference(){
         base_plate(BASE_WIDTH,BASE_HEIGHT,BASE_THICKNESS,BASE_CORNER);
         union(){
-            translate([BASE_HEIGHT/2-M_SKREW_DIST_Y/2,
-                       BASE_WIDTH/2-M_SKREW_DIST_X/2,
-                       -M_SKREW_SINK])
-                m_skrew();
-            translate([BASE_HEIGHT/2+M_SKREW_DIST_Y/2,
-                       BASE_WIDTH/2-M_SKREW_DIST_X/2,
-                       -M_SKREW_SINK])
-                m_skrew();
-            translate([BASE_HEIGHT/2-M_SKREW_DIST_Y/2,
-                       BASE_WIDTH/2+M_SKREW_DIST_X/2,
-                       -M_SKREW_SINK])
-                m_skrew();
-            translate([BASE_HEIGHT/2+M_SKREW_DIST_Y/2,
-                       BASE_WIDTH/2+M_SKREW_DIST_X/2,
-                       -M_SKREW_SINK])
-                m_skrew();
+            for (shift_x=[-1:2:2])
+                for (shift_y=[-1:2:1])
+                    translate([BASE_HEIGHT/2+(shift_x)*M_SKREW_DIST_Y/2,
+                               BASE_WIDTH/2+(shift_y)*M_SKREW_DIST_X/2,
+                               -M_SKREW_SINK])
+                        m_skrew();
             connector(BASE_HEIGHT/2,0,0);
             connector(BASE_HEIGHT/2,BASE_WIDTH,180);
         }
