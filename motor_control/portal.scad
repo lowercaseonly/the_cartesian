@@ -1,5 +1,6 @@
 $fn=400;
 
+TOLERANCE = 0.01;
 
 BASE_WIDTH = 75;
 BASE_HEIGHT = 44;
@@ -17,9 +18,10 @@ M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
 
 CONN_THICK = 10;
 CONN_HEAD_DIA = 7;
+CONN_HEAD_COUNT = 3;
+CONN_HEAD_DIST = 10;
 CONN_SHAFT_DIA = 4;
 CONN_SHAFT_THICK = 11;
-
 
 module base_plate(width, depth, thickness, corner_radius=0){
     translate([corner_radius,corner_radius,0])
@@ -42,8 +44,8 @@ module m_skrew(){
 module connector(shift_x, shift_y, angle){
     translate([shift_x, shift_y, 0])
         rotate([0,0,angle])
-            for (tooth=[-1:1])
-                translate([tooth*10, 5, BASE_THICKNESS-CONN_THICK+0.01])
+            for (head=[-1:1])
+                translate([head*CONN_HEAD_DIST, 5, BASE_THICKNESS-CONN_THICK+0.01])
                     union(){
                         cylinder(d=CONN_HEAD_DIA, h=CONN_THICK);
                         translate([-CONN_SHAFT_DIA/2, -30, 0])
@@ -78,12 +80,22 @@ module HGH20CA_plate(){
 }
 
 module bridge(){
-    translate([100,100,0])
-        rotate([0,0,45])
-            cube([20,20,BASE_THICKNESS]);
+    translate([BASE_HEIGHT-0.1,BASE_CORNER,0])
+            cube([50,BASE_WIDTH-2*BASE_CORNER,BASE_THICKNESS]);
 }
 
+module NUT8_45x2(){
+    difference(){
+        base_plate(90,45,100,corner_radius=2.5);
+        for (shift=[0,60]){
+            translate([-TOLERANCE,shift-TOLERANCE+10,-TOLERANCE])
+                cube([5,8,100+2*TOLERANCE]);
+        }
+    }
+}
 
-HGH20CA_plate();
-//bridge();
+//HGH20CA_plate();
+//color(c=[255,0,0])
+//    bridge();
 
+NUT8_45x2();
