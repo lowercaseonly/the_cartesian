@@ -93,8 +93,23 @@ module NUT8_45x2(){
     }
 }
 
-//HGH20CA_plate();
-//color(c=[255,0,0])
-//    bridge();
+module NUT8_mount(){
+    linear_extrude(h=SLOT_PROF_LEN)
+        polygon([[0,0],
+                 [0,40+BASE_THICKNESS],
+                 [10,40+BASE_THICKNESS],
+                 [10+40,BASE_THICKNESS],
+                 [10+40+10, BASE_THICKNESS],
+                 [10+40+10,0]]);
+}
 
-NUT8_45x2();
+HGH20CA_plate();
+color(c=[255,0,0])
+    bridge();
+
+//NUT8_45x2();
+
+translate([150,-10,0])
+rotate([0,0,-180])
+rotate([90,0,0])
+NUT8_mount();
