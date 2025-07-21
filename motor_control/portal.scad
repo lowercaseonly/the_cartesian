@@ -23,6 +23,12 @@ CONN_HEAD_DIST = 10;
 CONN_SHAFT_DIA = 4;
 CONN_SHAFT_THICK = 11;
 
+// (T-Slot Aluminum Profile) Nut8 40x2
+SLOT_PROF_WIDTH = 90;
+SLOT_PROF_HEIGHT = 90;
+SLOT_PROF_LEN = 100;    // Virtual
+SLOT_PROF_CORNER = 2.5;
+
 module base_plate(width, depth, thickness, corner_radius=0){
     translate([corner_radius,corner_radius,0])
         minkowski(){
@@ -76,7 +82,8 @@ module bridge(){
 
 module NUT8_45x2(){
     difference(){
-        base_plate(90,45,100,corner_radius=2.5);
+        base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, SLOT_PROF_LEN,
+                   corner_radius=SLOT_PROF_CORNER);
         for (shift=[0,60]){
             translate([-TOLERANCE,shift-TOLERANCE+10,-TOLERANCE])
                 cube([5,8,100+2*TOLERANCE]);
