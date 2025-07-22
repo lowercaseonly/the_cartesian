@@ -78,8 +78,13 @@ module HGH20CA_plate(){
 }
 
 module bridge(){
-    translate([BASE_HEIGHT-0.1,BASE_CORNER,0])
-            cube([50,BASE_WIDTH-2*BASE_CORNER,BASE_THICKNESS]);
+    translate([BASE_HEIGHT-BASE_CORNER,0,0])
+        linear_extrude(height=BASE_THICKNESS)
+            polygon([[0, 0],
+                     [2, BASE_WIDTH/2], // Avoid Overlap with Base Skrew Holes
+                     [0, BASE_WIDTH],
+                     [18.5, SLOT_PROF_WIDTH-(SLOT_PROF_WIDTH-BASE_WIDTH)/2],
+                     [18.5, -(SLOT_PROF_WIDTH-BASE_WIDTH)/2]]);
 }
 
 module NUT8_45x2(){
