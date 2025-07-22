@@ -141,9 +141,9 @@ module NUT8_45x2(){
 module NUT8_mount(){
     
     linear_extrude(height=SLOT_PROF_WIDTH)
-        polygon([[0,0],
-                 [0,40+BASE_THICKNESS],
-                 [10,40+BASE_THICKNESS],
+        polygon([[0, 0],
+                 [0, 20+BASE_THICKNESS],
+                 [10, 20+BASE_THICKNESS],
                  [10+40,BASE_THICKNESS],
                  [10+40+10, BASE_THICKNESS],
                  [10+40+10,0]]);
@@ -168,7 +168,7 @@ module NUT8_mount_complete(){
                                   100-2*2]);
                             sphere(r=TROUGH_CORNER);
                         };
-                    translate([10,25+y_shift,10+BASE_THICKNESS+2+TOLERANCE])
+                    translate([8,25+y_shift,7.5+BASE_THICKNESS+2+TOLERANCE])
                         rotate([0,-90,0])
                             m_skrew();
                     }
