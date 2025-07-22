@@ -34,7 +34,10 @@ SLOT_WIDTH = 8;
 SLOT_DEPTH = 6;
 SLOT_DIST = 40;
 
+
+
 module base_plate(width, depth, thickness, corner_radius=0){
+    
     translate([corner_radius,corner_radius,0])
         minkowski(){
             cube([depth-corner_radius*2,
@@ -44,7 +47,9 @@ module base_plate(width, depth, thickness, corner_radius=0){
             }
 }
 
+
 module m_skrew(){
+    
     union(){
         cylinder(d=M_SKREW_SHAFT_DIA,h=M_SKREW_SHAFT_LEN+M_SKREW_HEAD_LEN);
         translate([0, 0, M_SKREW_SHAFT_LEN])
@@ -64,7 +69,9 @@ module connector(shift_x, shift_y, angle){
                     }
 }
 
+
 module HGH20CA_plate(){
+    
     difference(){
         base_plate(BASE_WIDTH,BASE_HEIGHT,BASE_THICKNESS,BASE_CORNER);
         union(){
@@ -80,7 +87,9 @@ module HGH20CA_plate(){
     }
 }
 
+
 module bridge(){
+    
     translate([BASE_HEIGHT-BASE_CORNER,0,0])
         linear_extrude(height=BASE_THICKNESS)
             polygon([[0, 0],
@@ -90,7 +99,9 @@ module bridge(){
                      [18.5, -(SLOT_PROF_WIDTH-BASE_WIDTH)/2]]);
 }
 
+
 module NUT8_45x2(){
+    
     difference(){
         
         base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, SLOT_PROF_LEN,
@@ -107,7 +118,9 @@ module NUT8_45x2(){
     }
 }
 
+
 module NUT8_mount(){
+    
     linear_extrude(height=SLOT_PROF_WIDTH)
         polygon([[0,0],
                  [0,40+BASE_THICKNESS],
@@ -117,7 +130,9 @@ module NUT8_mount(){
                  [10+40+10,0]]);
 }
 
+
 module NUT8_mount_complete(){
+    
     translate([120,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
         difference(){
             rotate([0,0,-180])
