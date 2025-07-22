@@ -30,6 +30,9 @@ SLOT_PROF_WIDTH = 90;
 SLOT_PROF_HEIGHT = 90;
 SLOT_PROF_LEN = 100;    // Virtual
 SLOT_PROF_CORNER = 2.5;
+SLOT_WIDTH = 8;
+SLOT_DEPTH = 6;
+SLOT_DIST = 40;
 
 module base_plate(width, depth, thickness, corner_radius=0){
     translate([corner_radius,corner_radius,0])
@@ -89,11 +92,17 @@ module bridge(){
 
 module NUT8_45x2(){
     difference(){
+        
         base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, SLOT_PROF_LEN,
                    corner_radius=SLOT_PROF_CORNER);
-        for (shift=[0,60]){
-            translate([-TOLERANCE,shift-TOLERANCE+10,-TOLERANCE])
-                cube([5,8,100+2*TOLERANCE]);
+        
+        for (shift=[-SLOT_DIST/2- (SLOT_WIDTH/2),SLOT_DIST/2+ (SLOT_WIDTH/2)]){
+            translate([-TOLERANCE,
+                       (SLOT_PROF_WIDTH/2) - (SLOT_WIDTH/2) + shift,
+                       -TOLERANCE])
+                cube([SLOT_DEPTH+TOLERANCE,
+                      SLOT_WIDTH,
+                      SLOT_PROF_LEN+2*TOLERANCE]);
         }
     }
 }
