@@ -43,6 +43,9 @@ SLOT_WIDTH = 8;
 SLOT_DEPTH = 3.96;
 SLOT_DIST = 31.75;
 
+TROUGH_WIDTH = 34;
+TROUGH_CORNER = 2;
+
 
 
 module base_plate(width, depth, thickness, corner_radius=0){
@@ -156,14 +159,14 @@ module NUT8_mount_complete(){
                     NUT8_mount();
             translate([-2,0,-TOLERANCE])
                 NUT8_45x2();
-            for (y_shift=[0,42])
+            for (y_shift=[-5,35])
                 union(){
                     translate([-60,10+y_shift,BASE_THICKNESS+2+TOLERANCE])
                         minkowski(){
                             cube([55-2*2,
-                                  40-2*(2+2),
+                                  TROUGH_WIDTH-2*TROUGH_CORNER,
                                   100-2*2]);
-                            sphere(r=2);
+                            sphere(r=TROUGH_CORNER);
                         };
                     translate([10,25+y_shift,10+BASE_THICKNESS+2+TOLERANCE])
                         rotate([0,-90,0])
