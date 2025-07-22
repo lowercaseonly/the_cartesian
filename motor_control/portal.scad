@@ -161,13 +161,8 @@ module NUT8_mount_complete(){
 
         }
 }
+
+
 HGH20CA_plate();
-color(c=[255,0,0])
-    bridge();
-
-//NUT8_45x2();
-
-translate([150,-10,0])
-rotate([0,0,-180])
-rotate([90,0,0])
-NUT8_mount();
+bridge(); //color(c=[255,0,0])
+NUT8_mount_complete();
