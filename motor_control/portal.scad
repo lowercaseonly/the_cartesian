@@ -1,4 +1,5 @@
-$fn=400;
+$fn=80;
+
 /*
   Author: Johannes Bayer, 2025
   License: MIT
