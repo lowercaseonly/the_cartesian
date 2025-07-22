@@ -103,6 +103,30 @@ module NUT8_mount(){
                  [10+40+10,0]]);
 }
 
+module NUT8_mount_complete(){
+    translate([120,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
+        difference(){
+            rotate([0,0,-180])
+                rotate([90,0,0])
+                    NUT8_mount();
+            translate([-2,0,-TOLERANCE])
+                NUT8_45x2();
+            for (y_shift=[0,42])
+                union(){
+                    translate([-60,10+y_shift,BASE_THICKNESS+2+TOLERANCE])
+                        minkowski(){
+                            cube([55-2*2,
+                                  40-2*(2+2),
+                                  100-2*2]);
+                            sphere(r=2);
+                        };
+                    translate([10,25+y_shift,10+BASE_THICKNESS+2+TOLERANCE])
+                        rotate([0,-90,0])
+                            m_skrew();
+                    }
+
+        }
+}
 HGH20CA_plate();
 color(c=[255,0,0])
     bridge();
