@@ -1,4 +1,9 @@
 $fn=400;
+/*
+  Author: Johannes Bayer, 2025
+  License: MIT
+  Description: Connects Linear Rail Support Wagon to main CNC Portal Bridge T-Slot Profile
+*/
 
 TOLERANCE = 0.01;
 
