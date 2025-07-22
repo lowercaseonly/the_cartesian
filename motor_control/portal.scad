@@ -30,6 +30,10 @@ CONN_HEAD_DIST = 10;
 CONN_SHAFT_DIA = 4;
 CONN_SHAFT_THICK = 11;
 
+// Spindle Connector
+SPIND_CON_SQUARE_SIDE = 5;
+SPIND_CON_DIST = 20;
+
 // (T-Slot Aluminum Profile) Nut8 40x2
 SLOT_PROF_WIDTH = 79.80;
 SLOT_PROF_HEIGHT = 40;
@@ -96,12 +100,19 @@ module HGH20CA_plate(){
 module bridge(){
     
     translate([BASE_HEIGHT-BASE_CORNER,0,0])
-        linear_extrude(height=BASE_THICKNESS)
-            polygon([[0, 0],
-                     [2, BASE_WIDTH/2], // Avoid Overlap with Base Skrew Holes
-                     [0, BASE_WIDTH],
-                     [18.5, SLOT_PROF_WIDTH-(SLOT_PROF_WIDTH-BASE_WIDTH)/2],
-                     [18.5, -(SLOT_PROF_WIDTH-BASE_WIDTH)/2]]);
+        difference(){
+            linear_extrude(height=BASE_THICKNESS)
+                polygon([[0, 0],
+                         [2, BASE_WIDTH/2], // Avoid Overlap with Base Skrew Holes
+                         [0, BASE_WIDTH],
+                         [18.5, SLOT_PROF_WIDTH-(SLOT_PROF_WIDTH-BASE_WIDTH)/2],
+                         [18.5, -(SLOT_PROF_WIDTH-BASE_WIDTH)/2]]);
+            for (shift=[-SPIND_CON_DIST,0,SPIND_CON_DIST])
+                translate([10,
+                           (BASE_WIDTH-SPIND_CON_SQUARE_SIDE)/2+shift,
+                           -TOLERANCE])
+                    cube([SPIND_CON_SQUARE_SIDE,SPIND_CON_SQUARE_SIDE,100]);
+        }
 }
 
 
