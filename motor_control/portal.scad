@@ -94,7 +94,7 @@ module NUT8_45x2(){
 }
 
 module NUT8_mount(){
-    linear_extrude(h=SLOT_PROF_LEN)
+    linear_extrude(height=SLOT_PROF_WIDTH)
         polygon([[0,0],
                  [0,40+BASE_THICKNESS],
                  [10,40+BASE_THICKNESS],
