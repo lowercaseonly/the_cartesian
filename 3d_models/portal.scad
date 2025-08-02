@@ -1,7 +1,7 @@
 $fn=120;
 
 use <base_plate.scad>
-use <m_skrew.scad>
+include <m_skrew.scad>
 
 /*
   Author: Johannes Bayer, 2025

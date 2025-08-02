@@ -17,5 +17,3 @@ module m_skrew(){
             cylinder(d=M_SKREW_HEAD_DIA,h=M_SKREW_HEAD_LEN);
     }
 }
-
-m_skrew();
