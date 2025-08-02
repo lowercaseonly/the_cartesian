@@ -1,6 +1,7 @@
 $fn=120;
 
 use <base_plate.scad>
+use <m_skrew.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -16,11 +17,6 @@ BASE_HEIGHT = 44;
 BASE_THICKNESS = 13.5;
 BASE_CORNER = 2.5;
 
-// M Skrew
-M_SKREW_HEAD_DIA = 8.4;
-M_SKREW_HEAD_LEN = 4.8;
-M_SKREW_SHAFT_DIA = 4.9;
-M_SKREW_SHAFT_LEN = 15.8;
 M_SKREW_SINK = 7;
 M_SKREW_DIST_X = 40.35-M_SKREW_SHAFT_DIA;
 M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
@@ -50,14 +46,6 @@ TROUGH_WIDTH = 32;
 TROUGH_CORNER = 2;
 
 
-module m_skrew(){
-    
-    union(){
-        cylinder(d=M_SKREW_SHAFT_DIA,h=M_SKREW_SHAFT_LEN+M_SKREW_HEAD_LEN);
-        translate([0, 0, M_SKREW_SHAFT_LEN])
-            cylinder(d=M_SKREW_HEAD_DIA,h=M_SKREW_HEAD_LEN);
-    }
-}
 
 module connector(shift_x, shift_y, angle){
     translate([shift_x, shift_y, 0])
