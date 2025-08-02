@@ -1,5 +1,7 @@
 $fn=120;
 
+use <base_plate.scad>
+
 /*
   Author: Johannes Bayer, 2025
   License: MIT
@@ -46,19 +48,6 @@ SLOT_DIST = 31.75;
 
 TROUGH_WIDTH = 32;
 TROUGH_CORNER = 2;
-
-
-
-module base_plate(width, depth, thickness, corner_radius=0){
-    
-    translate([corner_radius,corner_radius,0])
-        minkowski(){
-            cube([depth-corner_radius*2,
-                  width-corner_radius*2,
-                  thickness-1]);
-            cylinder(r=corner_radius,h=1);
-            }
-}
 
 
 module m_skrew(){
