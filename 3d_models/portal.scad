@@ -3,6 +3,7 @@ $fn=120;
 use <helper/base_plate.scad>
 include <helper/t_slot.scad>
 include <helper/m_skrew.scad>
+include <helper/connector_a.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -22,13 +23,7 @@ M_SKREW_SINK = 7;
 M_SKREW_DIST_X = 40.35-M_SKREW_SHAFT_DIA;
 M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
 
-// Connector to mount 
-CONN_THICK = 10;
-CONN_HEAD_DIA = 7;
-CONN_HEAD_COUNT = 3;
-CONN_HEAD_DIST = 10;
-CONN_SHAFT_DIA = 4;
-CONN_SHAFT_THICK = 11;
+
 
 // Spindle Connector
 SPIND_CON_SQUARE_SIDE = 5;
@@ -41,17 +36,7 @@ TROUGH_CORNER = 2;
 
 
 
-module connector(shift_x, shift_y, angle){
-    translate([shift_x, shift_y, 0])
-        rotate([0,0,angle])
-            for (head=[-1:1])
-                translate([head*CONN_HEAD_DIST, 5, BASE_THICKNESS-CONN_THICK+0.01])
-                    union(){
-                        cylinder(d=CONN_HEAD_DIA, h=CONN_THICK);
-                        translate([-CONN_SHAFT_DIA/2, -30, 0])
-                            cube([CONN_SHAFT_DIA, 30, CONN_THICK]);
-                    }
-}
+
 
 
 module HGH20CA_plate(){
