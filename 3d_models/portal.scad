@@ -1,6 +1,7 @@
 $fn=120;
 
 use <base_plate.scad>
+include <t_slot.scad>
 include <m_skrew.scad>
 
 /*
@@ -33,14 +34,7 @@ CONN_SHAFT_THICK = 11;
 SPIND_CON_SQUARE_SIDE = 5;
 SPIND_CON_DIST = 20;
 
-// (T-Slot Aluminum Profile) Nut8 40x2
-SLOT_PROF_WIDTH = 79.80;
-SLOT_PROF_HEIGHT = 40;
-SLOT_PROF_LEN = 100;    // Virtual
-SLOT_PROF_CORNER = 2.5;
-SLOT_WIDTH = 8;
-SLOT_DEPTH = 3.96;
-SLOT_DIST = 31.75;
+
 
 TROUGH_WIDTH = 32;
 TROUGH_CORNER = 2;
@@ -94,25 +88,6 @@ module bridge(){
                            -TOLERANCE])
                     cube([SPIND_CON_SQUARE_SIDE,SPIND_CON_SQUARE_SIDE,100]);
         }
-}
-
-
-module NUT8_45x2(){
-    
-    difference(){
-        
-        base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, SLOT_PROF_LEN,
-                   corner_radius=SLOT_PROF_CORNER);
-        
-        for (shift=[-SLOT_DIST/2- (SLOT_WIDTH/2),SLOT_DIST/2+ (SLOT_WIDTH/2)]){
-            translate([-TOLERANCE,
-                       (SLOT_PROF_WIDTH/2) - (SLOT_WIDTH/2) + shift,
-                       -TOLERANCE])
-                cube([SLOT_DEPTH+TOLERANCE,
-                      SLOT_WIDTH,
-                      SLOT_PROF_LEN+2*TOLERANCE]);
-        }
-    }
 }
 
 
