@@ -1,9 +1,9 @@
 $fn=120;
 
-use <helper/base_plate.scad>
-include <helper/t_slot.scad>
-include <helper/m_skrew.scad>
-include <helper/connector_a.scad>
+use <../helper/base_plate.scad>
+include <../helper/t_slot.scad>
+include <../helper/m_skrew.scad>
+include <../helper/connector_a.scad>
 
 /*
   Author: Johannes Bayer, 2025
