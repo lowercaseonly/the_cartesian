@@ -8,6 +8,7 @@
 ```
 .
 │   README.md                  # This File
-└───3d_models                  # Hardware 3D Models
+└───3d_models                  # Hardware 3D Models (OpenSCAD Code)
 │   └───helper                 # Helper Models (Shared between different Machine Parts)
+│   └───components             # Printable Component Models
 └───src                        # Source Code
