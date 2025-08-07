@@ -1,6 +1,6 @@
 $fn=100;
 
-use <base_plate.scad>
+use <../helper/base_plate.scad>
 
 
 // Motor Flage
