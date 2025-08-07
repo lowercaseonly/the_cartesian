@@ -4,6 +4,7 @@ use <../helper/base_plate.scad>
 include <../helper/t_slot.scad>
 include <../helper/m_skrew.scad>
 include <../helper/connector_a.scad>
+include <../helper/linear_wagon.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -13,11 +14,6 @@ include <../helper/connector_a.scad>
 
 TOLERANCE = 0.01;
 
-// Connector to (Linear Support Block) HGH20CA
-BASE_WIDTH = 75;
-BASE_HEIGHT = 44;
-BASE_THICKNESS = 13.5;
-BASE_CORNER = 2.5;
 
 M_SKREW_SINK = 7;
 M_SKREW_DIST_X = 40.35-M_SKREW_SHAFT_DIA;
@@ -39,22 +35,7 @@ TROUGH_CORNER = 2;
 
 
 
-module HGH20CA_plate(){
-    
-    difference(){
-        base_plate(BASE_WIDTH,BASE_HEIGHT,BASE_THICKNESS,BASE_CORNER);
-        union(){
-            for (shift_x=[-1:2:2])
-                for (shift_y=[-1:2:1])
-                    translate([BASE_HEIGHT/2+(shift_x)*M_SKREW_DIST_Y/2,
-                               BASE_WIDTH/2+(shift_y)*M_SKREW_DIST_X/2,
-                               -M_SKREW_SINK])
-                        m_skrew();
-            connector(BASE_HEIGHT/2,0,0);
-            connector(BASE_HEIGHT/2,BASE_WIDTH,180);
-        }
-    }
-}
+
 
 
 module bridge(){
