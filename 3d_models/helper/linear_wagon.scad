@@ -31,4 +31,5 @@ module HGH20CA_plate(){
     }
 }
 
+// Samples Usage
 //HGH20CA_plate();
