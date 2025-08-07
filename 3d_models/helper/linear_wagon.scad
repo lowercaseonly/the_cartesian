@@ -1,3 +1,7 @@
+
+use <../helper/base_plate.scad>
+include <../helper/connector_a.scad>
+
 /*
   Author: Johannes Bayer, 2025
   License: MIT
