@@ -1,6 +1,7 @@
 
 use <../helper/base_plate.scad>
 include <../helper/connector_a.scad>
+include <../helper/m_skrew.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -12,6 +13,10 @@ BASE_WIDTH = 75;
 BASE_HEIGHT = 44;
 BASE_THICKNESS = 13.5;
 BASE_CORNER = 2.5;
+
+M_SKREW_SINK = 7;
+M_SKREW_DIST_X = 40.35-M_SKREW_SHAFT_DIA;
+M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
 
 
 module HGH20CA_plate(){

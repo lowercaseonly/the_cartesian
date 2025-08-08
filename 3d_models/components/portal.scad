@@ -12,27 +12,12 @@ include <../helper/linear_wagon.scad>
 
 TOLERANCE = 0.01;
 
-
-M_SKREW_SINK = 7;
-M_SKREW_DIST_X = 40.35-M_SKREW_SHAFT_DIA;
-M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
-
-
-
 // Spindle Connector
 SPIND_CON_SQUARE_SIDE = 5;
 SPIND_CON_DIST = 20;
 
-
-
 TROUGH_WIDTH = 32;
 TROUGH_CORNER = 2;
-
-
-
-
-
-
 
 
 
