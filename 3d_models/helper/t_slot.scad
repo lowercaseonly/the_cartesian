@@ -63,12 +63,19 @@ module NUT8_mount(thickness, double_size){
 
 
 module NUT8_mount_complete(thickness, double_size=true){
-    
+
     difference(){
         rotate([90,0,-180])
             NUT8_mount(thickness, double_size);
-        translate([-2,0,-NOTHING])
-            NUT8_45x2();
+
+        if (double_size)
+            translate([-2,0,-NOTHING])
+                NUT8_45x2();
+        else
+            translate([SLOT_PROF_WIDTH-2,0,0])
+                rotate([0,0,90])
+                    NUT8_45x2();
+
         for (y_shift=[false,true])
             union(){
                 translate([TROUGH_CORNER-62,
@@ -87,6 +94,7 @@ module NUT8_mount_complete(thickness, double_size=true){
                         m_skrew();
                 }
     }
+
 }
 
 
@@ -106,4 +114,4 @@ translate([SLOT_PROF_WIDTH,0,0])
         NUT8_45x2();
 
 color(c=[0.5,0.5,0])
-    NUT8_mount_complete(thickness=-NOTHING);*/
+    NUT8_mount_complete(thickness=-NOTHING, double_size=false);*/
