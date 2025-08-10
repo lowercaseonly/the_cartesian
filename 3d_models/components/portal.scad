@@ -39,4 +39,4 @@ module bridge(){
 
 HGH20CA_plate();
 bridge(); //color(c=[255,0,0])
-NUT8_mount_complete();
+NUT8_mount_complete(thickness=BASE_THICKNESS, width=BASE_WIDTH);

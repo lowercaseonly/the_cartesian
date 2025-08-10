@@ -53,32 +53,32 @@ module NUT8_45x2(){
 }
 
 
-module NUT8_mount(){
+module NUT8_mount(thickness){
     
     linear_extrude(height=SLOT_PROF_WIDTH)
         polygon([[0, 0],
-                 [0, 20+BASE_THICKNESS],
-                 [10, 20+BASE_THICKNESS],
-                 [10+40,BASE_THICKNESS],
-                 [10+40+0, BASE_THICKNESS],
+                 [0, 20+thickness],
+                 [10, 20+thickness],
+                 [10+40,thickness],
+                 [10+40+0, thickness],
                  [10+40+0,0]]);
 }
 
 
-module NUT8_mount_complete(){
+module NUT8_mount_complete(thickness, width){
     
-    translate([110,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
+    translate([110,-(SLOT_PROF_WIDTH-width)/2,0])
         difference(){
             rotate([0,0,-180])
                 rotate([90,0,0])
-                    NUT8_mount();
-            translate([-2,0,-TOLERANCE])
+                    NUT8_mount(thickness);
+            translate([-2,0,-NOTHING])
                 NUT8_45x2();
             for (y_shift=[false,true])
                 union(){
                     translate([TROUGH_CORNER-62,
                                TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+ (y_shift?3:-3-TROUGH_WIDTH),
-                               TROUGH_CORNER+BASE_THICKNESS])
+                               TROUGH_CORNER+thickness])
                         minkowski(){
                             cube([55-2*TROUGH_CORNER,
                                   TROUGH_WIDTH-2*TROUGH_CORNER,
@@ -87,7 +87,7 @@ module NUT8_mount_complete(){
                         };
                     translate([8,
                                (SLOT_PROF_WIDTH)/2+(SLOT_DIST+SLOT_WIDTH)/2*(y_shift?-1:1),
-                               7.5+BASE_THICKNESS+2+TOLERANCE])
+                               7.5+thickness+2+NOTHING])
                         rotate([0,-90,0])
                             m_skrew();
                     }
@@ -97,3 +97,4 @@ module NUT8_mount_complete(){
 // Samples Usage
 //$fn=120;
 //NUT8_45x2();
+//NUT8_mount_complete(thickness=10, width=50);
