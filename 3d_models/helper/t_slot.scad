@@ -50,9 +50,9 @@ module NUT8_45x2(){
 }
 
 
-module NUT8_mount(thickness){
-    
-    linear_extrude(height=SLOT_PROF_WIDTH)
+module NUT8_mount(thickness, double_size){
+
+    linear_extrude(height=double_size?SLOT_PROF_WIDTH:SLOT_PROF_HEIGHT)
         polygon([[0, 0],
                  [0, 20+thickness],
                  [10, 20+thickness],
@@ -62,12 +62,12 @@ module NUT8_mount(thickness){
 }
 
 
-module NUT8_mount_complete(thickness){
+module NUT8_mount_complete(thickness, double_size=true){
     
     difference(){
         rotate([0,0,-180])
             rotate([90,0,0])
-                NUT8_mount(thickness);
+                NUT8_mount(thickness, double_size);
         translate([-2,0,-NOTHING])
             NUT8_45x2();
         for (y_shift=[false,true])
@@ -90,10 +90,21 @@ module NUT8_mount_complete(thickness){
     }
 }
 
-// Samples Usage
-/*
-$fn=120;
+
+// Sample Usage
+/*$fn=120;
+
 NUT8_45x2();
 color(c=[0.5,0.5,0])
-    NUT8_mount_complete(thickness=10);
-*/
+    NUT8_mount_complete(thickness=10);*/
+
+
+// Sample Usage
+/*$fn=120;
+
+translate([SLOT_PROF_WIDTH,0,0])
+    rotate([0,0,90])
+        NUT8_45x2();
+
+color(c=[0.5,0.5,0])
+    NUT8_mount_complete(thickness=-NOTHING);*/
