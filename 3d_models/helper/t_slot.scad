@@ -65,9 +65,12 @@ module NUT8_mount(thickness, double_size){
 module NUT8_mount_complete(thickness, double_size=true){
 
     difference(){
+        
+        // Base Block
         rotate([90,0,-180])
             NUT8_mount(thickness, double_size);
-
+        
+        // Cut out T-Slot Profile
         if (double_size)
             translate([-2,0,-NOTHING])
                 NUT8_45x2();
@@ -75,7 +78,8 @@ module NUT8_mount_complete(thickness, double_size=true){
             translate([SLOT_PROF_WIDTH-2,0,-NOTHING])
                 rotate([0,0,90])
                     NUT8_45x2();
-
+        
+        // Cut out Skrew Holes and Reduce Material
         for (y_shift=[false,true])
             union(){
                 translate([TROUGH_CORNER-62,
