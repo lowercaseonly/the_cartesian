@@ -65,9 +65,8 @@ module NUT8_mount(thickness){
 }
 
 
-module NUT8_mount_complete(thickness, width){
+module NUT8_mount_complete(thickness){
     
-    translate([110,-(SLOT_PROF_WIDTH-width)/2,0])
         difference(){
             rotate([0,0,-180])
                 rotate([90,0,0])
@@ -97,4 +96,4 @@ module NUT8_mount_complete(thickness, width){
 // Samples Usage
 //$fn=120;
 //NUT8_45x2();
-//NUT8_mount_complete(thickness=10, width=50);
+//NUT8_mount_complete(thickness=10);
