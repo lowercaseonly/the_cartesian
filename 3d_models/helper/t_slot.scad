@@ -1,9 +1,6 @@
 
-
 use <../helper/base_plate.scad>
 include <../helper/m_skrew.scad>
-
-
 
 /*
   Author: Johannes Bayer, 2025
@@ -94,6 +91,9 @@ module NUT8_mount_complete(thickness){
 }
 
 // Samples Usage
-//$fn=120;
-//NUT8_45x2();
-//NUT8_mount_complete(thickness=10);
+/*
+$fn=120;
+NUT8_45x2();
+color(c=[0.5,0.5,0])
+    NUT8_mount_complete(thickness=10);
+*/
