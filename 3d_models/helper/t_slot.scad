@@ -81,23 +81,24 @@ module NUT8_mount_complete(thickness=10, height=20, length=40, double_size=true)
                     NUT8_45x2();
         
         // Cut out Skrew Holes and Reduce Material
-        for (y_shift=[false,true])
-            union(){
-                translate([TROUGH_CORNER-62,
-                           TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+ (y_shift?3:-3-TROUGH_WIDTH),
-                           TROUGH_CORNER+thickness])
-                    minkowski(){
-                        cube([55-2*TROUGH_CORNER,
-                              TROUGH_WIDTH-2*TROUGH_CORNER,
-                              100-2*TROUGH_CORNER]);
-                        sphere(r=TROUGH_CORNER);
-                    };
-                translate([8,
-                           (SLOT_PROF_WIDTH)/2+(SLOT_DIST+SLOT_WIDTH)/2*(y_shift?-1:1),
-                           7.5+thickness+2+NOTHING])
-                    rotate([0,-90,0])
-                        m_skrew();
-                }
+        for (y_shift=[false,true]){
+            translate([TROUGH_CORNER-62,
+                       TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+
+                       (y_shift?3.9:-3.9-TROUGH_WIDTH),
+                       TROUGH_CORNER+thickness])
+                minkowski(){
+                    cube([55-2*TROUGH_CORNER,
+                          TROUGH_WIDTH-2*TROUGH_CORNER,
+                          100-2*TROUGH_CORNER]);
+                    sphere(r=TROUGH_CORNER);
+                };
+            translate([8,
+                       (SLOT_PROF_WIDTH)/2+
+                       (SLOT_DIST+SLOT_WIDTH)/2*(y_shift?-1:1),
+                       thickness+height/2])
+                rotate([0,-90,0])
+                    m_skrew();
+            }
     }
 
 }
@@ -119,4 +120,5 @@ translate([SLOT_PROF_WIDTH,0,0])
         NUT8_45x2();
 
 color(c=[0.5,0.5,0])
-    NUT8_mount_complete(thickness=-NOTHING, double_size=false);*/
+    NUT8_mount_complete(thickness=-NOTHING, double_size=false,
+                        height=40, length=40);*/
