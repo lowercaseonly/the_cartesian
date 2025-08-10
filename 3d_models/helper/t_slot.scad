@@ -67,30 +67,30 @@ module NUT8_mount(thickness){
 
 module NUT8_mount_complete(thickness){
     
-        difference(){
-            rotate([0,0,-180])
-                rotate([90,0,0])
-                    NUT8_mount(thickness);
-            translate([-2,0,-NOTHING])
-                NUT8_45x2();
-            for (y_shift=[false,true])
-                union(){
-                    translate([TROUGH_CORNER-62,
-                               TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+ (y_shift?3:-3-TROUGH_WIDTH),
-                               TROUGH_CORNER+thickness])
-                        minkowski(){
-                            cube([55-2*TROUGH_CORNER,
-                                  TROUGH_WIDTH-2*TROUGH_CORNER,
-                                  100-2*TROUGH_CORNER]);
-                            sphere(r=TROUGH_CORNER);
-                        };
-                    translate([8,
-                               (SLOT_PROF_WIDTH)/2+(SLOT_DIST+SLOT_WIDTH)/2*(y_shift?-1:1),
-                               7.5+thickness+2+NOTHING])
-                        rotate([0,-90,0])
-                            m_skrew();
-                    }
-        }
+    difference(){
+        rotate([0,0,-180])
+            rotate([90,0,0])
+                NUT8_mount(thickness);
+        translate([-2,0,-NOTHING])
+            NUT8_45x2();
+        for (y_shift=[false,true])
+            union(){
+                translate([TROUGH_CORNER-62,
+                           TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+ (y_shift?3:-3-TROUGH_WIDTH),
+                           TROUGH_CORNER+thickness])
+                    minkowski(){
+                        cube([55-2*TROUGH_CORNER,
+                              TROUGH_WIDTH-2*TROUGH_CORNER,
+                              100-2*TROUGH_CORNER]);
+                        sphere(r=TROUGH_CORNER);
+                    };
+                translate([8,
+                           (SLOT_PROF_WIDTH)/2+(SLOT_DIST+SLOT_WIDTH)/2*(y_shift?-1:1),
+                           7.5+thickness+2+NOTHING])
+                    rotate([0,-90,0])
+                        m_skrew();
+                }
+    }
 }
 
 // Samples Usage
