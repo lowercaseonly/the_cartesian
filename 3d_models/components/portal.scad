@@ -1,7 +1,6 @@
 $fn=120;
 
 include <../helper/t_slot.scad>
-include <../helper/m_skrew.scad>
 include <../helper/linear_wagon.scad>
 
 /*
@@ -16,8 +15,6 @@ TOLERANCE = 0.01;
 SPIND_CON_SQUARE_SIDE = 5;
 SPIND_CON_DIST = 20;
 
-TROUGH_WIDTH = 32;
-TROUGH_CORNER = 2;
 
 
 
@@ -36,48 +33,6 @@ module bridge(){
                            (BASE_WIDTH-SPIND_CON_SQUARE_SIDE)/2+shift,
                            -TOLERANCE])
                     cube([SPIND_CON_SQUARE_SIDE,SPIND_CON_SQUARE_SIDE,100]);
-        }
-}
-
-
-module NUT8_mount(){
-    
-    linear_extrude(height=SLOT_PROF_WIDTH)
-        polygon([[0, 0],
-                 [0, 20+BASE_THICKNESS],
-                 [10, 20+BASE_THICKNESS],
-                 [10+40,BASE_THICKNESS],
-                 [10+40+0, BASE_THICKNESS],
-                 [10+40+0,0]]);
-}
-
-
-module NUT8_mount_complete(){
-    
-    translate([110,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
-        difference(){
-            rotate([0,0,-180])
-                rotate([90,0,0])
-                    NUT8_mount();
-            translate([-2,0,-TOLERANCE])
-                NUT8_45x2();
-            for (y_shift=[false,true])
-                union(){
-                    translate([TROUGH_CORNER-62,
-                               TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+ (y_shift?3:-3-TROUGH_WIDTH),
-                               TROUGH_CORNER+BASE_THICKNESS])
-                        minkowski(){
-                            cube([55-2*TROUGH_CORNER,
-                                  TROUGH_WIDTH-2*TROUGH_CORNER,
-                                  100-2*TROUGH_CORNER]);
-                            sphere(r=TROUGH_CORNER);
-                        };
-                    translate([8,
-                               (SLOT_PROF_WIDTH)/2+(SLOT_DIST+SLOT_WIDTH)/2*(y_shift?-1:1),
-                               7.5+BASE_THICKNESS+2+TOLERANCE])
-                        rotate([0,-90,0])
-                            m_skrew();
-                    }
         }
 }
 
