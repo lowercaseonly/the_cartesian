@@ -65,9 +65,8 @@ module NUT8_mount(thickness, double_size){
 module NUT8_mount_complete(thickness, double_size=true){
     
     difference(){
-        rotate([0,0,-180])
-            rotate([90,0,0])
-                NUT8_mount(thickness, double_size);
+        rotate([90,0,-180])
+            NUT8_mount(thickness, double_size);
         translate([-2,0,-NOTHING])
             NUT8_45x2();
         for (y_shift=[false,true])
