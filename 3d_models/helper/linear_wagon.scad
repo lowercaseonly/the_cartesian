@@ -6,7 +6,7 @@ include <../helper/m_skrew.scad>
 /*
   Author: Johannes Bayer, 2025
   License: MIT
-  Description: Connector to (Linear Support Block) HGH20CA
+  Description: Mount Plate to (Linear Support Wagon) HGH20CA
 */
 
 BASE_WIDTH = 75;
