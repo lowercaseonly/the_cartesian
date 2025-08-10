@@ -72,7 +72,7 @@ module NUT8_mount_complete(thickness, double_size=true){
             translate([-2,0,-NOTHING])
                 NUT8_45x2();
         else
-            translate([SLOT_PROF_WIDTH-2,0,0])
+            translate([SLOT_PROF_WIDTH-2,0,-NOTHING])
                 rotate([0,0,90])
                     NUT8_45x2();
 
