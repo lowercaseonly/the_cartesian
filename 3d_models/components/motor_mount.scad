@@ -44,13 +44,15 @@ module motor_flange(){
 };
 
 
+
 translate([0,MOTOR_FLANGE_THICKNESS,0])
     rotate([90,0,0])
         motor_flange();
+
 difference(){
-    translate([48,0,-2])
+    translate([SLOT_PROF_HEIGHT/2+MOTOR_FLANGE_WIDTH/2,0,-2])
         rotate([-90,90,0])
-            NUT8_mount_complete(thickness=-NOTHING, double_size=false,
+            NUT8_mount_complete(thickness=0.0, double_size=false,
                                 height=40, length=20);
     translate([MOTOR_FLANGE_WIDTH/2,0,MOTOR_FLANGE_HEIGHT/2])
         rotate([90,0,0])
