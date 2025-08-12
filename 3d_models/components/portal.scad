@@ -2,6 +2,7 @@ $fn=120;
 
 include <../helper/t_slot.scad>
 include <../helper/linear_wagon.scad>
+include <../helper/nut_mount_connector.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -10,13 +11,6 @@ include <../helper/linear_wagon.scad>
 */
 
 TOLERANCE = 0.01;
-
-// Spindle Connector
-SPIND_CON_SQUARE_SIDE = 5;
-SPIND_CON_DIST = 20;
-
-
-
 
 module bridge(){
     
@@ -28,11 +22,8 @@ module bridge(){
                          [0, BASE_WIDTH],
                          [18.5, SLOT_PROF_WIDTH-(SLOT_PROF_WIDTH-BASE_WIDTH)/2],
                          [18.5, -(SLOT_PROF_WIDTH-BASE_WIDTH)/2]]);
-            for (shift=[-SPIND_CON_DIST,0,SPIND_CON_DIST])
-                translate([10,
-                           (BASE_WIDTH-SPIND_CON_SQUARE_SIDE)/2+shift,
-                           -TOLERANCE])
-                    cube([SPIND_CON_SQUARE_SIDE,SPIND_CON_SQUARE_SIDE,100]);
+            translate([10,(BASE_WIDTH)/2,-TOLERANCE])
+                nut_mount_connector();
         }
 }
 
