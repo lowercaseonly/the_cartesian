@@ -22,10 +22,10 @@ M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
 
 module HGH20CA_screws(){
 
-    for (shift_x=[-1:2:2])
-        for (shift_y=[-1:2:1])
-            translate([BASE_HEIGHT/2+(shift_x)*M_SKREW_DIST_Y/2,
-                       BASE_WIDTH/2+(shift_y)*M_SKREW_DIST_X/2,
+    for (shift_x=[-1,1])
+        for (shift_y=[-1,1])
+            translate([BASE_HEIGHT/2 + shift_x*M_SKREW_DIST_Y/2,
+                       BASE_WIDTH/2 + shift_y*M_SKREW_DIST_X/2,
                        -M_SKREW_SINK])
                 m_skrew();
 
