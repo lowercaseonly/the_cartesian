@@ -19,7 +19,7 @@ M_SKREW_DIST_X = 40.35-M_SKREW_SHAFT_DIA;
 M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
 
 
-module HGH20CA_plate(overhang=0){
+module HGH20CA_plate(overhang=0, connector_left=true, connector_right=true){
     
     difference(){
         base_plate(BASE_WIDTH,BASE_HEIGHT+overhang,BASE_THICKNESS,BASE_CORNER);
@@ -30,8 +30,10 @@ module HGH20CA_plate(overhang=0){
                                BASE_WIDTH/2+(shift_y)*M_SKREW_DIST_X/2,
                                -M_SKREW_SINK])
                         m_skrew();
-            connector(BASE_HEIGHT/2,0,0);
-            connector(BASE_HEIGHT/2,BASE_WIDTH,180);
+            if (connector_right)
+                connector(BASE_HEIGHT/2,0,0);
+            if (connector_left)
+                connector(BASE_HEIGHT/2,BASE_WIDTH,180);
         }
     }
 }
