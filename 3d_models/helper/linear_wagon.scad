@@ -48,5 +48,5 @@ module HGH20CA_plate(overhang=0, connector_left=true, connector_right=true){
 }
 
 // Sample Usage
-$fn=120;
-HGH20CA_plate();
+//$fn=120;
+//HGH20CA_plate();
