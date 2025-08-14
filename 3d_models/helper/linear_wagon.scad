@@ -15,8 +15,8 @@ BASE_THICKNESS = 13.5;
 BASE_CORNER = 2.5;
 
 M_SKREW_SINK = 7;
-M_SKREW_DIST_X = 40.35-M_SKREW_SHAFT_DIA;
-M_SKREW_DIST_Y = 36.66-M_SKREW_SHAFT_DIA;
+M_SKREW_DIST_X = 40.7-M_SKREW_SHAFT_DIA;
+M_SKREW_DIST_Y = 37.0-M_SKREW_SHAFT_DIA;
 
 
 
@@ -48,5 +48,5 @@ module HGH20CA_plate(overhang=0, connector_left=true, connector_right=true){
 }
 
 // Sample Usage
-//$fn=120;
-//HGH20CA_plate();
+$fn=120;
+HGH20CA_plate();
