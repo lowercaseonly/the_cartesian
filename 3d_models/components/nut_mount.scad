@@ -19,7 +19,7 @@ TOLERANCE = 0.01;
 
 translate([-PORTAL_THICK,0,0])
     rotate([0,-90,180])
-        nut_mount_connector(length=PORTAL_DIST+2*PORTAL_THICK);
+        nut_mount_connector(length=PORTAL_DIST+2*PORTAL_THICK, male=true);
 
 translate([0,-MOUNT_WIDTH/2,0])
     cube([PORTAL_DIST, MOUNT_WIDTH, MOUNT_HEIGHT]);
