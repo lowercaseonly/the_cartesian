@@ -5,7 +5,7 @@ include <../helper/nut_mount_connector.scad>
 /*
   Author: Johannes Bayer, 2025
   License: MIT
-  Description: Connects two Linear Rail Support Wagons with a Thread Nut
+  Description: Connects two Linear Rail Support Wagons or Portals with a Thread Nut Holder
 */
 
 PORTAL_DIST = 99.5;
@@ -16,10 +16,17 @@ THREAD_ROD_DIA = 10.0;
 TOLERANCE = 0.01;
 
 
-
-translate([-PORTAL_THICK,0,0])
-    rotate([0,-90,180])
-        nut_mount_connector(length=PORTAL_DIST+2*PORTAL_THICK, male=true);
-
-translate([0,-MOUNT_WIDTH/2,0])
-    cube([PORTAL_DIST, MOUNT_WIDTH, MOUNT_HEIGHT]);
+difference(){
+    union(){
+        translate([0,-MOUNT_WIDTH/2,0])
+            cube([PORTAL_DIST, MOUNT_WIDTH, MOUNT_HEIGHT]);
+        translate([-PORTAL_THICK,0,0])
+            rotate([0,-90,180])
+                nut_mount_connector(length=PORTAL_DIST+2*PORTAL_THICK,
+                                    male=true);
+    }
+    for (y_shift=[-MOUNT_WIDTH/2+5, MOUNT_WIDTH/2-10])
+        translate([PORTAL_DIST/2,y_shift,-TOLERANCE])
+            rotate([0,0,90])
+                nut_mount_connector(length=MOUNT_HEIGHT+2*TOLERANCE);
+};
