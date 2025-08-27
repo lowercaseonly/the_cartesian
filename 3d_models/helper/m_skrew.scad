@@ -33,7 +33,7 @@ module m_skrew(){
 }
 
 
-module m_skrew_eject(length=10){
+module m_skrew_eject(length=5){
     // Helper Function to remove material for Mounting a Tightened Skrew
     // in Reversed Position
 
