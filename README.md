@@ -13,3 +13,10 @@
 │   └───helper                 # Helper Models (Shared between different Machine Parts)
 │   └───components             # Printable Component Models
 └───src                        # Source Code
+
+
+## Mechanical Setup
+The basic mechnical structure of the described hardware consists of three linear axis which are oriented orthogonal to each other (hence the project name).
+
+### The X Axis
+The X axis (also referred to as the *portal*) consists of the main structural, rectangular frame on which two pairs of linear guide rails carry a common rod.
