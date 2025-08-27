@@ -31,3 +31,28 @@ module m_skrew(){
     m_skrew_shaft();
 
 }
+
+
+module m_skrew_eject(length=10){
+    // Helper Function to remove material for Mounting a Tightened Skrew
+    // in Reversed Position
+
+    // Push
+    translate([0,length,0])
+        cylinder(d=M_SKREW_HEAD_DIA,h=M_SKREW_HEAD_LEN+M_SKREW_SHAFT_LEN);
+
+    // Slide
+    hull(){
+        m_skrew_head();
+        translate([0,length,0])
+            m_skrew_head();
+    };
+
+    // Slide
+    hull(){
+        m_skrew_shaft();
+        translate([0,length,0])
+            m_skrew_shaft();
+    };
+
+}
