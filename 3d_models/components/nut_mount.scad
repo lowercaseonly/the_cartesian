@@ -9,7 +9,7 @@ include <../helper/nut_mount_connector.scad>
 */
 
 PORTAL_DIST = 99.5;
-PORTAL_THICK = 13.5;
+PORTAL_THICK = 5.0;  // Clipped to fit printing area,  actually: 13.5;
 MOUNT_WIDTH = 75;
 MOUNT_HEIGHT = 10;
 THREAD_ROD_DIA = 10.0;
