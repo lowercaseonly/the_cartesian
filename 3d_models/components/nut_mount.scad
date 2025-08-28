@@ -8,7 +8,7 @@ include <../helper/nut_mount_connector.scad>
   Description: Connects two Linear Rail Support Wagons or Portals with a Thread Nut Holder
 */
 
-PORTAL_DIST = 99.5;
+PORTAL_DIST = 100.7;
 PORTAL_THICK = 5.0;  // Clipped to fit printing area,  actually: 13.5;
 MOUNT_WIDTH = 75;
 MOUNT_HEIGHT = 10;

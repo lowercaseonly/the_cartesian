@@ -7,7 +7,7 @@
 
 SPIND_CON_SQUARE_SIDE = 5;
 SPIND_CON_DIST = 20;
-TIGHT_FIT = 0.2;
+TIGHT_FIT = 0.15;
 
 module nut_mount_connector(length=100, male=false){
 
