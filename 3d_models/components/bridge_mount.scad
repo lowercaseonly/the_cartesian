@@ -16,8 +16,12 @@ TOLERANCE = 0.01;
 module bridge_mount(){
 
     difference(){
-        HGH20CA_plate(overhang=30);
-        translate([-2.5,15,13.5])
+        HGH20CA_plate(overhang=BASE_WIDTH-BASE_HEIGHT);
+
+        translate([BASE_WIDTH-10,BASE_WIDTH/2,-TOLERANCE])
+            nut_mount_connector();
+
+        translate([0,15,13.5])
             rotate([180,0,90])
                 union(){
                     HGH20CA_screws();
