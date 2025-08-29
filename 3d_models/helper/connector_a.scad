@@ -13,6 +13,7 @@ CONN_HEAD_DIST = 10;
 CONN_SHAFT_DIA = 4;
 CONN_SHAFT_THICK = 11;
 
+
 module connector(shift_x, shift_y, angle, shaft_len=30){
     translate([shift_x, shift_y, 0])
         rotate([0,0,angle])
@@ -24,3 +25,9 @@ module connector(shift_x, shift_y, angle, shaft_len=30){
                             cube([CONN_SHAFT_DIA, shaft_len, CONN_THICK]);
                     }
 }
+
+
+// Sample Usage
+//$fn=120;
+//BASE_THICKNESS = 13.5;
+//connector(0,0,0);
