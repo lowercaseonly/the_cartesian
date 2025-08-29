@@ -5,7 +5,6 @@
   Description: Internal Connector between Linear Wagon Mount Plates
 */
 
-// Connector to mount 
 CONN_THICK = 10;
 CONN_HEAD_DIA = 7;
 CONN_HEAD_COUNT = 3;
