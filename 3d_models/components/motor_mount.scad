@@ -1,11 +1,7 @@
 $fn=100;
 
-use <../helper/base_plate.scad>
 include <../helper/motor_flange.scad>
 include <../helper/t_slot.scad>
-
-// Base Plate
-BASE_THINKNESS = 5.0;
 
 
 
