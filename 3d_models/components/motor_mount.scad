@@ -5,8 +5,8 @@ include <../helper/t_slot.scad>
 
 
 
-translate([0,MOTOR_FLANGE_THICKNESS,0])
-    rotate([90,0,0])
+translate([MOTOR_FLANGE_WIDTH,0,0])
+    rotate([90,0,180])
         motor_flange();
 
 difference(){
