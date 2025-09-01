@@ -30,30 +30,36 @@ module motor_flange_base(){
 }
 
 
+module motor_flange_cutout(){
+
+    translate([MOTOR_FLANGE_WIDTH/2,MOTOR_FLANGE_HEIGHT/2,0])
+        cylinder(h=100,d=MOTOR_FLANGE_INNER_DIA,center=true);
+
+    for (cx=[0,1])
+        for (cy=[0,1])
+            translate([cx*MOTOR_FLANGE_WIDTH
+                       -(cx-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
+                                    + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
+                       cy*MOTOR_FLANGE_HEIGHT
+                       -(cy-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
+                                    + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
+                       0])
+                union(){
+                    cylinder(h=100,
+                             d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
+                             center=true);
+                    translate([0,0,MOTOR_FLANGE_THICKNESS-M_NUT_HEIGHT+NOTHING])
+                        m_nut();
+                }
+
+}
+
+
 module motor_flange(){
     
     difference(){
         motor_flange_base();
-        union(){
-            translate([MOTOR_FLANGE_WIDTH/2,MOTOR_FLANGE_HEIGHT/2,0])
-                cylinder(h=100,d=MOTOR_FLANGE_INNER_DIA,center=true);
-            for (cx=[0,1])
-                for (cy=[0,1])
-                    translate([cx*MOTOR_FLANGE_WIDTH
-                               -(cx-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
-                                            + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
-                               cy*MOTOR_FLANGE_HEIGHT
-                               -(cy-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
-                                            + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
-                               0])
-                        union(){
-                            cylinder(h=100,
-                                     d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
-                                     center=true);
-                            translate([0,0,MOTOR_FLANGE_THICKNESS-M_NUT_HEIGHT+NOTHING])
-                                m_nut();
-                        }
-        }
+        motor_flange_cutout();
     }
 
 };
