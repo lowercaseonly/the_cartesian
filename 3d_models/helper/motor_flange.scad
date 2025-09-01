@@ -14,7 +14,9 @@ MOTOR_FLANGE_HEIGHT = 56.0;
 MOTOR_FLANGE_CORNER = 3.25;
 MOTOR_FLANGE_MOUNT_HOLE_DIA = 5.25;
 MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST = 2.0;
-MOTOR_FLANGE_THICKNESS = 5.0;
+MOTOR_FLANGE_THICKNESS = 7.0;
+
+NOTHING = 0.01;
 
 
 
@@ -37,10 +39,13 @@ module motor_flange(){
                                -(cy-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
                                             + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
                                0])
-                        cylinder(h=100,
-                                 d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
-                                 center=true);
-                    
+                        union(){
+                            cylinder(h=100,
+                                     d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
+                                     center=true);
+                            translate([0,0,MOTOR_FLANGE_THICKNESS-M_NUT_HEIGHT+NOTHING])
+                                m_nut();
+                        }
         }
     }
 
