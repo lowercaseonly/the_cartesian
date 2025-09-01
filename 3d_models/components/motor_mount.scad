@@ -14,7 +14,7 @@ difference(){
         rotate([-90,90,0])
             NUT8_mount_complete(thickness=0.0, double_size=false,
                                 height=40, length=20);
-    translate([MOTOR_FLANGE_WIDTH/2,0,MOTOR_FLANGE_HEIGHT/2])
-        rotate([90,0,0])
-            cylinder(h=100,d=MOTOR_FLANGE_INNER_DIA,center=true);
+    translate([MOTOR_FLANGE_WIDTH,0,0])
+        rotate([90,0,180])
+            motor_flange_cutout();
 };
