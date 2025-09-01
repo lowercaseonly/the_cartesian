@@ -20,13 +20,20 @@ NOTHING = 0.01;
 
 
 
+module motor_flange_base(){
+
+    base_plate(MOTOR_FLANGE_HEIGHT,
+               MOTOR_FLANGE_WIDTH,
+               MOTOR_FLANGE_THICKNESS,
+               MOTOR_FLANGE_CORNER);
+
+}
+
+
 module motor_flange(){
     
     difference(){
-        base_plate(MOTOR_FLANGE_HEIGHT,
-                   MOTOR_FLANGE_WIDTH,
-                   MOTOR_FLANGE_THICKNESS,
-                   MOTOR_FLANGE_CORNER);
+        motor_flange_base();
         union(){
             translate([MOTOR_FLANGE_WIDTH/2,MOTOR_FLANGE_HEIGHT/2,0])
                 cylinder(h=100,d=MOTOR_FLANGE_INNER_DIA,center=true);
