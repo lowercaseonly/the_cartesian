@@ -60,10 +60,15 @@ module m_skrew_eject(length=5){
 }
 
 
-module m_nut(hole=false){
+module m_nut(hole=false, elongate=false){
 
     difference(){
-        cylinder(h=M_NUT_HEIGHT, d=M_NUT_DIA, $fn=6);
+        union(){
+            cylinder(h=M_NUT_HEIGHT, d=M_NUT_DIA, $fn=6);
+            if (elongate)
+                translate([-M_NUT_DIA/2, 0, 0])
+                    cylinder(h=M_NUT_HEIGHT, d=M_NUT_DIA, $fn=6);
+        }
         if (hole)
             translate([0, 0, -1])
                 m_skrew_shaft();
