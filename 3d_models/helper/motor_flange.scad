@@ -47,9 +47,10 @@ module motor_flange_cutout(){
                     cylinder(h=100,
                              d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
                              center=true);
-                        m_nut();
+                    rotate([0,0,36+90*((cx==1&&cy==1)?2:cx-cy)])
                         translate([0,0,MOTOR_FLANGE_THICKNESS-
                                        MOTOR_FLANGE_SCREW_SINK])
+                        m_nut(elongate=true);
                 }
 
 }
