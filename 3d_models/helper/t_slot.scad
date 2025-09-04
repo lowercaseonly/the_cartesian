@@ -69,8 +69,8 @@ module NUT8_mount_complete(thickness=10, height=20, length=40, double_size=true)
         
         // Base Block
         rotate([90,0,-180])
-            NUT8_mount(thickness, height, length, double_size);
-        
+            NUT8_mount(height+10, length+10, thickness, thickness_length=10, double_size=double_size);
+
         // Cut out T-Slot Profile
         if (double_size)
             translate([-2,0,-NOTHING])
