@@ -50,15 +50,15 @@ module NUT8_45x2(){
 }
 
 
-module NUT8_mount(thickness, height, length, double_size){
+module NUT8_mount(height, length, thickness_height, thickness_length, double_size){
 
     linear_extrude(height=double_size?SLOT_PROF_WIDTH:SLOT_PROF_HEIGHT)
-        polygon([[0,           0],
-                 [0,           thickness + height],
-                 [10,          thickness + height],
-                 [10+length,   thickness],
-                 [10+length,   thickness],
-                 [10+length,   0]]);
+        polygon([[0,                0],
+                 [0,                height],
+                 [thickness_length, height],
+                 [length,           thickness_height],
+                 [length,           thickness_height],
+                 [length,           0]]);
 
 }
 
