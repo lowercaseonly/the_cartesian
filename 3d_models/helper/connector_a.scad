@@ -16,7 +16,7 @@ CONN_SHAFT_THICK = 11;
 module connector(shift_x, shift_y, angle, shaft_len=30){
     translate([shift_x, shift_y, 0])
         rotate([0,0,angle])
-            for (head=[-1:1])
+            for (head=[(-CONN_HEAD_COUNT/2)+.5:CONN_HEAD_COUNT/2])
                 translate([head*CONN_HEAD_DIST, 5, BASE_THICKNESS-CONN_THICK+0.01])
                     union(){
                         cylinder(d=CONN_HEAD_DIA, h=CONN_THICK);
