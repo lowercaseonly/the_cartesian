@@ -16,17 +16,22 @@ THREAD_ROD_DIA = 10.0;
 TOLERANCE = 0.01;
 
 
-difference(){
-    union(){
-        translate([0,-MOUNT_WIDTH/2,0])
-            cube([PORTAL_DIST, MOUNT_WIDTH, MOUNT_HEIGHT]);
-        translate([-PORTAL_THICK,0,0])
-            rotate([0,-90,180])
-                nut_mount_connector(length=PORTAL_DIST+2*PORTAL_THICK,
-                                    male=true);
-    }
-    for (y_shift=[-MOUNT_WIDTH/2+5, MOUNT_WIDTH/2-10])
-        translate([PORTAL_DIST/2,y_shift,-TOLERANCE])
-            rotate([0,0,90])
-                nut_mount_connector(length=MOUNT_HEIGHT+2*TOLERANCE);
-};
+module nut_mount(){
+    difference(){
+        union(){
+            translate([0,-MOUNT_WIDTH/2,0])
+                cube([PORTAL_DIST, MOUNT_WIDTH, MOUNT_HEIGHT]);
+            translate([-PORTAL_THICK,0,0])
+                rotate([0,-90,180])
+                    nut_mount_connector(length=PORTAL_DIST+2*PORTAL_THICK,
+                                        male=true);
+        }
+        for (y_shift=[-MOUNT_WIDTH/2+5, MOUNT_WIDTH/2-10])
+            translate([PORTAL_DIST/2,y_shift,-TOLERANCE])
+                rotate([0,0,90])
+                    nut_mount_connector(length=MOUNT_HEIGHT+2*TOLERANCE);
+    };
+}
+
+
+nut_mount();
