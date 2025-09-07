@@ -63,7 +63,7 @@ module NUT8_mount_base(height, length, thickness_height, thickness_length, doubl
 }
 
 
-module NUT8_mount_complete(thickness=10, height=20, length=40, double_size=true){
+module NUT8_mount(thickness=10, height=20, length=40, double_size=true){
 
     difference(){
         
@@ -109,7 +109,7 @@ module NUT8_mount_complete(thickness=10, height=20, length=40, double_size=true)
 
 NUT8_45x2();
 color(c=[0.5,0.5,0])
-    NUT8_mount_complete();*/
+    NUT8_mount();*/
 
 
 // Sample Usage
@@ -120,5 +120,5 @@ translate([SLOT_PROF_WIDTH,0,0])
         NUT8_45x2();
 
 color(c=[0.5,0.5,0])
-    NUT8_mount_complete(thickness=-NOTHING, double_size=false,
-                        height=40, length=40);*/
+    NUT8_mount(thickness=-NOTHING, double_size=false,
+               height=40, length=40);*/
