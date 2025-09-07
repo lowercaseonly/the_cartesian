@@ -11,8 +11,16 @@ include <../helper/nut_mount_connector.scad>
 
 TOLERANCE = 0.01;
 
-difference(){
-    HGH20CA_plate(overhang=20);
-    translate([10+BASE_HEIGHT-BASE_CORNER, BASE_WIDTH/2, -TOLERANCE])
-        nut_mount_connector();
+
+module portal_reinforcement(){
+
+    difference(){
+        HGH20CA_plate(overhang=20);
+        translate([10+BASE_HEIGHT-BASE_CORNER, BASE_WIDTH/2, -TOLERANCE])
+            nut_mount_connector();
+    }
+
 }
+
+
+portal_reinforcement();
