@@ -13,7 +13,7 @@ include <../helper/m_skrew.scad>
 TOLERANCE = 0.01;
 
 
-module bridge_mount(){
+module bridge(){
 
     difference(){
         HGH20CA_plate(overhang=BASE_WIDTH-BASE_HEIGHT);
@@ -33,4 +33,4 @@ module bridge_mount(){
 
 };
 
-bridge_mount();
+bridge();
