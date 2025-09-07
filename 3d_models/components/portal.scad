@@ -13,16 +13,16 @@ include <../helper/nut_mount_connector.scad>
 TOLERANCE = 0.01;
 PORTAL_HEIGHT = 110;
 
-module intermediate(){
+module intermediate(spacing=18.5){
     
     translate([BASE_HEIGHT-BASE_CORNER, BASE_WIDTH/2, 0])
         difference(){
             linear_extrude(height=BASE_THICKNESS)
-                polygon([[0,    -BASE_WIDTH/2],
-                         [2,     0], // Avoid Overlap with Base Skrew Holes
-                         [0,     BASE_WIDTH/2],
-                         [18.5,  SLOT_PROF_WIDTH/2],
-                         [18.5, -SLOT_PROF_WIDTH/2]]);
+                polygon([[0,       -BASE_WIDTH/2],
+                         [2,        0], // Avoid Overlap with Base Skrew Holes
+                         [0,        BASE_WIDTH/2],
+                         [spacing,  SLOT_PROF_WIDTH/2],
+                         [spacing, -SLOT_PROF_WIDTH/2]]);
             translate([10,0,-TOLERANCE])
                 nut_mount_connector();
         }
