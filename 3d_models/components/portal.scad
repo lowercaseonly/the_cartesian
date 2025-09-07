@@ -28,7 +28,13 @@ module bridge(){
 }
 
 
-HGH20CA_plate();
-bridge();
-translate([110,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
-    NUT8_mount_complete(thickness=BASE_THICKNESS);
+module portal(){
+
+    HGH20CA_plate();
+    bridge();
+    translate([110,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
+        NUT8_mount_complete(thickness=BASE_THICKNESS);
+
+}
+
+portal();
