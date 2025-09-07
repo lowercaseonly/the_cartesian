@@ -50,7 +50,7 @@ module NUT8_45x2(){
 }
 
 
-module NUT8_mount(height, length, thickness_height, thickness_length, double_size){
+module NUT8_mount_base(height, length, thickness_height, thickness_length, double_size){
 
     linear_extrude(height=double_size?SLOT_PROF_WIDTH:SLOT_PROF_HEIGHT)
         polygon([[0,                0],
@@ -69,7 +69,7 @@ module NUT8_mount_complete(thickness=10, height=20, length=40, double_size=true)
         
         // Base Block
         rotate([90,0,-180])
-            NUT8_mount(height+10, length+10, thickness, thickness_length=10, double_size=double_size);
+            NUT8_mount_base(height+10, length+10, thickness, thickness_length=10, double_size=double_size);
 
         // Cut out T-Slot Profile
         if (double_size)
