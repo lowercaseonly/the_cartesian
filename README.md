@@ -29,3 +29,7 @@ The hardware is based on standard parts around which customized connectors are b
 
 ### The X Axis
 The X axis (also referred to as the *portal*) consists of the main structural, rectangular frame on which two pairs of linear guide rails carry a common rod.
+
+
+## License
+The content of this repository is licensed under the terms of the `MIT license`.
