@@ -19,6 +19,9 @@ SLOT_DIST = 31.75;
 TROUGH_WIDTH = 32;
 TROUGH_CORNER = 2;
 
+SLOT_MOUNT_LENGTH = 40;
+SLOT_MOUNT_HEIGHT = 20;
+
 NOTHING = 0.01;
 
 module NUT8_45x2(){
@@ -63,7 +66,8 @@ module NUT8_mount_base(height, length, thickness_height, thickness_length, doubl
 }
 
 
-module NUT8_mount(thickness=10, height=20, length=40, double_size=true){
+module NUT8_mount(thickness=10, height=SLOT_MOUNT_HEIGHT,
+                  length=SLOT_MOUNT_LENGTH, double_size=true){
 
     difference(){
         
