@@ -21,10 +21,13 @@ TROUGH_CORNER = 2;
 
 // Slot Mount Defaults
 SLOT_MOUNT_LENGTH = 40;
-SLOT_MOUNT_HEIGHT = 20;
-SLOT_MOUNT_THICKNESS = 10;
+SLOT_MOUNT_HEIGHT = 40;
+SLOT_MOUNT_THICK_HEIGHT = 5;
+SLOT_MOUNT_THICK_LENGTH = 5;
 
 NOTHING = 0.01;
+
+
 
 module NUT8_45x2(){
     
@@ -68,40 +71,44 @@ module NUT8_mount_base(height, length, thickness_height, thickness_length, doubl
 }
 
 
-module NUT8_mount(thickness=10, height=SLOT_MOUNT_HEIGHT,
-                  length=SLOT_MOUNT_LENGTH, double_size=true){
+module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
+                  thickness_height=SLOT_MOUNT_THICK_HEIGHT,
+                  thickness_length=SLOT_MOUNT_THICK_LENGTH,
+                  double_size=true){
 
     difference(){
         
         // Base Block
         rotate([90,0,-180])
-            NUT8_mount_base(height+SLOT_MOUNT_THICKNESS, length+SLOT_MOUNT_THICKNESS, thickness, thickness_length=SLOT_MOUNT_THICKNESS, double_size=double_size);
+            NUT8_mount_base(height, length+SLOT_PROF_CORNER,
+                            thickness_height, thickness_length+SLOT_PROF_CORNER,
+                            double_size=double_size);
 
         // Cut out T-Slot Profile
         if (double_size)
-            translate([-2,0,-NOTHING])
+            translate([-SLOT_PROF_CORNER,0,-NOTHING])
                 NUT8_45x2();
         else
-            translate([SLOT_PROF_WIDTH-2,0,-NOTHING])
+            translate([SLOT_PROF_WIDTH-SLOT_PROF_CORNER,0,-NOTHING])
                 rotate([0,0,90])
                     NUT8_45x2();
         
         // Cut out Skrew Holes and Reduce Material
         for (y_shift=[false,true]){
-            translate([TROUGH_CORNER-62,
+            translate([-length-thickness_length-TROUGH_CORNER-SLOT_PROF_CORNER,
                        TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+
                        (y_shift?3.9:-3.9-TROUGH_WIDTH),
-                       TROUGH_CORNER+thickness])
+                       thickness_height+TROUGH_CORNER])
                 minkowski(){
-                    cube([55-2*TROUGH_CORNER,
+                    cube([length,
                           TROUGH_WIDTH-2*TROUGH_CORNER,
-                          100-2*TROUGH_CORNER]);
+                          height]);
                     sphere(r=TROUGH_CORNER);
                 };
             translate([8,
                        (SLOT_PROF_WIDTH)/2+
                        (SLOT_DIST+SLOT_WIDTH)/2*(y_shift?-1:1),
-                       thickness+height/2])
+                       thickness_height+height/2])
                 rotate([0,-90,0])
                     m_skrew();
             }
