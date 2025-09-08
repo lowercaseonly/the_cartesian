@@ -36,9 +36,9 @@ module portal(){
     HGH20CA_plate();
     intermediate(spacing=PORTAL_HEIGHT
                          -(BASE_HEIGHT-BASE_CORNER)
-                         -(SLOT_MOUNT_LENGTH+SLOT_MOUNT_THICKNESS));
+                         -(SLOT_MOUNT_LENGTH)-SLOT_PROF_CORNER);
     translate([PORTAL_HEIGHT,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
-        NUT8_mount(thickness=BASE_THICKNESS);
+        NUT8_mount(thickness_height=BASE_THICKNESS);
 
 }
 
