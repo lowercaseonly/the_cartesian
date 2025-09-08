@@ -19,8 +19,10 @@ SLOT_DIST = 31.75;
 TROUGH_WIDTH = 32;
 TROUGH_CORNER = 2;
 
+// Slot Mount Defaults
 SLOT_MOUNT_LENGTH = 40;
 SLOT_MOUNT_HEIGHT = 20;
+SLOT_MOUNT_THICKNESS = 10;
 
 NOTHING = 0.01;
 
@@ -73,7 +75,7 @@ module NUT8_mount(thickness=10, height=SLOT_MOUNT_HEIGHT,
         
         // Base Block
         rotate([90,0,-180])
-            NUT8_mount_base(height+10, length+10, thickness, thickness_length=10, double_size=double_size);
+            NUT8_mount_base(height+SLOT_MOUNT_THICKNESS, length+SLOT_MOUNT_THICKNESS, thickness, thickness_length=SLOT_MOUNT_THICKNESS, double_size=double_size);
 
         // Cut out T-Slot Profile
         if (double_size)
