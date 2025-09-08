@@ -12,7 +12,6 @@ include <../helper/nut_mount_connector.scad>
 
 TOLERANCE = 0.01;
 PORTAL_HEIGHT = 110;
-PORTAL_SPACING = 18.5;
 
 
 
@@ -35,7 +34,9 @@ module intermediate(spacing){
 module portal(){
 
     HGH20CA_plate();
-    intermediate(spacing=PORTAL_SPACING);
+    intermediate(spacing=PORTAL_HEIGHT
+                         -(BASE_HEIGHT-BASE_CORNER)
+                         -(SLOT_MOUNT_LENGTH+SLOT_MOUNT_THICKNESS));
     translate([PORTAL_HEIGHT,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
         NUT8_mount(thickness=BASE_THICKNESS);
 
