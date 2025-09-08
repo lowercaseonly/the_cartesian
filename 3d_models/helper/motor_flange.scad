@@ -16,6 +16,8 @@ MOTOR_FLANGE_MOUNT_HOLE_DIA = 5.25;
 MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST = 2.0;
 MOTOR_FLANGE_THICKNESS = 8.0;
 MOTOR_FLANGE_SCREW_SINK = 3.78;
+MOTOR_FLANGE_CUTOUT_LEN_INNER = 50;
+MOTOR_FLANGE_CUTOUT_LEN_HOLE = 10;
 
 
 
@@ -32,7 +34,8 @@ module motor_flange_base(){
 module motor_flange_cutout(){
 
     translate([MOTOR_FLANGE_WIDTH/2,MOTOR_FLANGE_HEIGHT/2,0])
-        cylinder(h=100,d=MOTOR_FLANGE_INNER_DIA,center=true);
+        cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_INNER,
+                 d=MOTOR_FLANGE_INNER_DIA,center=true);
 
     for (cx=[0,1])
         for (cy=[0,1])
@@ -44,7 +47,7 @@ module motor_flange_cutout(){
                                     + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
                        0])
                 union(){
-                    cylinder(h=100,
+                    cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_HOLE,
                              d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
                              center=true);
                     rotate([0,0,45+90*((cx==1&&cy==1)?2:cx-cy)])
