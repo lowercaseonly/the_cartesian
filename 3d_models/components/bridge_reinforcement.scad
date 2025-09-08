@@ -1,0 +1,38 @@
+$fn=400;
+
+include <../helper/linear_wagon.scad>
+include <../helper/nut_mount_connector.scad>
+include <../helper/m_skrew.scad>
+
+/*
+  Author: Johannes Bayer, 2025
+  License: MIT
+  Description: Connects Y-Axis Linear Rail Support Wagon to a Z-Axis Linear Support Wagon
+*/
+
+TOLERANCE = 0.01;
+DIST_WAGON_Y_WAGON_Z = 69.0;
+DIST_WAGON_Y_THREAD = 19.0;
+SINK_THREAD = -4;
+THREAD_DIA = 10;
+
+
+
+module bridge_reinforcement(){
+
+    difference(){
+        union(){
+            HGH20CA_plate(overhang=DIST_WAGON_Y_WAGON_Z);
+            translate([DIST_WAGON_Y_WAGON_Z,BASE_WIDTH/2,0])
+                rotate([0,-90,180])
+                    nut_mount_connector(length=50);
+        }
+        translate([DIST_WAGON_Y_THREAD+BASE_HEIGHT,0,SINK_THREAD])
+            rotate([90,0,0])
+                cylinder(h=300, r=THREAD_DIA, center=true);
+    }
+
+};
+
+
+bridge_reinforcement();
