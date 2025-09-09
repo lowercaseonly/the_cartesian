@@ -5,6 +5,7 @@ include <helper/linear_wagon.scad>
 include <helper/motor_flange.scad>
 
 use <components/portal.scad>
+use <components/portal_reinforcement.scad>
 use <components/bridge.scad>
 use <components/bridge_reinforcement.scad>
 use <components/motor_mount.scad>
@@ -18,6 +19,7 @@ use <components/motor_mount.scad>
 
 
 REINFORCEMENT = true;
+PORTAL_REINFORCEMENT_SPACING = 10;
 
 MOTOR_SPACE=150;
 
@@ -54,6 +56,15 @@ translate([POS_X,SPACE_Y,SLOT_PROF_HEIGHT])
     rotate([90,270,180])
         portal();
 
+if (REINFORCEMENT){
+    translate([BASE_WIDTH+POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,0,SLOT_PROF_HEIGHT])
+        rotate([90,270,0])
+            portal_reinforcement();
+
+    translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,SPACE_Y,SLOT_PROF_HEIGHT])
+        rotate([90,270,180])
+            portal_reinforcement();
+}
 
 translate([-SLOT_PROF_CORNER+POS_X,-SLOT_MOUNT_HEIGHT,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
     rotate([270,270,0])
