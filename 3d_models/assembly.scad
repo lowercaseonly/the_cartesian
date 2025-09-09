@@ -12,19 +12,30 @@ use <components/bridge.scad>
 */
 
 
+MOTOR_SPACE=150;
+
 SPACE_Y = 500;
 SPACE_X = 500;
 PORTAL_HEIGHT = 110;
 
-POS_X = 100;
+POS_X = 250;
 POS_Y = 200;
 
 // frame
 for (rail=[0,1])
     color([0.8,0.8,0.8])
-        translate([0,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
+        translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
             rotate([90,0,90])
-                NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT);
+                NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE);
+
+for (rail=[0,1])
+    color([0.8,0.8,0.8])
+        translate([rail*(SPACE_X+80),SLOT_PROF_HEIGHT,0])
+            rotate([90,0,180])
+                NUT8_45x2(length=SPACE_Y-2*SLOT_PROF_HEIGHT);
+
+
+
 
 translate([BASE_WIDTH+POS_X,0,SLOT_PROF_HEIGHT])
     rotate([90,270,0])
