@@ -22,15 +22,15 @@ POS_Y = 200;
 // frame
 for (rail=[0,1])
     color([0.8,0.8,0.8])
-        translate([0,rail*(SPACE_Y-SLOT_PROF_HEIGHT),-SLOT_PROF_HEIGHT])
+        translate([0,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
             rotate([90,0,90])
                 NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT);
 
-translate([BASE_WIDTH,0,0])
+translate([BASE_WIDTH,0,SLOT_PROF_HEIGHT])
     rotate([90,270,0])
         portal();
 
-translate([0,SPACE_Y,0])
+translate([0,SPACE_Y,SLOT_PROF_HEIGHT])
     rotate([90,270,180])
         portal();
 
@@ -38,10 +38,10 @@ translate([0,SPACE_Y,0])
 
 
 color([0.8,0.8,0.8])
-    translate([-SLOT_PROF_CORNER,-SLOT_MOUNT_HEIGHT,PORTAL_HEIGHT])
+    translate([-SLOT_PROF_CORNER,-SLOT_MOUNT_HEIGHT,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
         rotate([270,270,0])
             NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT);
 
-translate([SLOT_PROF_WIDTH,POS_Y,PORTAL_HEIGHT])
+translate([SLOT_PROF_WIDTH,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
     rotate([0,270,180])
         bridge();
