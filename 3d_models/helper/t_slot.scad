@@ -30,31 +30,33 @@ NOTHING = 0.01;
 
 
 module NUT8_45x2(length=SLOT_PROF_LEN){
-    
-    difference(){
-        base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, length,
-                   corner_radius=SLOT_PROF_CORNER);
-        
-        // T-Slots along longer Side
-        for (x_shift=[0,SLOT_PROF_HEIGHT-SLOT_DEPTH+NOTHING])
-            for (y_shift=[-SLOT_DIST/2- (SLOT_WIDTH/2),
-                           SLOT_DIST/2+ (SLOT_WIDTH/2)])
-                translate([-NOTHING+x_shift,
-                           (SLOT_PROF_WIDTH/2) - (SLOT_WIDTH/2) + y_shift,
-                           -NOTHING])
-                    cube([SLOT_DEPTH+NOTHING,
-                          SLOT_WIDTH,
-                          length+2*NOTHING]);
-         
-         // T-Slots along shorter Side
-         for (y_shift=[0,1])
-             translate([SLOT_PROF_HEIGHT/2-SLOT_WIDTH/2,
-                        -NOTHING+y_shift*(SLOT_PROF_WIDTH-SLOT_DEPTH+NOTHING),
-                        -NOTHING])
-                    cube([SLOT_WIDTH,
-                          SLOT_DEPTH+NOTHING,
-                          length+2*NOTHING]);
-    }
+
+    color([0.8,0.8,0.8])
+        difference(){
+            base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, length,
+                       corner_radius=SLOT_PROF_CORNER);
+            
+            // T-Slots along longer Side
+            for (x_shift=[0,SLOT_PROF_HEIGHT-SLOT_DEPTH+NOTHING])
+                for (y_shift=[-SLOT_DIST/2- (SLOT_WIDTH/2),
+                               SLOT_DIST/2+ (SLOT_WIDTH/2)])
+                    translate([-NOTHING+x_shift,
+                               (SLOT_PROF_WIDTH/2) - (SLOT_WIDTH/2) + y_shift,
+                               -NOTHING])
+                        cube([SLOT_DEPTH+NOTHING,
+                              SLOT_WIDTH,
+                              length+2*NOTHING]);
+             
+             // T-Slots along shorter Side
+             for (y_shift=[0,1])
+                 translate([SLOT_PROF_HEIGHT/2-SLOT_WIDTH/2,
+                            -NOTHING+y_shift*(SLOT_PROF_WIDTH-SLOT_DEPTH+NOTHING),
+                            -NOTHING])
+                        cube([SLOT_WIDTH,
+                              SLOT_DEPTH+NOTHING,
+                              length+2*NOTHING]);
+        }
+
 }
 
 
@@ -124,8 +126,7 @@ module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
 /*$fn=120;
 
 NUT8_45x2();
-color(c=[0.5,0.5,0])
-    NUT8_mount();*/
+NUT8_mount();*/
 
 
 // Sample Usage
