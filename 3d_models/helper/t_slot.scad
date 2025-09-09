@@ -79,6 +79,7 @@ module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
     difference(){
         
         // Base Block
+        translate([SLOT_PROF_CORNER,0,0])
         rotate([90,0,-180])
             NUT8_mount_base(height,
                             length+SLOT_PROF_CORNER,
@@ -88,16 +89,16 @@ module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
 
         // Cut out T-Slot Profile
         if (double_size)
-            translate([-SLOT_PROF_CORNER,0,-NOTHING])
+            translate([0,0,-NOTHING])
                 NUT8_45x2();
         else
-            translate([SLOT_PROF_WIDTH-SLOT_PROF_CORNER,0,-NOTHING])
+            translate([SLOT_PROF_WIDTH,0,-NOTHING])
                 rotate([0,0,90])
                     NUT8_45x2();
         
         // Cut out Skrew Holes and Reduce Material
         for (y_shift=[false,true]){
-            translate([-length-thickness_length-TROUGH_CORNER-SLOT_PROF_CORNER,
+            translate([-length-thickness_length-TROUGH_CORNER,
                        TROUGH_CORNER+(SLOT_PROF_WIDTH)/2+
                        (y_shift?3.9:-3.9-TROUGH_WIDTH),
                        thickness_height+TROUGH_CORNER])
