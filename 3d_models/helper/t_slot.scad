@@ -29,10 +29,10 @@ NOTHING = 0.01;
 
 
 
-module NUT8_45x2(){
+module NUT8_45x2(length=SLOT_PROF_LEN){
     
     difference(){
-        base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, SLOT_PROF_LEN,
+        base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, length,
                    corner_radius=SLOT_PROF_CORNER);
         
         // T-Slots along longer Side
@@ -44,7 +44,7 @@ module NUT8_45x2(){
                            -NOTHING])
                     cube([SLOT_DEPTH+NOTHING,
                           SLOT_WIDTH,
-                          SLOT_PROF_LEN+2*NOTHING]);
+                          length+2*NOTHING]);
          
          // T-Slots along shorter Side
          for (y_shift=[0,1])
@@ -53,7 +53,7 @@ module NUT8_45x2(){
                         -NOTHING])
                     cube([SLOT_WIDTH,
                           SLOT_DEPTH+NOTHING,
-                          SLOT_PROF_LEN+2*NOTHING]);
+                          length+2*NOTHING]);
     }
 }
 
