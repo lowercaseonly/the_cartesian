@@ -16,9 +16,7 @@ module motor_mount(){
             motor_flange();
 
     difference(){
-        translate([SLOT_PROF_HEIGHT/2+MOTOR_FLANGE_WIDTH/2,
-                   0,
-                   -SLOT_PROF_CORNER])
+        translate([SLOT_PROF_HEIGHT/2+MOTOR_FLANGE_WIDTH/2,0,0])
             rotate([-90,90,0])
                 NUT8_mount(length=MOTOR_MOUNT_THICKNESS,
                            thickness_length=MOTOR_MOUNT_LENGTH,
