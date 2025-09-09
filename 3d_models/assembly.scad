@@ -6,6 +6,7 @@ include <helper/motor_flange.scad>
 
 use <components/portal.scad>
 use <components/bridge.scad>
+use <components/bridge_reinforcement.scad>
 use <components/motor_mount.scad>
 
 
@@ -15,6 +16,8 @@ use <components/motor_mount.scad>
   Description: Overall CNC Machine Assembly Illustration
 */
 
+
+REINFORCEMENT = true;
 
 MOTOR_SPACE=150;
 
@@ -59,6 +62,13 @@ color([0.8,0.8,0.8])
         rotate([270,270,0])
             NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT);
 
+
 translate([SLOT_PROF_WIDTH+POS_X,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
-    rotate([0,270,180])
-        bridge();
+        union(){
+            rotate([0,270,180])
+                bridge(reinforcement=REINFORCEMENT);
+            if (REINFORCEMENT)
+                translate([-113,-75,70.5])
+                    bridge_reinforcement();
+        }
+
