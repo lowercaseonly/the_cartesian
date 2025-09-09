@@ -80,8 +80,10 @@ module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
         
         // Base Block
         rotate([90,0,-180])
-            NUT8_mount_base(height, length+SLOT_PROF_CORNER,
-                            thickness_height, thickness_length+SLOT_PROF_CORNER,
+            NUT8_mount_base(height,
+                            length+SLOT_PROF_CORNER,
+                            thickness_height,
+                            thickness_length+SLOT_PROF_CORNER,
                             double_size=double_size);
 
         // Cut out T-Slot Profile
