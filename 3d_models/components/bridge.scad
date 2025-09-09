@@ -11,14 +11,19 @@ include <../helper/m_skrew.scad>
 */
 
 TOLERANCE = 0.01;
+REINFORCE_SHIFT = 5.5;
+REINFORCEMENT_OVERHANG = 40.0;
+WAGON_SPACING = 5.0;
 
-
-module bridge(){
+module bridge(reinforcement=true){
 
     difference(){
-        HGH20CA_plate(overhang=BASE_WIDTH-BASE_HEIGHT);
+        HGH20CA_plate(overhang=BASE_WIDTH-BASE_HEIGHT
+                               +(reinforcement?REINFORCEMENT_OVERHANG:0));
 
-        translate([BASE_WIDTH-10,BASE_WIDTH/2,-TOLERANCE])
+        translate([BASE_WIDTH-10+(reinforcement?REINFORCE_SHIFT:0),
+                   BASE_WIDTH/2,
+                   -TOLERANCE])
             nut_mount_connector();
 
         translate([0,15,13.5])
@@ -28,6 +33,9 @@ module bridge(){
                     for (shift=[6,38])
                         translate([shift,19.6,-7])
                             m_skrew_eject();
+
+                    translate([0,BASE_WIDTH+WAGON_SPACING,0])
+                        HGH20CA_screws();
                 };
     }
 
