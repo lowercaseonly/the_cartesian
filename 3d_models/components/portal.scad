@@ -11,7 +11,7 @@ include <../helper/nut_mount_connector.scad>
 */
 
 TOLERANCE = 0.01;
-PORTAL_HEIGHT = 110;
+PORTAL_HEIGHT = 110;  // Lower Wagon Edge to T-Slot Edge
 
 
 
@@ -34,9 +34,7 @@ module intermediate(spacing){
 module portal(){
 
     HGH20CA_plate();
-    intermediate(spacing=PORTAL_HEIGHT
-                         -(BASE_HEIGHT-BASE_CORNER)
-                         -(SLOT_MOUNT_LENGTH)-SLOT_PROF_CORNER);
+    intermediate(spacing=PORTAL_HEIGHT-(BASE_HEIGHT-BASE_CORNER)-SLOT_MOUNT_LENGTH);
     translate([PORTAL_HEIGHT,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
         NUT8_mount(thickness_height=BASE_THICKNESS);
 
