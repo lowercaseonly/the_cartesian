@@ -1,0 +1,30 @@
+
+/*
+  Author: Johannes Bayer, 2025
+  License: MIT
+  Description: NEMA 23 Stepper Motor
+*/
+
+
+MOTOR_BLOCK_WIDTH = 56.25;
+MOTOR_BLOCK_HEIGHT = 56.25;
+MOTOR_BLOCK_LENGTH = 112.0;
+MOTOR_CON_DIA = 38.1;
+MOTOR_CON_LEN = 1.5;
+MOTOR_SHAFT_DIA = 10;
+MOTOR_SHAFT_LEN = 22.5;
+
+module motor(){
+color([0.8,0.15,0.15])
+    union(){
+        translate([0,-MOTOR_BLOCK_LENGTH,0])
+            cube([MOTOR_BLOCK_WIDTH,MOTOR_BLOCK_LENGTH,MOTOR_BLOCK_HEIGHT]);
+
+        translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
+            rotate([-90,0,0])
+                union(){
+                    cylinder(h=MOTOR_CON_LEN,d=MOTOR_CON_DIA);
+                    cylinder(h=MOTOR_SHAFT_LEN+MOTOR_CON_LEN,d=MOTOR_SHAFT_DIA);
+                }
+    }
+};
