@@ -1,5 +1,3 @@
-$fn=100;
-
 include <../helper/motor_flange.scad>
 include <../helper/t_slot.scad>
 
@@ -29,4 +27,4 @@ module motor_mount(){
 
 }
 
-motor_mount();
+motor_mount($fn=100);

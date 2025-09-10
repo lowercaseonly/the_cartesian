@@ -1,5 +1,3 @@
-$fn=120;
-
 include <../helper/t_slot.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/nut_mount_connector.scad>
@@ -40,4 +38,4 @@ module portal(){
 
 }
 
-portal();
+portal($fn=120);

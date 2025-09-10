@@ -1,5 +1,3 @@
-$fn=120;
-
 include <../helper/linear_wagon.scad>
 include <../helper/connector_a.scad>
 
@@ -25,4 +23,4 @@ module wagon_connector(spacing=5){
 
 }
 
-wagon_connector();
+wagon_connector($fn=120);

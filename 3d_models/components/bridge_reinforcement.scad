@@ -1,5 +1,3 @@
-$fn=400;
-
 include <../helper/linear_wagon.scad>
 include <../helper/nut_mount_connector.scad>
 include <../helper/m_skrew.scad>
@@ -35,4 +33,4 @@ module bridge_reinforcement(){
 };
 
 
-bridge_reinforcement();
+bridge_reinforcement($fn=400);

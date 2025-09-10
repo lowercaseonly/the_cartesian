@@ -1,5 +1,3 @@
-$fn=400;
-
 include <../helper/linear_wagon.scad>
 include <../helper/nut_mount_connector.scad>
 
@@ -23,4 +21,4 @@ module portal_reinforcement(){
 }
 
 
-portal_reinforcement();
+portal_reinforcement($fn=400);
