@@ -12,7 +12,7 @@ include <../helper/m_skrew.scad>
 
 TOLERANCE = 0.01;
 REINFORCE_SHIFT = 5.5;
-REINFORCEMENT_OVERHANG = 40.0;
+REINFORCEMENT_OVERHANG = 35.0;
 WAGON_SPACING = 5.0;
 
 module bridge(reinforcement=true){
