@@ -3,6 +3,7 @@ $fn=20;
 include <helper/t_slot.scad>
 include <helper/linear_wagon.scad>
 include <helper/motor_flange.scad>
+include <helper/motor.scad>
 
 use <components/portal.scad>
 use <components/portal_reinforcement.scad>
@@ -45,8 +46,10 @@ for (rail=[0,1])
 for (rail=[0,1])
     translate([0,MOTOR_FLANGE_WIDTH-(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2+rail*(SPACE_Y-SLOT_PROF_HEIGHT),SLOT_PROF_WIDTH])
         rotate([0,0,-90])
-            motor_mount();
-
+            union(){
+                motor_mount();
+                motor();
+            };
 
 translate([BASE_WIDTH+POS_X,0,SLOT_PROF_HEIGHT])
     rotate([90,270,0])
