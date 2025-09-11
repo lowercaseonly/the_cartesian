@@ -15,6 +15,11 @@ EFFECTOR_MOUNT_LEN = 22.0;
 EFFECTOR_MOUNT_WALL_THICK = 10.0;
 EFFECTOR_MOUNT_BASE_DIST = 40;
 
+RAIL_MOUNT_HOLE_DIST = 30.0;
+RAIL_MOUNT_HOLE_SHIFT = 30.0;
+RAIL_MOUNT_HOLE_POS_1 = 10.0;
+RAIL_MOUNT_HOLE_POS_2 = 80.0;
+
 NOTHING = 0.01;
 FITTING = 0.1;
 
@@ -36,7 +41,8 @@ module effector_mount(){
         }
         union(){
             translate([0,EFFECTOR_MOUNT_BASE_DIST,-NOTHING])
-                cylinder(h=EFFECTOR_MOUNT_LEN+2*NOTHING, d=EFFECTOR_MOUNT_DIA+FITTING);
+                cylinder(h=EFFECTOR_MOUNT_LEN+2*NOTHING,
+                         d=EFFECTOR_MOUNT_DIA+FITTING);
             translate([0,EFFECTOR_MOUNT_BASE_DIST,-NOTHING])
                 cube([0.2,40,40]);
             
@@ -54,10 +60,12 @@ module column_plate(){
 
         // Linear Rail Mounting Drills
         for (shift_x=[0,1])
-            for (shift_y=[0,1])
-                translate([30+shift_x*40,
+            for (shift_y=[0,1,2])
+                translate([RAIL_MOUNT_HOLE_POS_1
+                           +shift_x*RAIL_MOUNT_HOLE_POS_2,
                            COLUMN_BASE_THICK+NOTHING,
-                           30+shift_y*40])
+                           RAIL_MOUNT_HOLE_SHIFT
+                           +shift_y*RAIL_MOUNT_HOLE_DIST])
                     rotate([90,0,0])
                         union(){
                             m_skrew_shaft();
