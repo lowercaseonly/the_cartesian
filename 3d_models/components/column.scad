@@ -6,14 +6,14 @@
   Description: Z-Axis Base Plate, mounting the End Effector (e.g. a Mill Spindle) to the Linear Rails
 */
 
-COLUMN_BASE_WIDTH = 100.0;
+COLUMN_BASE_WIDTH = 101.0;
 COLUMN_BASE_HEIGHT = 100.0;
 COLUMN_BASE_THICK = 10.0;
 
 EFFECTOR_MOUNT_DIA = 43.0;
 EFFECTOR_MOUNT_LEN = 22.0;
 EFFECTOR_MOUNT_WALL_THICK = 10.0;
-EFFECTOR_MOUNT_BASE_DIST = 50;
+EFFECTOR_MOUNT_BASE_DIST = 40;
 
 NOTHING = 0.01;
 FITTING = 0.1;
@@ -22,7 +22,7 @@ FITTING = 0.1;
 module effector_mount(){
     
     difference(){
-        union(){
+        hull(){
             linear_extrude(height=EFFECTOR_MOUNT_LEN)
                 polygon([[-COLUMN_BASE_WIDTH/2, 0],
                          [-EFFECTOR_MOUNT_DIA/2-EFFECTOR_MOUNT_WALL_THICK,
