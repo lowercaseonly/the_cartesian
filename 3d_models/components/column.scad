@@ -1,4 +1,4 @@
-
+include <../helper/m_skrew.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -46,9 +46,31 @@ module effector_mount(){
 }
 
 
+module column_plate(){
+
+    difference(){
+        // Base Plate
+        cube([COLUMN_BASE_WIDTH, COLUMN_BASE_THICK, COLUMN_BASE_HEIGHT]);
+
+        // Linear Rail Mounting Drills
+        for (shift_x=[0,1])
+            for (shift_y=[0,1])
+                translate([30+shift_x*40,
+                           COLUMN_BASE_THICK+NOTHING,
+                           30+shift_y*40])
+                    rotate([90,0,0])
+                        union(){
+                            m_skrew_shaft();
+                            m_nut();
+                        }
+    }
+
+}
+
+
 module column(reinforcement=true){
 
-    cube([COLUMN_BASE_WIDTH, COLUMN_BASE_THICK, COLUMN_BASE_HEIGHT]);
+    column_plate();
     translate([COLUMN_BASE_WIDTH/2,COLUMN_BASE_THICK,0])
         effector_mount();
 
