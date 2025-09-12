@@ -7,7 +7,7 @@ include <../helper/m_skrew.scad>
 */
 
 COLUMN_BASE_WIDTH = 101.0;
-COLUMN_BASE_HEIGHT = 100.0;
+COLUMN_BASE_HEIGHT = 110.0;
 COLUMN_BASE_THICK = 10.0;
 
 EFFECTOR_MOUNT_DIA = 43.0;
@@ -15,10 +15,9 @@ EFFECTOR_MOUNT_LEN = 22.0;
 EFFECTOR_MOUNT_WALL_THICK = 10.0;
 EFFECTOR_MOUNT_BASE_DIST = 40;
 
-RAIL_MOUNT_HOLE_DIST = 30.0;
-RAIL_MOUNT_HOLE_SHIFT = 30.0;
-RAIL_MOUNT_HOLE_POS_1 = 10.0;
-RAIL_MOUNT_HOLE_POS_2 = 80.0;
+RAIL_MOUNT_HOLE_DIST = 65.86-5.9;
+RAIL_MOUNT_HOLE_SHIFT = 26.0;
+RAIL_MOUNT_HOLE_OFFSET = 7.1;
 
 NOTHING = 0.01;
 FITTING = 0.1;
@@ -59,10 +58,10 @@ module column_plate(){
         cube([COLUMN_BASE_WIDTH, COLUMN_BASE_THICK, COLUMN_BASE_HEIGHT]);
 
         // Linear Rail Mounting Drills
-        for (shift_x=[0,1])
+        for (left=[0,1])
             for (shift_y=[0,1,2])
-                translate([RAIL_MOUNT_HOLE_POS_1
-                           +shift_x*RAIL_MOUNT_HOLE_POS_2,
+                translate([left?RAIL_MOUNT_HOLE_OFFSET:
+                           COLUMN_BASE_WIDTH-RAIL_MOUNT_HOLE_OFFSET,
                            COLUMN_BASE_THICK+NOTHING,
                            RAIL_MOUNT_HOLE_SHIFT
                            +shift_y*RAIL_MOUNT_HOLE_DIST])
