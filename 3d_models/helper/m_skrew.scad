@@ -20,7 +20,7 @@ module m_skrew_head(extend=0){
 }
 
 
-module m_skrew_shaft(extend){
+module m_skrew_shaft(extend=0){
 
     translate([0, 0, -extend])
         cylinder(d=M_SKREW_SHAFT_DIA,
