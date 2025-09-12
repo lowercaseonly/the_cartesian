@@ -11,6 +11,7 @@ use <components/bridge.scad>
 use <components/bridge_reinforcement.scad>
 use <components/motor_mount.scad>
 use <components/bearing_mount.scad>
+use <components/column.scad>
 
 
 /*
@@ -76,6 +77,7 @@ if (REINFORCEMENT){
             portal_reinforcement();
 }
 
+
 //bridge
 translate([-SLOT_PROF_CORNER+POS_X,-SLOT_MOUNT_HEIGHT,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
     rotate([270,270,0])
@@ -91,3 +93,9 @@ translate([SLOT_PROF_WIDTH+POS_X,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
                     bridge_reinforcement();
         }
 
+
+//column
+translate([SLOT_PROF_WIDTH+POS_X+15,POS_Y+15,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
+    rotate([0,0,-90])
+        color([0.6,0.8,0.8])
+            column();
