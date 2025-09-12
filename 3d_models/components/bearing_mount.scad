@@ -15,6 +15,7 @@ BASE_THICKNESS = 9;
 BEARING_MOUNT_PEDESTAL_LEN = 55.0;
 BEARING_MOUNT_PEDESTAL_WIDTH = 13.2;
 BEARING_MOUNT_PEDESTAL_THICK = 5.0;
+BEARING_MOUNT_PEDESTAL_HOLE_DIST = 44.65;
 
 BEARING_MOUNT_LEN = 36.0;
 BEARING_MOUNT_WIDTH = 61.0;
@@ -54,8 +55,8 @@ module bearing_mount(){
 
         // Screw Holes for Pedestal Bearing
         for (shift_y=[-1,1])
-            translate([20*shift_y,0,10])
-                cylinder(h=30,d=3);
+            translate([BEARING_MOUNT_PEDESTAL_HOLE_DIST/2*shift_y,0,5])
+                cylinder(h=60,d=3);
 
     }
 
