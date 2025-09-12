@@ -10,6 +10,7 @@ use <components/portal_reinforcement.scad>
 use <components/bridge.scad>
 use <components/bridge_reinforcement.scad>
 use <components/motor_mount.scad>
+use <components/bearing_mount.scad>
 
 
 /*
@@ -45,11 +46,17 @@ for (rail=[0,1])
 
 for (rail=[0,1])
     translate([0,MOTOR_FLANGE_WIDTH-(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2+rail*(SPACE_Y-SLOT_PROF_HEIGHT),SLOT_PROF_WIDTH])
-        rotate([0,0,-90])
-            union(){
+        union(){
+            rotate([0,0,-90])
                 motor_mount();
+            rotate([0,0,-90])
                 motor();
+            for (x_shift=[60,SPACE_X+10])
+            translate([x_shift,-28,0])
+                rotate([0,0,-90])
+                    bearing_mount();
             };
+
 
 translate([BASE_WIDTH+POS_X,0,SLOT_PROF_HEIGHT])
     rotate([90,270,0])
