@@ -12,25 +12,27 @@ M_SKREW_SHAFT_LEN = 15.8;
 M_NUT_HEIGHT = 3.79;
 M_NUT_DIA = 8.88;
 
-module m_skrew_head(){
+module m_skrew_head(extend=0){
 
     translate([0, 0, M_SKREW_SHAFT_LEN])
-        cylinder(d=M_SKREW_HEAD_DIA,h=M_SKREW_HEAD_LEN);
+        cylinder(d=M_SKREW_HEAD_DIA,h=M_SKREW_HEAD_LEN+extend);
 
 }
 
 
-module m_skrew_shaft(){
+module m_skrew_shaft(extend){
 
-    cylinder(d=M_SKREW_SHAFT_DIA,h=M_SKREW_SHAFT_LEN+M_SKREW_HEAD_LEN);
+    translate([0, 0, -extend])
+        cylinder(d=M_SKREW_SHAFT_DIA,
+                 h=M_SKREW_SHAFT_LEN+M_SKREW_HEAD_LEN+extend);
 
 }
 
 
-module m_skrew(){
+module m_skrew(extend=0){
 
-    m_skrew_head();
-    m_skrew_shaft();
+    m_skrew_head(extend);
+    m_skrew_shaft(extend);
 
 }
 
