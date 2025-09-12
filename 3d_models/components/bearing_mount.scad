@@ -1,10 +1,11 @@
 include <../helper/motor_flange.scad>
 include <../helper/t_slot.scad>
+include <../helper/m_skrew.scad>
 
 /*
   Author: Johannes Bayer, 2025
   License: MIT
-  Description: Connects a Bearing to a T-Slot
+  Description: Connects a Pedestal Bearing to a T-Slot
 */
 
 
@@ -39,11 +40,23 @@ module bearing_mount(){
                       center=true);
 
         }
+
         translate([0,0,
                    (BEARING_MOUNT_PEDESTAL_THICK/2)+BEARING_MOUNT_OFFSET])
             cube([BEARING_MOUNT_PEDESTAL_LEN,
                   BEARING_MOUNT_PEDESTAL_WIDTH,
                   BEARING_MOUNT_PEDESTAL_THICK], center=true);
+
+        // Screw Holes for T-Slot Mount
+        for (shift_x=[-1,1])
+            translate([0,12*shift_x,-10])
+                m_skrew(extend=10);
+
+        // Screw Holes for Pedestal Bearing
+        for (shift_y=[-1,1])
+            translate([20*shift_y,0,10])
+                cylinder(h=30,d=3);
+
     }
 
 }
