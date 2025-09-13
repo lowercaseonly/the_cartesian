@@ -28,13 +28,13 @@ module column_plate(){
 
     difference(){
         // Base Plate
-        cube([COLUMN_BASE_WIDTH, COLUMN_BASE_THICK, COLUMN_BASE_HEIGHT]);
+        translate([-COLUMN_BASE_WIDTH/2,0])
+            cube([COLUMN_BASE_WIDTH, COLUMN_BASE_THICK, COLUMN_BASE_HEIGHT]);
 
         // Linear Rail Mounting Drills
-        for (left=[0,1])
+        for (shift_x=[-1,1])
             for (shift_y=[0,1,2])
-                translate([left?RAIL_MOUNT_HOLE_OFFSET:
-                           COLUMN_BASE_WIDTH-RAIL_MOUNT_HOLE_OFFSET,
+                translate([shift_x*(COLUMN_BASE_WIDTH/2-RAIL_MOUNT_HOLE_OFFSET),
                            COLUMN_BASE_THICK+NOTHING,
                            RAIL_MOUNT_HOLE_SHIFT
                            +shift_y*RAIL_MOUNT_HOLE_DIST])
@@ -51,13 +51,14 @@ module column_plate(){
 module column(reinforcement=true){
 
     column_plate();
-    translate([COLUMN_BASE_WIDTH/2,COLUMN_BASE_THICK,0])
+
+    translate([0,COLUMN_BASE_THICK,0])
         pillow_block(thickness=EFFECTOR_MOUNT_LEN,
                      length=COLUMN_BASE_WIDTH,
                      center_dist=EFFECTOR_MOUNT_BASE_DIST,
                      diameter=EFFECTOR_MOUNT_DIA,
                      wall_thick=EFFECTOR_MOUNT_WALL_THICK,
-                     gap=false);
+                     gap=true);
 
 };
 
