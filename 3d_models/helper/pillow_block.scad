@@ -37,8 +37,22 @@ module pillow_block(thickness, length, center_dist, diameter, wall_thick, gap){
 
 }
 
+module restricted_pillow_block(thickness, length, center_dist, diameter,
+                               wall_thick, restrict_dia, restrict_thick){
+
+    pillow_block(thickness, length, center_dist, diameter,
+                 wall_thick, gap=false);
+
+    pillow_block(restrict_thick, length, center_dist,
+                 diameter=diameter-restrict_dia,
+                 wall_thick=wall_thick,
+                 gap=false);
+
+}
+
 
 // Sample Usage
 //$fn=200;
-//pillow_block(thickness=3, length=60, center_dist=25, diameter=15, wall_thick=12.5, gap=true);
-//pillow_block(thickness=10, length=60, center_dist=25, diameter=20, wall_thick=10, gap=true);
+//restricted_pillow_block(thickness=10, length=60, center_dist=25, diameter=20,
+//                        wall_thick=10, restrict_dia=4, restrict_thick=4);
+
