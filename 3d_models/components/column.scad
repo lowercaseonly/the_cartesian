@@ -1,4 +1,5 @@
 include <../helper/m_skrew.scad>
+include <../helper/pillow_block.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -21,34 +22,6 @@ RAIL_MOUNT_HOLE_OFFSET = 7.1;
 
 NOTHING = 0.05;
 FITTING = 0.1;
-
-
-module effector_mount(){
-    
-    difference(){
-        hull(){
-            linear_extrude(height=EFFECTOR_MOUNT_LEN)
-                polygon([[-COLUMN_BASE_WIDTH/2, 0],
-                         [-EFFECTOR_MOUNT_DIA/2-EFFECTOR_MOUNT_WALL_THICK,
-                          EFFECTOR_MOUNT_BASE_DIST],
-                         [+EFFECTOR_MOUNT_DIA/2+EFFECTOR_MOUNT_WALL_THICK,
-                          EFFECTOR_MOUNT_BASE_DIST],
-                         [COLUMN_BASE_WIDTH/2, 0]]);
-            translate([0,EFFECTOR_MOUNT_BASE_DIST,0])
-                cylinder(h=EFFECTOR_MOUNT_LEN,
-                         d=EFFECTOR_MOUNT_DIA+2*EFFECTOR_MOUNT_WALL_THICK);
-        }
-        union(){
-            translate([0,EFFECTOR_MOUNT_BASE_DIST,-NOTHING])
-                cylinder(h=EFFECTOR_MOUNT_LEN+2*NOTHING,
-                         d=EFFECTOR_MOUNT_DIA+FITTING);
-            translate([0,EFFECTOR_MOUNT_BASE_DIST,-NOTHING])
-                cube([0.2,40,40]);
-            
-        }
-    }
-
-}
 
 
 module column_plate(){
@@ -79,10 +52,14 @@ module column(reinforcement=true){
 
     column_plate();
     translate([COLUMN_BASE_WIDTH/2,COLUMN_BASE_THICK,0])
-        effector_mount();
+        pillow_block(thickness=EFFECTOR_MOUNT_LEN,
+                     length=COLUMN_BASE_WIDTH,
+                     center_dist=EFFECTOR_MOUNT_BASE_DIST,
+                     diameter=EFFECTOR_MOUNT_DIA,
+                     wall_thick=EFFECTOR_MOUNT_WALL_THICK,
+                     gap=false);
 
 };
-
 
 
 column($fn=400);
