@@ -31,7 +31,10 @@ module pillow_block(thickness, length, center_dist, diameter, wall_thick, gap){
             if (gap)
                 translate([0,center_dist,-NOTHING])
                     cube([0.2,40,40]);
-           
+
+            translate([-length/2-wall_thick,-diameter-wall_thick,-NOTHING])
+                cube([length+2*wall_thick,diameter+wall_thick,thickness+2*NOTHING]);
+
         }
     }
 
