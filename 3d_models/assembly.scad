@@ -8,6 +8,7 @@ include <helper/motor.scad>
 use <components/portal.scad>
 use <components/portal_reinforcement.scad>
 use <components/nut_mount.scad>
+use <components/wagon_connector.scad>
 use <components/bridge.scad>
 use <components/bridge_reinforcement.scad>
 use <components/motor_mount.scad>
@@ -81,6 +82,21 @@ if (REINFORCEMENT){
         rotate([180,0,90])
             color([0.6,0.6,0.4])
                 nut_mount();
+
+    translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,
+               0,
+               SLOT_PROF_HEIGHT+22])
+        rotate([90,270,0])
+            color([0.6,0.6,0.4])
+                wagon_connector(spacing=10);
+
+    translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING-10,
+               SPACE_Y,
+               SLOT_PROF_HEIGHT+22])
+        rotate([90,270,180])
+            color([0.6,0.6,0.4])
+                wagon_connector(spacing=10);
+
 }
 
 
