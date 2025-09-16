@@ -13,18 +13,35 @@ MOTOR_CON_DIA = 38.1;
 MOTOR_CON_LEN = 1.5;
 MOTOR_SHAFT_DIA = 10;
 MOTOR_SHAFT_LEN = 22.5;
+MOTOR_SHAFT_CUT_DIA = 9.5;
+MOTOR_SHAFT_CUT_LEN = 20.0;
 
 module motor(){
-color([0.8,0.15,0.15])
-    union(){
-        translate([0,-MOTOR_BLOCK_LENGTH,0])
-            cube([MOTOR_BLOCK_WIDTH,MOTOR_BLOCK_LENGTH,MOTOR_BLOCK_HEIGHT]);
 
-        translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
-            rotate([-90,0,0])
-                union(){
-                    cylinder(h=MOTOR_CON_LEN,d=MOTOR_CON_DIA);
-                    cylinder(h=MOTOR_SHAFT_LEN+MOTOR_CON_LEN,d=MOTOR_SHAFT_DIA);
-                }
-    }
+    color([0.8,0.15,0.15])
+        difference(){
+            
+            union(){
+                translate([0,-MOTOR_BLOCK_LENGTH,0])
+                    cube([MOTOR_BLOCK_WIDTH,MOTOR_BLOCK_LENGTH,MOTOR_BLOCK_HEIGHT]);
+
+                translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
+                    rotate([-90,0,0])
+                        union(){
+                            cylinder(h=MOTOR_CON_LEN,d=MOTOR_CON_DIA);
+                            cylinder(h=MOTOR_SHAFT_LEN+MOTOR_CON_LEN,
+                                     d=MOTOR_SHAFT_DIA);
+                        }
+            }
+
+            translate([MOTOR_BLOCK_WIDTH/2-MOTOR_SHAFT_DIA/2,
+                       MOTOR_SHAFT_LEN+MOTOR_CON_LEN-MOTOR_SHAFT_CUT_LEN,
+                       MOTOR_BLOCK_HEIGHT/2+MOTOR_SHAFT_DIA/2-MOTOR_SHAFT_DIA+MOTOR_SHAFT_CUT_DIA])
+                cube([MOTOR_SHAFT_DIA,MOTOR_SHAFT_CUT_LEN,MOTOR_SHAFT_DIA]);
+
+        }
+
 };
+
+// Sample Usage
+// motor($fn=400);
