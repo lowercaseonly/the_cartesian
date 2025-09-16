@@ -23,6 +23,8 @@ M_SKREW_SINK = 7;
 M_SKREW_DIST_X = 40.7-M_SKREW_SHAFT_DIA;
 M_SKREW_DIST_Y = 37.0-M_SKREW_SHAFT_DIA;
 
+SLIDER_HEIGHT = WAGON_OFFSET + WAGON_HEIGHT;
+
 
 
 module HGH20CA_screws(bottom=true, top=true, left=true, right=true){
@@ -75,7 +77,7 @@ module linear_slider(length, pos){
     translate([-BASE_HEIGHT/2,pos,WAGON_OFFSET])
         HGH20CA();
 
-    translate([-BASE_HEIGHT/2,pos,WAGON_OFFSET+WAGON_HEIGHT])
+    translate([-BASE_HEIGHT/2,pos,SLIDER_HEIGHT])
         children();
 
 }
