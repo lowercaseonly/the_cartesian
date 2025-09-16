@@ -1,5 +1,3 @@
-$fn=120;
-
 include <../helper/bom.scad>
 include <../helper/nut_mount_connector.scad>
 
@@ -39,4 +37,4 @@ module nut_mount(){
 }
 
 
-nut_mount();
+nut_mount($fn=120);
