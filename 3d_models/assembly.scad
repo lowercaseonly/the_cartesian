@@ -38,9 +38,20 @@ POS_Y = 200;
 // frame
 for (rail=[0,1])
     translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
-        rotate([90,0,90])
-            NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
-                      inventorize=true);
+        union(){
+            rotate([90,0,90])
+                    NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
+                              inventorize=true);
+
+            translate([MOTOR_SPACE,0,SLOT_PROF_WIDTH-20])
+                rotate([90,90,0])
+                    linear_slider(length=SPACE_X, pos=POS_X);
+
+            translate([SPACE_X+MOTOR_SPACE,SLOT_PROF_HEIGHT,SLOT_PROF_WIDTH-20])
+                rotate([-90,90,0])
+                    linear_slider(length=SPACE_X, pos=SPACE_X-POS_X-BASE_WIDTH);
+
+        };
 
 for (rail=[0,1])
     translate([rail*(SPACE_X+80),SLOT_PROF_HEIGHT,0])
