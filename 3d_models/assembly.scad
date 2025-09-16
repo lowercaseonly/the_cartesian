@@ -144,15 +144,17 @@ translate([-SLOT_PROF_CORNER+POS_X,
 
         };
 
-        for (y_shift=[5,BASE_WIDTH+15])
-translate([SLOT_PROF_WIDTH+POS_X+SLIDER_HEIGHT,POS_Y+y_shift,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
-        union(){
-            rotate([0,270,180])
-                bridge(reinforcement=REINFORCEMENT);
-            if (REINFORCEMENT)
-                translate([-113,-75,70.5])
-                    bridge_reinforcement();
-        }
+for (y_shift=[5,BASE_WIDTH+15])
+    translate([SLOT_PROF_WIDTH+POS_X+SLIDER_HEIGHT,
+               POS_Y+y_shift,
+               PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
+            union(){
+                rotate([0,270,180])
+                    bridge(reinforcement=REINFORCEMENT);
+                if (REINFORCEMENT)
+                    translate([-113,-75,70.5])
+                        bridge_reinforcement();
+            }
 
 
 //column
