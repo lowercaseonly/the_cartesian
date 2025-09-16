@@ -56,17 +56,27 @@ module HGH20CA_plate(overhang=0, connector_left=true, connector_right=true){
 module HGH20CA(){
 
     color([0.22,0.22,0.22])
-        translate([0,0,-WAGON_HEIGHT])
-            base_plate(BASE_WIDTH,BASE_HEIGHT,WAGON_HEIGHT,BASE_CORNER);
+        base_plate(BASE_WIDTH,BASE_HEIGHT,WAGON_HEIGHT,BASE_CORNER);
 
 }
 
 
-module HGH20(length=300){
+module HGH20(length){
 
     color([0.22,0.22,0.22])
-        translate([(BASE_HEIGHT-RAIL_WIDTH)/2,0,-WAGON_HEIGHT-WAGON_OFFSET])
+        translate([-RAIL_WIDTH/2,0,0])
             cube([RAIL_WIDTH,length,RAIL_HEIGHT]);
+
+}
+
+module linear_slider(length, pos){
+    
+    HGH20(length=length);
+    translate([-BASE_HEIGHT/2,pos,WAGON_OFFSET])
+        HGH20CA();
+
+    translate([-BASE_HEIGHT/2,pos,WAGON_OFFSET+WAGON_HEIGHT])
+        children();
 
 }
 
@@ -74,5 +84,8 @@ module HGH20(length=300){
 // Sample Usage
 //$fn=120;
 //HGH20CA_plate();
-//HGH20CA();
-//HGH20();
+
+// Sample Usage
+//$fn=120;
+//linear_slider(length=300, pos=60)
+//    HGH20CA_plate();
