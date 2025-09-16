@@ -131,6 +131,17 @@ translate([-SLOT_PROF_CORNER+POS_X,
                         motor();
                         motor_mount(double_t_slot=true);
                     }
+
+            translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,0])
+                rotate([90,0,180])
+                    linear_slider(length=SPACE_Y, pos=POS_Y);
+
+            translate([SLOT_PROF_HEIGHT,20,0])
+                rotate([90,0,90])
+                    linear_slider(length=SPACE_Y, pos=POS_Y);
+
+
+
         };
 
 translate([SLOT_PROF_WIDTH+POS_X,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
