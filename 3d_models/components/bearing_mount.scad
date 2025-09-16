@@ -21,7 +21,7 @@ BEARING_MOUNT_LEN = 36.0;
 BEARING_MOUNT_WIDTH = 61.0;
 BEARING_MOUNT_HEIGHT = 18.0;
 
-module bearing_mount(){
+module bearing_mount(double_t_slot=false){
 
     difference(){
         union(){
@@ -32,7 +32,7 @@ module bearing_mount(){
                                height=BEARING_MOUNT_LEN,
                                thickness_length=BEARING_MOUNT_OFFSET,
                                thickness_height=BEARING_MOUNT_LEN,
-                               double_size=false);
+                               double_size=double_t_slot);
 
             translate([0,0,BEARING_MOUNT_HEIGHT/2])
                 cube([BEARING_MOUNT_WIDTH,
@@ -62,4 +62,4 @@ module bearing_mount(){
 
 }
 
-bearing_mount($fn=100);
+bearing_mount($fn=100, double_t_slot=false);
