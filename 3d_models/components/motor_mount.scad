@@ -8,9 +8,10 @@ MOTOR_MOUNT_LENGTH = 5.0;
 
 
 
-module motor_mount(){
+module motor_mount(double_t_slot=false){
 
-    bom_item("MOTOR_MOUNT");
+    bom_item("MOTOR_MOUNT",
+             "T-SLOT_TYPE",double_t_slot?"double":"single");
 
     translate([MOTOR_FLANGE_WIDTH,0,0])
         rotate([90,0,180])
@@ -22,7 +23,7 @@ module motor_mount(){
                 NUT8_mount(length=MOTOR_MOUNT_THICKNESS,
                            thickness_length=MOTOR_MOUNT_LENGTH,
                            thickness_height=MOTOR_FLANGE_THICKNESS,
-                           double_size=false);
+                           double_size=double_t_slot);
         translate([MOTOR_FLANGE_WIDTH,0,0])
             rotate([90,0,180])
                 motor_flange_cutout();
@@ -30,4 +31,4 @@ module motor_mount(){
 
 }
 
-motor_mount($fn=100);
+motor_mount($fn=100, double_t_slot=false);
