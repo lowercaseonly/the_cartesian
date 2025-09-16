@@ -31,9 +31,11 @@ MOTOR_SPACE=200;
 SPACE_Y = 600;
 SPACE_X = 600;
 PORTAL_HEIGHT = 110;
+SPACE_Z = PORTAL_HEIGHT;
 
 POS_X = 250;
 POS_Y = 200;
+POS_Z = 20;
 
 // frame
 for (rail=[0,1])
@@ -158,7 +160,15 @@ for (y_shift=[5,BASE_WIDTH+15])
 
 
 //column
-translate([SLOT_PROF_WIDTH+POS_X+SLIDER_HEIGHT+BASE_THICKNESS,POS_Y+15,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
+for (y_shift=[5,BASE_WIDTH+15])
+    translate([POS_X+2*SLIDER_HEIGHT
+               +SLOT_PROF_WIDTH+BASE_THICKNESS,
+               POS_Y-40,
+               120])
+        rotate([90,0,-90])
+            linear_slider(length=SPACE_Z+100, pos=POS_Z);
+
+translate([SLOT_PROF_WIDTH+POS_X+2*SLIDER_HEIGHT+BASE_THICKNESS,POS_Y+15,PORTAL_HEIGHT+SLOT_PROF_HEIGHT+POS_Z])
     rotate([0,0,-90])
         color([0.6,0.8,0.8])
             column();
