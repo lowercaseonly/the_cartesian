@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/t_slot.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/nut_mount_connector.scad>
@@ -30,6 +31,8 @@ module intermediate(spacing){
 
 
 module portal(){
+
+    bom_item("PORTAL_BRIDGE_CONNECTOR");
 
     HGH20CA_plate();
     intermediate(spacing=PORTAL_HEIGHT-(BASE_HEIGHT-BASE_CORNER)-SLOT_MOUNT_LENGTH);

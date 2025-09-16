@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/motor_flange.scad>
 include <../helper/t_slot.scad>
 
@@ -8,6 +9,8 @@ MOTOR_MOUNT_LENGTH = 5.0;
 
 
 module motor_mount(){
+
+    bom_item("MOTOR_MOUNT");
 
     translate([MOTOR_FLANGE_WIDTH,0,0])
         rotate([90,0,180])

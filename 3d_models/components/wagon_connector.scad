@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/connector_a.scad>
 
@@ -12,6 +13,8 @@ TOLERANCE = 0.01;
 
 
 module wagon_connector(spacing=5){
+
+    bom_item("WAGON_CONNECTOR", "SPACING", spacing);
 
     connector(shift_x=0, shift_y=spacing, angle=0, shaft_len=10);
     connector(shift_x=0, shift_y=0, angle=180, shaft_len=10);

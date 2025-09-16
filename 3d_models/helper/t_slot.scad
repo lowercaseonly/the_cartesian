@@ -1,4 +1,4 @@
-
+include <../helper/bom.scad>
 use <../helper/base_plate.scad>
 include <../helper/m_skrew.scad>
 
@@ -29,7 +29,10 @@ NOTHING = 0.01;
 
 
 
-module NUT8_45x2(length=SLOT_PROF_LEN){
+module NUT8_45x2(length=SLOT_PROF_LEN, inventorize=false){
+
+    if (inventorize)
+        bom_item("T-SLOT_PROFILE_NUT_8_45x2", "length", length);
 
     color([0.8,0.8,0.8])
         difference(){

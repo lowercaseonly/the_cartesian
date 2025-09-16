@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/nut_mount_connector.scad>
 include <../helper/m_skrew.scad>
@@ -17,6 +18,8 @@ THREAD_DIA = 10;
 
 
 module bridge_reinforcement(){
+
+    bom_item("BRIDGE_REINFORCEMENT");
 
     difference(){
         union(){

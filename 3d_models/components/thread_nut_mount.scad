@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/nut_mount_connector.scad>
 include <../helper/pillow_block.scad>
 
@@ -31,6 +32,8 @@ module thread_nut(){
 
 
 module thread_nut_mount(){
+
+    bom_item("THREAD_NUT_MOUNT");
 
     translate([0,0,-MOUNT_HEIGHT])
         rotate([0,0,-90])

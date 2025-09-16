@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/motor_flange.scad>
 include <../helper/t_slot.scad>
 include <../helper/m_skrew.scad>
@@ -22,6 +23,9 @@ BEARING_MOUNT_WIDTH = 61.0;
 BEARING_MOUNT_HEIGHT = 18.0;
 
 module bearing_mount(double_t_slot=false){
+
+    bom_item("T-SLOT_PEDESTAL_BEARING_MOUNT",
+             "T-SLOT_TYPE",double_t_slot?"double":"single");
 
     difference(){
         union(){

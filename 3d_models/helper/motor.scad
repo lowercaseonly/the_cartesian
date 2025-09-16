@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -17,6 +18,8 @@ MOTOR_SHAFT_CUT_DIA = 9.5;
 MOTOR_SHAFT_CUT_LEN = 20.0;
 
 module motor(){
+
+    bom_item("NEMA_23_STEPPER_MOTOR");
 
     color([0.8,0.15,0.15])
         difference(){

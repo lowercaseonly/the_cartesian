@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/m_skrew.scad>
 include <../helper/pillow_block.scad>
 
@@ -49,6 +50,8 @@ module column_plate(){
 
 
 module column(reinforcement=true){
+
+    bom_item("COLUMN");
 
     column_plate();
 

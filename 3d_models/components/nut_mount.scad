@@ -1,5 +1,6 @@
 $fn=120;
 
+include <../helper/bom.scad>
 include <../helper/nut_mount_connector.scad>
 
 /*
@@ -17,6 +18,9 @@ TOLERANCE = 0.01;
 
 
 module nut_mount(){
+
+    bom_item("NUT_MOUNT");
+
     difference(){
         union(){
             translate([0,-MOUNT_WIDTH/2,0])
@@ -31,6 +35,7 @@ module nut_mount(){
                 rotate([0,0,90])
                     nut_mount_connector(length=MOUNT_HEIGHT+2*TOLERANCE);
     };
+
 }
 
 

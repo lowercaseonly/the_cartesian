@@ -39,12 +39,14 @@ POS_Y = 200;
 for (rail=[0,1])
     translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
         rotate([90,0,90])
-            NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE);
+            NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
+                      inventorize=true);
 
 for (rail=[0,1])
     translate([rail*(SPACE_X+80),SLOT_PROF_HEIGHT,0])
         rotate([90,0,180])
-            NUT8_45x2(length=SPACE_Y-2*SLOT_PROF_HEIGHT);
+            NUT8_45x2(length=SPACE_Y-2*SLOT_PROF_HEIGHT,
+                      inventorize=true);
 
 
 for (rail=[0,1])
@@ -103,7 +105,8 @@ if (REINFORCEMENT){
 //bridge
 translate([-SLOT_PROF_CORNER+POS_X,-SLOT_MOUNT_HEIGHT,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
     rotate([270,270,0])
-        NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100);
+        NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100,
+                  inventorize=true);
 
 
 translate([SLOT_PROF_WIDTH+POS_X,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])

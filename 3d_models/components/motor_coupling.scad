@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/motor.scad>
 
 
@@ -8,6 +9,8 @@ THEADED_ROD_MOTOR_DIST = 8.0;
 
 
 module motor_coupling(){
+
+    bom_item("MOTOR_COUPLING");
 
     difference(){
         translate([MOTOR_BLOCK_WIDTH/2,

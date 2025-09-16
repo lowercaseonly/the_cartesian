@@ -1,3 +1,4 @@
+include <../helper/bom.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/nut_mount_connector.scad>
 
@@ -11,6 +12,8 @@ TOLERANCE = 0.01;
 
 
 module portal_reinforcement(){
+
+    bom_item("PORTAL_REINFORCEMENT");
 
     difference(){
         HGH20CA_plate(overhang=20);
