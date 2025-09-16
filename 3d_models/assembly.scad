@@ -144,7 +144,7 @@ translate([-SLOT_PROF_CORNER+POS_X,
 
         };
 
-translate([SLOT_PROF_WIDTH+POS_X,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
+translate([SLOT_PROF_WIDTH+POS_X+SLIDER_HEIGHT,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
         union(){
             rotate([0,270,180])
                 bridge(reinforcement=REINFORCEMENT);
@@ -155,7 +155,7 @@ translate([SLOT_PROF_WIDTH+POS_X,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
 
 
 //column
-translate([SLOT_PROF_WIDTH+POS_X+15,POS_Y+15,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
+translate([SLOT_PROF_WIDTH+POS_X+SLIDER_HEIGHT+BASE_THICKNESS,POS_Y+15,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
     rotate([0,0,-90])
         color([0.6,0.8,0.8])
             column();
