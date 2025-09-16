@@ -5,6 +5,7 @@ include <../helper/t_slot.scad>
 
 MOTOR_MOUNT_THICKNESS = 25.0;
 MOTOR_MOUNT_LENGTH = 5.0;
+MOTOR_MOUNT_LEFT = true;
 
 
 
@@ -18,7 +19,8 @@ module motor_mount(double_t_slot=false){
             motor_flange();
 
     difference(){
-        translate([SLOT_PROF_HEIGHT/2+MOTOR_FLANGE_WIDTH/2,0,0])
+        translate([SLOT_PROF_HEIGHT/2+MOTOR_FLANGE_WIDTH/2
+                   +(double_t_slot&&MOTOR_MOUNT_LEFT?SLOT_DIST+SLOT_WIDTH:0),0,0])
             rotate([-90,90,0])
                 NUT8_mount(length=MOTOR_MOUNT_THICKNESS,
                            thickness_length=MOTOR_MOUNT_LENGTH,
