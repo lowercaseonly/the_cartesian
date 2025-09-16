@@ -116,11 +116,22 @@ if (REINFORCEMENT){
 
 
 //bridge
-translate([-SLOT_PROF_CORNER+POS_X,-SLOT_MOUNT_HEIGHT-SLIDER_HEIGHT,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
+translate([-SLOT_PROF_CORNER+POS_X,
+           -SLOT_MOUNT_HEIGHT-SLIDER_HEIGHT,
+           PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
     rotate([270,270,0])
-        NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100,
-                  inventorize=true);
-
+        union(){
+            NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100,
+                      inventorize=true);
+            translate([SLOT_PROF_HEIGHT,
+                       2*SLOT_PROF_HEIGHT+SLOT_WIDTH,
+                       SPACE_Y+50])
+                rotate([-90,0,-90])
+                    union(){
+                        motor();
+                        motor_mount(double_t_slot=true);
+                    }
+        };
 
 translate([SLOT_PROF_WIDTH+POS_X,POS_Y,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
         union(){
