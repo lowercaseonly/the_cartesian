@@ -74,37 +74,39 @@ for (rail=[0,1])
             };
 
 
-translate([BASE_WIDTH+POS_X,0,SLOT_PROF_HEIGHT])
+translate([BASE_WIDTH+POS_X,-SLIDER_HEIGHT,SLOT_PROF_HEIGHT])
     rotate([90,270,0])
         portal();
 
-translate([POS_X,SPACE_Y,SLOT_PROF_HEIGHT])
+translate([POS_X,SPACE_Y+SLIDER_HEIGHT,SLOT_PROF_HEIGHT])
     rotate([90,270,180])
         portal();
 
 if (REINFORCEMENT){
-    translate([BASE_WIDTH+POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,0,SLOT_PROF_HEIGHT])
+    translate([BASE_WIDTH+POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,
+               -SLIDER_HEIGHT,SLOT_PROF_HEIGHT])
         rotate([90,270,0])
             portal_reinforcement();
 
-    translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,SPACE_Y,SLOT_PROF_HEIGHT])
+    translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,
+               SPACE_Y+SLIDER_HEIGHT,SLOT_PROF_HEIGHT])
         rotate([90,270,180])
             portal_reinforcement();
 
-    translate([POS_X+37,0,97])
+    translate([POS_X+37,-SLIDER_HEIGHT,97])
         rotate([180,0,90])
             color([0.6,0.6,0.4])
                 nut_mount();
 
     translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,
-               0,
+               -SLIDER_HEIGHT,
                SLOT_PROF_HEIGHT+22])
         rotate([90,270,0])
             color([0.6,0.6,0.4])
                 wagon_connector(spacing=10);
 
     translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING-10,
-               SPACE_Y,
+               SPACE_Y+SLIDER_HEIGHT,
                SLOT_PROF_HEIGHT+22])
         rotate([90,270,180])
             color([0.6,0.6,0.4])
@@ -114,7 +116,7 @@ if (REINFORCEMENT){
 
 
 //bridge
-translate([-SLOT_PROF_CORNER+POS_X,-SLOT_MOUNT_HEIGHT,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
+translate([-SLOT_PROF_CORNER+POS_X,-SLOT_MOUNT_HEIGHT-SLIDER_HEIGHT,PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
     rotate([270,270,0])
         NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100,
                   inventorize=true);
