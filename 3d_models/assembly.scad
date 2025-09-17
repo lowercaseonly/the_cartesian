@@ -28,14 +28,21 @@ PORTAL_REINFORCEMENT_SPACING = 10;
 
 MOTOR_SPACE=200;
 
+// Printing Area
 SPACE_Y = 600;
 SPACE_X = 600;
-PORTAL_HEIGHT = 110;
 SPACE_Z = 300;
+PORTAL_HEIGHT = 110; // TODO resolve by SPACE_Z based Formula
 
+// Printer Head Position
 POS_X = 250;
 POS_Y = 200;
 POS_Z = 100;
+
+// Counter Axis (Slider/Profile/Component) Dimensions
+OFFSET_Y = 90;
+
+
 
 // frame
 for (rail=[0,1])
@@ -127,20 +134,24 @@ translate([-SLOT_PROF_CORNER+POS_X,
                       inventorize=true);
             translate([SLOT_PROF_HEIGHT,
                        2*SLOT_PROF_HEIGHT+SLOT_WIDTH,
-                       SPACE_Y+50])
+                       SPACE_Y+70])
                 rotate([-90,0,-90])
                     union(){
                         motor();
                         motor_mount(double_t_slot=true);
+                        for (y_shift=[70,SPACE_Y+20])
+                            translate([28.2,y_shift,0])
+                                rotate([0,0,180])
+                                    bearing_mount(double_t_slot=true);
                     }
 
-            translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,0])
+            translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
                 rotate([90,0,180])
-                    linear_slider(length=SPACE_Y, pos=POS_Y);
+                    linear_slider(length=SPACE_Y-130, pos=POS_Y);
 
-            translate([SLOT_PROF_HEIGHT,20,0])
+            translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
                 rotate([90,0,90])
-                    linear_slider(length=SPACE_Y, pos=POS_Y);
+                    linear_slider(length=SPACE_Y-130, pos=POS_Y);
 
 
 
