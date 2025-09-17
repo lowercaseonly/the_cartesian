@@ -69,7 +69,7 @@ module column(reinforcement=true){
 
     rotate([0,0,180])
         restricted_pillow_block(thickness=BEARING_LEN+5,
-                                length=COLUMN_BASE_WIDTH-40,
+                                length=COLUMN_BASE_WIDTH-45,
                                 center_dist=MOTOR_BLOCK_HEIGHT/2-MOTOR_OFFSET,
                                 diameter=BEARING_DIA_OUTER,
                                 wall_thick=EFFECTOR_MOUNT_WALL_THICK,
