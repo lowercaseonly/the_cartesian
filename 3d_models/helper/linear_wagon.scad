@@ -84,10 +84,8 @@ module linear_slider(length, pos){
 
 
 // Sample Usage
-//$fn=120;
-//HGH20CA_plate();
+//HGH20CA_plate($fn=120);
 
 // Sample Usage
-//$fn=120;
 //linear_slider(length=300, pos=60)
-//    HGH20CA_plate();
+//    HGH20CA_plate($fn=120);
