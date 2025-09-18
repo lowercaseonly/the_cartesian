@@ -36,8 +36,9 @@ module NUT8_45x2(length=SLOT_PROF_LEN, inventorize=false){
 
     color([0.8,0.8,0.8])
         difference(){
-            base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, length,
-                       corner_radius=SLOT_PROF_CORNER);
+            translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH/2,0])
+                base_plate(SLOT_PROF_WIDTH, SLOT_PROF_HEIGHT, length,
+                           corner_radius=SLOT_PROF_CORNER);
             
             // T-Slots along longer Side
             for (x_shift=[0,SLOT_PROF_HEIGHT-SLOT_DEPTH+NOTHING])
