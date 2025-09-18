@@ -16,7 +16,7 @@ PORTAL_HEIGHT = 110;  // Lower Wagon Edge to T-Slot Edge
 
 module intermediate(spacing){
     
-    translate([BASE_HEIGHT-BASE_CORNER, BASE_WIDTH/2, 0])
+    translate([BASE_HEIGHT/2-BASE_CORNER, 0, 0])
         difference(){
             linear_extrude(height=BASE_THICKNESS)
                 polygon([[0,       -BASE_WIDTH/2],
@@ -36,7 +36,7 @@ module portal(){
 
     HGH20CA_plate();
     intermediate(spacing=PORTAL_HEIGHT-(BASE_HEIGHT-BASE_CORNER)-SLOT_MOUNT_LENGTH);
-    translate([PORTAL_HEIGHT,-(SLOT_PROF_WIDTH-BASE_WIDTH)/2,0])
+    translate([PORTAL_HEIGHT-BASE_HEIGHT/2,-(SLOT_PROF_WIDTH)/2,0])
         NUT8_mount(thickness_height=BASE_THICKNESS);
 
 }
