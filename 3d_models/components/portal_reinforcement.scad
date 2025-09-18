@@ -17,7 +17,7 @@ module portal_reinforcement(){
 
     difference(){
         HGH20CA_plate(overhang=20);
-        translate([10+BASE_HEIGHT-BASE_CORNER, BASE_WIDTH/2, -TOLERANCE])
+        translate([10+BASE_HEIGHT/2-BASE_CORNER, 0, -TOLERANCE])
             nut_mount_connector();
     }
 
