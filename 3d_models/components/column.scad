@@ -26,7 +26,7 @@ RAIL_MOUNT_HOLE_OFFSET = 9;
 MOTOR_OFFSET = 13;
 
 NOTHING = 0.05;
-FITTING = 0.1;
+FITTING = 0.2;
 
 
 module column_plate(){
@@ -46,7 +46,7 @@ module column_plate(){
                     rotate([90,0,0])
                         union(){
                             m_skrew_shaft();
-                            m_nut();
+                            m_nut(fitting=FITTING);
                         }
     }
 
