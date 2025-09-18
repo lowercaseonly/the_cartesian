@@ -31,8 +31,8 @@ module HGH20CA_screws(bottom=true, top=true, left=true, right=true){
 
     for (shift_x=concat(bottom?[-1]:[], top?[1]:[]))
         for (shift_y=concat(right?[-1]:[], left?[1]:[]))
-            translate([BASE_HEIGHT/2 + shift_x*M_SKREW_DIST_Y/2,
-                       BASE_WIDTH/2 + shift_y*M_SKREW_DIST_X/2,
+            translate([shift_x*M_SKREW_DIST_Y/2,
+                       shift_y*M_SKREW_DIST_X/2,
                        -M_SKREW_SINK])
                 m_skrew();
 
@@ -47,10 +47,10 @@ module HGH20CA_plate(overhang=0, connector_left=true, connector_right=true){
         HGH20CA_screws();
 
         if (connector_right)
-            connector(BASE_HEIGHT/2,0,0);
+            connector(0,-BASE_WIDTH/2,0);
 
         if (connector_left)
-            connector(BASE_HEIGHT/2,BASE_WIDTH,180);
+            connector(0,BASE_WIDTH/2,180);
     }
 }
 
@@ -71,13 +71,15 @@ module HGH20(length){
 
 }
 
+
 module linear_slider(length, pos){
-    
+
     HGH20(length=length);
-    translate([-BASE_HEIGHT/2,pos,WAGON_OFFSET])
+
+    translate([0,pos+BASE_WIDTH/2,WAGON_OFFSET])
         HGH20CA();
 
-    translate([-BASE_HEIGHT/2,pos,SLIDER_HEIGHT])
+    translate([0,pos+BASE_WIDTH/2,SLIDER_HEIGHT])
         children();
 
 }
