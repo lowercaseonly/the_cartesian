@@ -6,7 +6,7 @@
 
 module base_plate(width, depth, thickness, corner_radius=0){
     
-    translate([corner_radius,corner_radius,0])
+    translate([corner_radius-depth/2,corner_radius-width/2,0])
         minkowski(){
             cube([depth-corner_radius*2,
                   width-corner_radius*2,
