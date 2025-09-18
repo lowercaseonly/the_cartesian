@@ -14,7 +14,7 @@ module motor_mount(double_t_slot=false){
     bom_item("MOTOR_MOUNT",
              "T-SLOT_TYPE",double_t_slot?"double":"single");
 
-    translate([MOTOR_FLANGE_WIDTH,0,0])
+    translate([MOTOR_FLANGE_WIDTH/2,0,MOTOR_FLANGE_HEIGHT/2])
         rotate([90,0,180])
             motor_flange();
 
@@ -26,7 +26,7 @@ module motor_mount(double_t_slot=false){
                            thickness_length=MOTOR_MOUNT_LENGTH,
                            thickness_height=MOTOR_FLANGE_THICKNESS,
                            double_size=double_t_slot);
-        translate([MOTOR_FLANGE_WIDTH,0,0])
+        translate([MOTOR_FLANGE_WIDTH/2,0,MOTOR_FLANGE_HEIGHT/2])
             rotate([90,0,180])
                 motor_flange_cutout();
     };
