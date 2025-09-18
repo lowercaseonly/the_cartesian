@@ -33,16 +33,15 @@ module motor_flange_base(){
 
 module motor_flange_cutout(){
 
-    translate([MOTOR_FLANGE_WIDTH/2,MOTOR_FLANGE_HEIGHT/2,0])
-        cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_INNER,
-                 d=MOTOR_FLANGE_INNER_DIA,center=true);
+    cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_INNER,
+             d=MOTOR_FLANGE_INNER_DIA,center=true);
 
     for (cx=[0,1])
         for (cy=[0,1])
-            translate([cx*MOTOR_FLANGE_WIDTH
+            translate([(cx-0.5)*MOTOR_FLANGE_WIDTH
                        -(cx-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
                                     + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
-                       cy*MOTOR_FLANGE_HEIGHT
+                       (cy-0.5)*MOTOR_FLANGE_HEIGHT
                        -(cy-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
                                     + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
                        0])
