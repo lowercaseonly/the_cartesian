@@ -37,9 +37,15 @@ Please Note:
  - Parametrization is used whenever possible. For example, the exact printing area can be specified by three individual parameters
 
 
-### The X Axis
-The X axis (also referred to as the *portal*) consists of the main structural, rectangular frame on which two pairs of linear guide rails carry a common rod.
+### The Portal (X-Axis)
+The X-Axis (also referred to as `portal`) consists of the main structural, rectangular frame build from T-slotted (aluminum) profiles. On this frame, two pairs of linear guide rails are mounted which commonly carry another T-slotted profile (the bridge). Each pair of guide rails is driven by a dedicated motor.
 
+### The Bridge (Y-Axis)
+The Y-Axis (also referred to as `bridge`) consists of a one T-slotted profile on which two two linear guild rails are mounted. The bridge is driven by one motor which is mounted to two T-Slots.
+
+### The Column (Z-Axis)
+The Z-Axis (also referred to as `column`) consists of a plate, mounted to two linear guide rails that carries the end-effector.
 
 ## License
 The content of this repository is licensed under the terms of the `MIT license`.
+
