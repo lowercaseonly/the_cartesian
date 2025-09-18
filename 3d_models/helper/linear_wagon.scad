@@ -42,7 +42,8 @@ module HGH20CA_screws(bottom=true, top=true, left=true, right=true){
 module HGH20CA_plate(overhang=0, connector_left=true, connector_right=true){
     
     difference(){
-        base_plate(BASE_WIDTH,BASE_HEIGHT+overhang,BASE_THICKNESS,BASE_CORNER);
+        translate([overhang/2,0,0])
+            base_plate(BASE_WIDTH,BASE_HEIGHT+overhang,BASE_THICKNESS,BASE_CORNER);
         
         HGH20CA_screws();
 
