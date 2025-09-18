@@ -5,6 +5,7 @@
 */
 
 
+GAP_WIDTH = 0.4;
 NOTHING = 0.2;
 FITTING = 0.1;
 
@@ -29,8 +30,8 @@ module pillow_block(thickness, length, center_dist, diameter, wall_thick, gap){
             
             // Gap for simpler fitting/pressing
             if (gap)
-                translate([0,center_dist,-NOTHING])
-                    cube([0.2,40,40]);
+                translate([-GAP_WIDTH/2,center_dist+diameter/2-NOTHING,-NOTHING])
+                    cube([GAP_WIDTH,wall_thick+2*NOTHING,thickness+2*NOTHING]);
 
             translate([-length/2-wall_thick,-diameter-wall_thick,-NOTHING])
                 cube([length+2*wall_thick,diameter+wall_thick,thickness+2*NOTHING]);
