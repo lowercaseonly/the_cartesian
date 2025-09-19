@@ -138,13 +138,17 @@ translate([-SLOT_PROF_CORNER+POS_X,
             translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
                 rotate([90,0,180])
                     linear_slider(length=SPACE_Y-130, pos=POS_Y)
-                        bridge(reinforcement=REINFORCEMENT);
+                        for (y_shift=[0,100])
+                            translate([0,y_shift,0])
+                                bridge(reinforcement=REINFORCEMENT);
 
             translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
                 rotate([90,0,90])
                     linear_slider(length=SPACE_Y-130, pos=POS_Y)
                         rotate([0,0,180])
-                        bridge_reinforcement();
+                            for (y_shift=[0,100])
+                                translate([0,-y_shift,0])
+                                    bridge_reinforcement();
 
 
         };
