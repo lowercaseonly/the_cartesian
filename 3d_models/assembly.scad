@@ -63,23 +63,21 @@ for (rail=[0,1])
                            (side==1?SLOT_PROF_HEIGHT:0),
                            SLOT_PROF_WIDTH-20])
                     rotate([-side*90,90,0])
-                        linear_slider(length=SPACE_X,
-                                      pos=(side==-1?POS_X:SPACE_X-POS_X-BASE_WIDTH))
-                            union(){
-                                portal();
-                                if (REINFORCEMENT){
-                                    translate([0,
-                                               side*(BASE_WIDTH+PORTAL_SPACING)/2,
-                                               0])
-                                        color([0.6,0.6,0.4])
-                                            wagon_connector(spacing=PORTAL_SPACING);
+                        linear_slider(length=SPACE_X, pos=POS_X, invert=(side==1)){
+                            portal();
+                            if (REINFORCEMENT){
+                                translate([0,
+                                           side*(BASE_WIDTH+PORTAL_SPACING)/2,
+                                           0])
+                                    color([0.6,0.6,0.4])
+                                        wagon_connector(spacing=PORTAL_SPACING);
 
-                                    translate([0,
-                                               side*(BASE_WIDTH+PORTAL_SPACING),
-                                               0])
-                                        portal_reinforcement();
-                                }
+                                translate([0,
+                                           side*(BASE_WIDTH+PORTAL_SPACING),
+                                           0])
+                                    portal_reinforcement();
                             }
+                        }
 
         };
 
