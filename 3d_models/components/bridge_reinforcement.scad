@@ -24,11 +24,11 @@ module bridge_reinforcement(){
     difference(){
         union(){
             HGH20CA_plate(overhang=DIST_WAGON_Y_WAGON_Z);
-            translate([BASE_HEIGHT+DIST_WAGON_Y_WAGON_Z-TOLERANCE,BASE_WIDTH/2,0])
+            translate([BASE_HEIGHT/2+DIST_WAGON_Y_WAGON_Z-TOLERANCE,0,0])
                 rotate([0,-90,180])
                     nut_mount_connector(length=BASE_THICKNESS);
         }
-        translate([DIST_WAGON_Y_THREAD+BASE_HEIGHT,0,SINK_THREAD])
+        translate([DIST_WAGON_Y_THREAD+BASE_HEIGHT/2,0,SINK_THREAD])
             rotate([90,0,0])
                 cylinder(h=300, r=THREAD_DIA, center=true);
     }
