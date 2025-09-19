@@ -1,5 +1,6 @@
 include <../helper/bom.scad>
 use <../helper/base_plate.scad>
+use <../helper/support.scad>
 include <../helper/m_skrew.scad>
 
 /*
@@ -64,19 +65,6 @@ module NUT8_45x2(length=SLOT_PROF_LEN, inventorize=false){
 }
 
 
-module NUT8_mount_base(height, length, thickness_height, thickness_length, double_size){
-
-    linear_extrude(height=double_size?SLOT_PROF_WIDTH:SLOT_PROF_HEIGHT)
-        polygon([[0,                0],
-                 [0,                height],
-                 [thickness_length, height],
-                 [length,           thickness_height],
-                 [length,           thickness_height],
-                 [length,           0]]);
-
-}
-
-
 module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
                   thickness_height=SLOT_MOUNT_THICK_HEIGHT,
                   thickness_length=SLOT_MOUNT_THICK_LENGTH,
@@ -87,11 +75,11 @@ module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
         // Base Block
         translate([SLOT_PROF_CORNER,0,0])
             rotate([90,0,-180])
-                NUT8_mount_base(height,
+                support_base(height,
                                 length+SLOT_PROF_CORNER,
                                 thickness_height,
                                 thickness_length+SLOT_PROF_CORNER,
-                                double_size=double_size);
+                                double_size?SLOT_PROF_WIDTH:SLOT_PROF_HEIGHT);
 
         // Cut out T-Slot Profile
         if (double_size)
