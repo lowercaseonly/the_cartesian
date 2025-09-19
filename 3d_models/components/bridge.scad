@@ -22,7 +22,7 @@ module bridge(reinforcement=true){
         HGH20CA_plate(overhang=BASE_WIDTH-BASE_HEIGHT
                                +(reinforcement?REINFORCEMENT_OVERHANG:0));
 
-        translate([BASE_WIDTH-BASE_HEIGHT/2-10+(reinforcement?REINFORCE_SHIFT:0),
+        translate([BASE_WIDTH-BASE_HEIGHT/2-8.5+(reinforcement?REINFORCE_SHIFT:0),
                    0,
                    -TOLERANCE])
             nut_mount_connector();
