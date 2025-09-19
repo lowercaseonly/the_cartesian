@@ -77,7 +77,17 @@ for (rail=[0,1])
             translate([SPACE_X+MOTOR_SPACE,SLOT_PROF_HEIGHT,SLOT_PROF_WIDTH-20])
                 rotate([-90,90,0])
                     linear_slider(length=SPACE_X, pos=SPACE_X-POS_X-BASE_WIDTH)
-                        portal();
+                        union(){
+                            portal();
+                            if (REINFORCEMENT){
+                                translate([0,37.5,0])
+                                    color([0.6,0.6,0.4])
+                                        wagon_connector(spacing=10);
+
+                                translate([0,85,0])
+                                    portal_reinforcement();
+                            }
+                        }
 
         };
 
