@@ -38,7 +38,7 @@ module support(height, length, thickness_height, thickness_length,
 
     difference(){
         support_base(height, length, thickness_height, thickness_length, width);
-        translate([thickness_height, thickness_length, wall_thick])
+        translate([thickness_length, thickness_height, wall_thick])
             support_cutout(trough_len=length+corner, trough_width=width+corner,
                            trough_height=width-wall_thick*2, corner=corner);
     }
