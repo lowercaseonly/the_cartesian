@@ -16,10 +16,10 @@ module wagon_connector(spacing=5){
 
     bom_item("WAGON_CONNECTOR", "SPACING", spacing);
 
-    connector(shift_x=0, shift_y=spacing, angle=0, shaft_len=10);
-    connector(shift_x=0, shift_y=0, angle=180, shaft_len=10);
+    connector(shift_x=0, shift_y=spacing/2, angle=0, shaft_len=10);
+    connector(shift_x=0, shift_y=-spacing/2, angle=180, shaft_len=10);
 
-    translate([BASE_CORNER-BASE_HEIGHT/2,0,0])
+    translate([BASE_CORNER-BASE_HEIGHT/2,-spacing/2,0])
         cube([BASE_HEIGHT-2*BASE_CORNER,
               spacing,
               BASE_THICKNESS]);
