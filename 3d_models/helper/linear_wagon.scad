@@ -81,7 +81,8 @@ module linear_slider(length, pos){
         HGH20CA();
 
     translate([0,pos+BASE_WIDTH/2,SLIDER_HEIGHT])
-        children();
+        rotate([0,0,180])
+            children();
 
 }
 
