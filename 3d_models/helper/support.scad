@@ -18,6 +18,35 @@ module support_base(height, length, thickness_height, thickness_length, width){
 }
 
 
+module support_cutout(trough_len,trough_width,trough_height,corner){
+
+    translate([corner,
+               corner,
+               corner])
+        minkowski(){
+            cube([trough_len-2*corner,
+                  trough_width-2*corner,
+                  trough_height-2*corner]);
+            sphere(r=corner);
+        };
+
+}
+
+
+module support(height, length, thickness_height, thickness_length,
+               width, wall_thick, corner){
+
+    difference(){
+        support_base(height, length, thickness_height, thickness_length, width);
+        translate([thickness_height, thickness_length, wall_thick])
+            support_cutout(trough_len=length+corner, trough_width=width+corner,
+                           trough_height=width-wall_thick*2, corner=corner);
+    }
+
+}
+
+
+
 // Sample Usage
-//support_base(height=10,length=10,
-//             thickness_height=1,thickness_length=1,width=10);
+//support(height=40, length=40, thickness_height=10, thickness_length=10,
+//          width=40,wall_thick=5, corner=3, $fn=100);
