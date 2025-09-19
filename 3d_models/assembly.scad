@@ -46,6 +46,13 @@ OFFSET_Y = 90;
 
 // frame
 for (rail=[0,1])
+    translate([rail*(SPACE_X+80),SLOT_PROF_HEIGHT,0])
+        rotate([90,0,180])
+            NUT8_45x2(length=SPACE_Y-2*SLOT_PROF_HEIGHT,
+                      inventorize=true);
+
+// portal
+for (rail=[0,1])
     translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
         union(){
             rotate([90,0,90])
@@ -63,13 +70,6 @@ for (rail=[0,1])
                         portal();
 
         };
-
-for (rail=[0,1])
-    translate([rail*(SPACE_X+80),SLOT_PROF_HEIGHT,0])
-        rotate([90,0,180])
-            NUT8_45x2(length=SPACE_Y-2*SLOT_PROF_HEIGHT,
-                      inventorize=true);
-
 
 for (rail=[0,1])
     translate([-80,MOTOR_FLANGE_WIDTH-(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2+rail*(SPACE_Y-SLOT_PROF_HEIGHT),SLOT_PROF_WIDTH])
