@@ -5,7 +5,7 @@
 */
 
 
-GAP_WIDTH = 0.4;
+GAP_WIDTH = 0.6;
 NOTHING = 0.2;
 FITTING = 0.1;
 
