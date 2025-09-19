@@ -15,9 +15,9 @@ COLUMN_BASE_WIDTH = 101.0;
 COLUMN_BASE_HEIGHT = 110.0;
 COLUMN_BASE_THICK = 10.0;
 
-SUPPORT_WALL_DIST = 74;
+SUPPORT_WALL_DIST = 73;
 SUPPORT_WALL_THICK = 5;
-SUPPORT_WALL_LEN = 33;
+SUPPORT_WALL_LEN = 40;
 SUPPORT_CORNER = 3;
 
 EFFECTOR_MOUNT_DIA = 43.0;
@@ -82,15 +82,20 @@ module column(reinforcement=true){
                                 restrict_dia=5,
                                 restrict_thick=4);
 
-    translate([SUPPORT_WALL_DIST/2,COLUMN_BASE_THICK,EFFECTOR_MOUNT_LEN])
-        rotate([0,-90,0])
-            support(height=SUPPORT_WALL_LEN,
-                    length=COLUMN_BASE_HEIGHT-EFFECTOR_MOUNT_LEN,
-                    thickness_height=-NOTHING,
-                    thickness_length=-NOTHING,
-                    width=SUPPORT_WALL_DIST,
-                    wall_thick=SUPPORT_WALL_THICK,
-                    corner=SUPPORT_CORNER);
+    difference(){
+        translate([SUPPORT_WALL_DIST/2,0,0])
+            rotate([0,-90,0])
+                support(height=SUPPORT_WALL_LEN,
+                        length=COLUMN_BASE_HEIGHT,
+                        thickness_height=COLUMN_BASE_THICK,
+                        thickness_length=EFFECTOR_MOUNT_LEN,
+                        width=SUPPORT_WALL_DIST,
+                        wall_thick=SUPPORT_WALL_THICK,
+                        corner=SUPPORT_CORNER);
+
+        translate([0,EFFECTOR_MOUNT_BASE_DIST,-NOTHING])
+            cylinder(h=EFFECTOR_MOUNT_LEN+2*NOTHING,d=EFFECTOR_MOUNT_DIA);
+    };
 
 };
 
