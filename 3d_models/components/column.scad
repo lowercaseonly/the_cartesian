@@ -15,9 +15,9 @@ COLUMN_BASE_WIDTH = 101.0;
 COLUMN_BASE_HEIGHT = 110.0;
 COLUMN_BASE_THICK = 10.0;
 
-SUPPORT_WALL_DIST = 73;
+SUPPORT_WALL_DIST = 74;
 SUPPORT_WALL_THICK = 5;
-SUPPORT_WALL_LEN = 40;
+SUPPORT_WALL_LEN = 42.5;
 SUPPORT_CORNER = 3;
 
 EFFECTOR_MOUNT_DIA = 43.0;
@@ -93,7 +93,7 @@ module column(reinforcement=true){
                         wall_thick=SUPPORT_WALL_THICK,
                         corner=SUPPORT_CORNER);
 
-        translate([0,EFFECTOR_MOUNT_BASE_DIST,-NOTHING])
+        translate([0,EFFECTOR_MOUNT_BASE_DIST+COLUMN_BASE_THICK-2,-NOTHING])
             cylinder(h=EFFECTOR_MOUNT_LEN+2*NOTHING,d=EFFECTOR_MOUNT_DIA);
     };
 
