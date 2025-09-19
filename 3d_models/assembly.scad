@@ -24,7 +24,7 @@ use <components/column.scad>
 
 
 REINFORCEMENT = true;
-PORTAL_REINFORCEMENT_SPACING = 10;
+PORTAL_SPACING = 8;
 
 MOTOR_SPACE=200;
 
@@ -65,11 +65,11 @@ for (rail=[0,1])
                         union(){
                             portal();
                             if (REINFORCEMENT){
-                                translate([0,-47.5,0])
+                                translate([0,-BASE_WIDTH/2-PORTAL_SPACING/2,0])
                                     color([0.6,0.6,0.4])
-                                        wagon_connector(spacing=10);
+                                        wagon_connector(spacing=PORTAL_SPACING);
 
-                                translate([0,-85,0])
+                                translate([0,-BASE_WIDTH-PORTAL_SPACING,0])
                                     portal_reinforcement();
                             }
                         }
@@ -80,11 +80,11 @@ for (rail=[0,1])
                         union(){
                             portal();
                             if (REINFORCEMENT){
-                                translate([0,37.5,0])
+                                translate([0,+BASE_WIDTH/2+PORTAL_SPACING/2,0])
                                     color([0.6,0.6,0.4])
-                                        wagon_connector(spacing=10);
+                                        wagon_connector(spacing=PORTAL_SPACING);
 
-                                translate([0,85,0])
+                                translate([0,+BASE_WIDTH+PORTAL_SPACING,0])
                                     portal_reinforcement();
                             }
                         }
