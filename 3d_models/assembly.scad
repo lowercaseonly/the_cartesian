@@ -54,11 +54,13 @@ for (rail=[0,1])
 
             translate([MOTOR_SPACE,0,SLOT_PROF_WIDTH-20])
                 rotate([90,90,0])
-                    linear_slider(length=SPACE_X, pos=POS_X);
+                    linear_slider(length=SPACE_X, pos=POS_X)
+                        portal();
 
             translate([SPACE_X+MOTOR_SPACE,SLOT_PROF_HEIGHT,SLOT_PROF_WIDTH-20])
                 rotate([-90,90,0])
-                    linear_slider(length=SPACE_X, pos=SPACE_X-POS_X-BASE_WIDTH);
+                    linear_slider(length=SPACE_X, pos=SPACE_X-POS_X-BASE_WIDTH)
+                        portal();
 
         };
 
@@ -82,15 +84,6 @@ for (rail=[0,1])
                     bearing_mount();
             };
 
-
-translate([BASE_WIDTH+POS_X,-SLIDER_HEIGHT,SLOT_PROF_HEIGHT])
-    rotate([90,270,0])
-        portal();
-
-translate([POS_X,SPACE_Y+SLIDER_HEIGHT,SLOT_PROF_HEIGHT])
-    rotate([90,270,180])
-        portal();
-
 if (REINFORCEMENT){
     translate([BASE_WIDTH+POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,
                -SLIDER_HEIGHT,SLOT_PROF_HEIGHT])
@@ -109,14 +102,14 @@ if (REINFORCEMENT){
 
     translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING,
                -SLIDER_HEIGHT,
-               SLOT_PROF_HEIGHT+22])
+               SLOT_PROF_HEIGHT+20])
         rotate([90,270,0])
             color([0.6,0.6,0.4])
                 wagon_connector(spacing=10);
 
     translate([POS_X+BASE_WIDTH+PORTAL_REINFORCEMENT_SPACING-10,
                SPACE_Y+SLIDER_HEIGHT,
-               SLOT_PROF_HEIGHT+22])
+               SLOT_PROF_HEIGHT+19])
         rotate([90,270,180])
             color([0.6,0.6,0.4])
                 wagon_connector(spacing=10);
@@ -147,27 +140,17 @@ translate([-SLOT_PROF_CORNER+POS_X,
 
             translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
                 rotate([90,0,180])
-                    linear_slider(length=SPACE_Y-130, pos=POS_Y);
+                    linear_slider(length=SPACE_Y-130, pos=POS_Y)
+                        bridge(reinforcement=REINFORCEMENT);
 
             translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
                 rotate([90,0,90])
-                    linear_slider(length=SPACE_Y-130, pos=POS_Y);
-
+                    linear_slider(length=SPACE_Y-130, pos=POS_Y)
+                        rotate([0,0,180])
+                        bridge_reinforcement();
 
 
         };
-
-for (y_shift=[5,BASE_WIDTH+15])
-    translate([SLOT_PROF_WIDTH+POS_X+SLIDER_HEIGHT,
-               POS_Y+y_shift,
-               PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
-            union(){
-                rotate([0,270,180])
-                    bridge(reinforcement=REINFORCEMENT);
-                if (REINFORCEMENT)
-                    translate([-113,-75,70.5])
-                        bridge_reinforcement();
-            }
 
 
 //column
