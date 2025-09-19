@@ -73,7 +73,7 @@ module HGH20(length){
 }
 
 
-module linear_slider(length, pos, invert=false){
+module linear_slider(length, pos, invert=false, spacing=-1){
 
     HGH20(length=length);
 
@@ -81,6 +81,10 @@ module linear_slider(length, pos, invert=false){
 
     translate([0,pos_internal,WAGON_OFFSET])
         HGH20CA();
+
+    if (spacing>0)
+        translate([0,pos_internal+(invert?-1:1)*(BASE_WIDTH+spacing),WAGON_OFFSET])
+            HGH20CA();
 
     translate([0,pos_internal,SLIDER_HEIGHT])
         rotate([0,0,180])
