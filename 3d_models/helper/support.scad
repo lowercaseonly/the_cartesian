@@ -19,4 +19,5 @@ module support_base(height, length, thickness_height, thickness_length, width){
 
 
 // Sample Usage
-//support_base(10,10,1,1,10);
+//support_base(height=10,length=10,
+//             thickness_height=1,thickness_length=1,width=10);
