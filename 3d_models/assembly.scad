@@ -29,8 +29,8 @@ PORTAL_SPACING = 8;
 MOTOR_SPACE=200;
 
 // Printing Area
-SPACE_Y = 600;
 SPACE_X = 600;
+SPACE_Y = 600;
 SPACE_Z = 300;
 PORTAL_HEIGHT = 110; // TODO resolve by SPACE_Z based Formula
 
