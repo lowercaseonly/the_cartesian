@@ -82,17 +82,18 @@ for (rail=[0,1])
         };
 
 for (rail=[0,1])
-    translate([-80,MOTOR_FLANGE_WIDTH-(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2+rail*(SPACE_Y-SLOT_PROF_HEIGHT),SLOT_PROF_WIDTH])
-        union(){
-            rotate([0,0,-90])
-                motor_mount();
-            rotate([0,0,-90])
-                motor();
-            for (x_shift=[60,SPACE_X+100])
+    translate([-80,
+               MOTOR_FLANGE_WIDTH-(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2+rail*(SPACE_Y-SLOT_PROF_HEIGHT),
+               SLOT_PROF_WIDTH]){
+        rotate([0,0,-90])
+            motor_mount();
+        rotate([0,0,-90])
+            motor();
+        for (x_shift=[60,SPACE_X+100])
             translate([x_shift,-28,0])
                 rotate([0,0,-90])
                     bearing_mount();
-            };
+    };
 
 if (REINFORCEMENT){
 
