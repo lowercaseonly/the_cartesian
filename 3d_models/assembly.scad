@@ -25,7 +25,7 @@ use <components/column.scad>
 
 REINFORCEMENT = true;
 PORTAL_SPACING = 8;
-BRIDGE_SPACING = 20;
+BRIDGE_SPACING = 7;
 COLUMN_SPACING = 10;
 
 MOTOR_SPACE=200;
@@ -157,8 +157,8 @@ for (y_shift=[0,BASE_WIDTH+BRIDGE_SPACING])
                           pos=-POS_Z+SPACE_Z-2*BASE_WIDTH,
                           spacing=COLUMN_SPACING);
 
-translate([SLOT_PROF_WIDTH+POS_X+2*SLIDER_HEIGHT+BASE_THICKNESS,
-           POS_Y+110,
+translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS,
+           POS_Y+101,
            POS_Z])
     rotate([0,0,-90])
         column();
