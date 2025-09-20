@@ -23,6 +23,10 @@ SUPPORT_WALL_THICK = 5;
 SUPPORT_WALL_LEN = 42.5;
 SUPPORT_CORNER = 3;
 
+COL_BEAR_SUP_DIST = 40;
+COL_BEAR_SUP_HEIGHT = 20;
+COL_BEAR_SUP_LEN = 30;
+
 EFFECTOR_MOUNT_DIA = 43.0;
 EFFECTOR_MOUNT_LEN = 22.0;
 EFFECTOR_MOUNT_WALL_THICK = 10.0;
@@ -84,6 +88,14 @@ module column_lower(reinforcement=true){
                                 wall_thick=EFFECTOR_MOUNT_WALL_THICK,
                                 restrict_dia=5,
                                 restrict_thick=4);
+
+    translate([-COL_BEAR_SUP_DIST/2,0,BEARING_LEN+5])
+        rotate([0,-90,180])
+            support(height=COL_BEAR_SUP_HEIGHT,
+                    length=COL_BEAR_SUP_LEN,
+                    width=COL_BEAR_SUP_DIST,
+                    wall_thick=SUPPORT_WALL_THICK,
+                    corner=SUPPORT_CORNER);
 
     translate([SUPPORT_WALL_DIST/2,COLUMN_BASE_THICK,EFFECTOR_MOUNT_LEN])
         rotate([0,-90,0])
