@@ -161,5 +161,4 @@ translate([SLOT_PROF_WIDTH+POS_X+2*SLIDER_HEIGHT+BASE_THICKNESS,
            POS_Y+110,
            POS_Z])
     rotate([0,0,-90])
-        color([0.6,0.8,0.8])
-            column();
+        column();
