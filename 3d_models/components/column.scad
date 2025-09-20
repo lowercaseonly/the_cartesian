@@ -16,6 +16,8 @@ COLUMN_BASE_WIDTH = 101.0;
 COLUMN_BASE_HEIGHT = 110.0;
 COLUMN_BASE_THICK = 10.0;
 
+COLUMN_BASE_DIST = 70.0;
+
 SUPPORT_WALL_DIST = 74;
 SUPPORT_WALL_THICK = 5;
 SUPPORT_WALL_LEN = 42.5;
@@ -103,10 +105,10 @@ module column_lower(reinforcement=true){
 
 module column_upper(){
 
-    translate([0,0,150])
+    translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT])
         column_plate();
 
-    translate([0,0,150+COLUMN_BASE_HEIGHT-40])
+    translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-30])
         rotate([0,180,180])
             restricted_pillow_block(thickness=BEARING_LEN+5,
                                     length=COLUMN_BASE_WIDTH-45,
@@ -115,7 +117,8 @@ module column_upper(){
                                     wall_thick=EFFECTOR_MOUNT_WALL_THICK,
                                     restrict_dia=5,
                                     restrict_thick=4);
-    translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,260])
+
+    translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,220+COLUMN_BASE_DIST])
     rotate([180,0,0])
         motor_flange();
 
