@@ -33,7 +33,7 @@ module bridge(reinforcement=true){
                     HGH20CA_screws();
 
         for (y_shift=[-1,1])
-            translate([-6,y_shift*16,BASE_THICKNESS+7])
+            translate([-6,y_shift*M_SKREW_DIST_Y/2,BASE_THICKNESS+M_SKREW_SINK])
                 rotate([180,0,90])
                     m_skrew_eject();
 
