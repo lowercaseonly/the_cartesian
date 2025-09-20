@@ -111,7 +111,7 @@ if (REINFORCEMENT){
 translate([-SLOT_PROF_CORNER+POS_X,
            -SLOT_MOUNT_HEIGHT-SLIDER_HEIGHT,
            PORTAL_HEIGHT+SLOT_PROF_HEIGHT])
-    rotate([270,270,0]){
+    rotate([-90,-90,0]){
         NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100,
                   inventorize=true);
         translate([SLOT_PROF_HEIGHT,
