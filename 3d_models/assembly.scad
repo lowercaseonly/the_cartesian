@@ -26,6 +26,7 @@ use <components/column.scad>
 REINFORCEMENT = true;
 PORTAL_SPACING = 8;
 BRIDGE_SPACING = 20;
+COLUMN_SPACING = 10;
 
 MOTOR_SPACE=200;
 
@@ -146,15 +147,19 @@ translate([-SLOT_PROF_CORNER+POS_X,
 
 
 //column
-for (y_shift=[5,BASE_WIDTH+15])
+for (y_shift=[0,BASE_WIDTH+BRIDGE_SPACING])
     translate([POS_X+2*SLIDER_HEIGHT
                +SLOT_PROF_WIDTH+BASE_THICKNESS,
-               POS_Y-40+y_shift+2.5,
+               POS_Y-40+y_shift+100,
                POS_Z])
         rotate([90,0,-90])
-            linear_slider(length=SPACE_Z, pos=-POS_Z+SPACE_Z-2*BASE_WIDTH);
+            linear_slider(length=SPACE_Z,
+                          pos=-POS_Z+SPACE_Z-2*BASE_WIDTH,
+                          spacing=COLUMN_SPACING);
 
-translate([SLOT_PROF_WIDTH+POS_X+2*SLIDER_HEIGHT+BASE_THICKNESS,POS_Y+15,POS_Z])
+translate([SLOT_PROF_WIDTH+POS_X+2*SLIDER_HEIGHT+BASE_THICKNESS,
+           POS_Y+110,
+           POS_Z])
     rotate([0,0,-90])
         color([0.6,0.8,0.8])
             column();
