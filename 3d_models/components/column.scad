@@ -85,20 +85,13 @@ module column_lower(reinforcement=true){
                                 restrict_dia=5,
                                 restrict_thick=4);
 
-    difference(){
-        translate([SUPPORT_WALL_DIST/2,0,0])
-            rotate([0,-90,0])
-                support(height=SUPPORT_WALL_LEN,
-                        length=COLUMN_BASE_HEIGHT,
-                        thickness_height=COLUMN_BASE_THICK,
-                        thickness_length=EFFECTOR_MOUNT_LEN,
-                        width=SUPPORT_WALL_DIST,
-                        wall_thick=SUPPORT_WALL_THICK,
-                        corner=SUPPORT_CORNER);
-
-        translate([0,EFFECTOR_MOUNT_BASE_DIST+COLUMN_BASE_THICK-2,-NOTHING])
-            cylinder(h=EFFECTOR_MOUNT_LEN+2*NOTHING,d=EFFECTOR_MOUNT_DIA);
-    };
+    translate([SUPPORT_WALL_DIST/2,COLUMN_BASE_THICK,EFFECTOR_MOUNT_LEN])
+        rotate([0,-90,0])
+            support(height=SUPPORT_WALL_LEN-COLUMN_BASE_THICK,
+                    length=COLUMN_BASE_HEIGHT-EFFECTOR_MOUNT_LEN,
+                    width=SUPPORT_WALL_DIST,
+                    wall_thick=SUPPORT_WALL_THICK,
+                    corner=SUPPORT_CORNER);
 
 };
 
@@ -135,4 +128,4 @@ module column(){
 }
 
 
-column($fn=400);
+column($fn=100);
