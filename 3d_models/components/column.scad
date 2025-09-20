@@ -66,19 +66,7 @@ module column_plate(){
 }
 
 
-module column_lower(reinforcement=true){
-
-    bom_item("COLUMN");
-
-    column_plate();
-
-    translate([0,COLUMN_BASE_THICK,0])
-        pillow_block(thickness=EFFECTOR_MOUNT_LEN,
-                     length=COLUMN_BASE_WIDTH,
-                     center_dist=EFFECTOR_MOUNT_BASE_DIST,
-                     diameter=EFFECTOR_MOUNT_DIA,
-                     wall_thick=EFFECTOR_MOUNT_WALL_THICK,
-                     gap=true);
+module column_bearing(){
 
     rotate([0,0,180])
         restricted_pillow_block(thickness=BEARING_LEN+5,
@@ -96,6 +84,26 @@ module column_lower(reinforcement=true){
                     width=COL_BEAR_SUP_DIST,
                     wall_thick=SUPPORT_WALL_THICK,
                     corner=SUPPORT_CORNER);
+
+}
+
+
+module column_lower(reinforcement=true){
+
+    bom_item("COLUMN");
+
+    column_plate();
+
+    column_bearing();
+
+    translate([0,COLUMN_BASE_THICK,0])
+        pillow_block(thickness=EFFECTOR_MOUNT_LEN,
+                     length=COLUMN_BASE_WIDTH,
+                     center_dist=EFFECTOR_MOUNT_BASE_DIST,
+                     diameter=EFFECTOR_MOUNT_DIA,
+                     wall_thick=EFFECTOR_MOUNT_WALL_THICK,
+                     gap=true);
+
 
     translate([SUPPORT_WALL_DIST/2,COLUMN_BASE_THICK,EFFECTOR_MOUNT_LEN])
         rotate([0,-90,0])
