@@ -60,7 +60,7 @@ module column_plate(){
 }
 
 
-module column(reinforcement=true){
+module column_lower(reinforcement=true){
 
     bom_item("COLUMN");
 
@@ -120,7 +120,16 @@ module column_upper(){
         motor_flange();
 
 }
-column_upper();
+
+
+module column(){
+
+    color([0.6,0.8,0.8]){
+        column_lower();
+        column_upper();
+    }
+
+}
 
 
 column($fn=400);
