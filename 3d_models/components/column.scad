@@ -3,6 +3,7 @@ include <../helper/support.scad>
 include <../helper/m_skrew.scad>
 include <../helper/pillow_block.scad>
 include <../helper/motor.scad>
+include <../helper/motor_flange.scad>
 include <../helper/bearing.scad>
 
 /*
@@ -98,6 +99,28 @@ module column(reinforcement=true){
     };
 
 };
+
+
+module column_upper(){
+
+    translate([0,0,150])
+        column_plate();
+
+    translate([0,0,150+COLUMN_BASE_HEIGHT-40])
+        rotate([0,180,180])
+            restricted_pillow_block(thickness=BEARING_LEN+5,
+                                    length=COLUMN_BASE_WIDTH-45,
+                                    center_dist=MOTOR_BLOCK_HEIGHT/2-MOTOR_OFFSET,
+                                    diameter=BEARING_DIA_OUTER,
+                                    wall_thick=EFFECTOR_MOUNT_WALL_THICK,
+                                    restrict_dia=5,
+                                    restrict_thick=4);
+    translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,260])
+    rotate([180,0,0])
+        motor_flange();
+
+}
+column_upper();
 
 
 column($fn=400);
