@@ -12,16 +12,24 @@ CONN_HEAD_DIST = 10;
 CONN_SHAFT_DIA = 4;
 CONN_SHAFT_THICK = 11;
 
+TIGHT_FIT = 0.2;
 
-module connector(shift_x, shift_y, angle, shaft_len=30){
+module connector(shift_x, shift_y, angle, shaft_len=30, male=false){
     translate([shift_x, shift_y, 0])
         rotate([0,0,angle])
             for (head=[(-CONN_HEAD_COUNT/2)+.5:CONN_HEAD_COUNT/2])
-                translate([head*CONN_HEAD_DIST, 5, BASE_THICKNESS-CONN_THICK+0.01])
+                translate([head*CONN_HEAD_DIST,
+                           5,
+                           BASE_THICKNESS-CONN_THICK+0.01+(male?TIGHT_FIT:0)])
                     union(){
-                        cylinder(d=CONN_HEAD_DIA, h=CONN_THICK);
-                        translate([-CONN_SHAFT_DIA/2, -shaft_len, 0])
-                            cube([CONN_SHAFT_DIA, shaft_len, CONN_THICK]);
+                        cylinder(d=CONN_HEAD_DIA-(male?TIGHT_FIT:0),
+                                 h=CONN_THICK-(male?TIGHT_FIT:0));
+                        translate([-CONN_SHAFT_DIA/2+(male?TIGHT_FIT/2:0),
+                                   -shaft_len,
+                                   0])
+                            cube([CONN_SHAFT_DIA-(male?TIGHT_FIT:0),
+                                  shaft_len,
+                                  CONN_THICK-(male?TIGHT_FIT:0)]);
                     }
 }
 

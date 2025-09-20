@@ -10,31 +10,35 @@ include <../helper/linear_wagon.scad>
 
 BRIDGE_SPACING = 7;
 NUT_DIA = 14.5;
+NUT_DIA_INNER = 11;
 NUT_LEN = 80.0;
-NUT_DIST = 16;
+NUT_DIST = 10;
 COL_CON_WIDTH = 40;
-COL_CON_DEPTH = 25;
-COL_CON_HEIGHT = 35;
+COL_CON_DEPTH = 37;
+COL_CON_HEIGHT = 30;
 
 
 
 module column_connector(){
 
-    color([0.6,0.8,0.8]){
+    color([0.8,0.6,0.6]){
         wagon_connector(spacing=BRIDGE_SPACING,$fn=120);
 
         difference(){
             translate([-COL_CON_WIDTH/2,-COL_CON_DEPTH/2,BASE_THICKNESS])
                 cube([COL_CON_WIDTH, COL_CON_DEPTH, COL_CON_HEIGHT]);
 
-            translate([-NUT_LEN/2+10,0,BASE_THICKNESS+NUT_DIA/2+NUT_DIST])
+            translate([-NUT_LEN/2+25,0,BASE_THICKNESS+NUT_DIA/2+NUT_DIST])
                 rotate([0,90,0])
-                    rotate([0,0,30])
+                    rotate([0,0,30]){
                         cylinder(h=NUT_LEN,d=NUT_DIA,$fn=6);
+                        translate([0,0,-10])
+                            cylinder(h=NUT_LEN+100,d=NUT_DIA_INNER);
+                    }
         }
 
     }
 
 }
 
-column_connector();
+column_connector($fn=100);

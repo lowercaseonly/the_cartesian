@@ -150,19 +150,20 @@ translate([-SLOT_PROF_CORNER+POS_X,
 //column
 for (y_shift=[0,BASE_WIDTH+BRIDGE_SPACING])
     translate([POS_X+2*SLIDER_HEIGHT
-               +SLOT_PROF_WIDTH+BASE_THICKNESS,
-               POS_Y-40+y_shift+100,
+               +SLOT_PROF_WIDTH+BASE_THICKNESS-2.5,
+               POS_Y-40+y_shift+100-2.5,
                POS_Z])
         rotate([90,0,-90])
             linear_slider(length=SPACE_Z,
                           pos=-POS_Z+SPACE_Z-2*BASE_WIDTH,
                           spacing=COLUMN_SPACING);
 
-translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS,
+translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS-2.5,
            POS_Y+101,
            POS_Z])
     rotate([0,0,-90]){
-        column();
+        translate([2.5,0,0])
+            column();
         translate([2.5,-46,70])
             rotate([0,90,90])
                 column_connector();
