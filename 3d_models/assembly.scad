@@ -25,6 +25,7 @@ use <components/column.scad>
 
 REINFORCEMENT = true;
 PORTAL_SPACING = 8;
+BRIDGE_SPACING = 20;
 
 MOTOR_SPACE=200;
 
@@ -63,7 +64,8 @@ for (rail=[0,1])
                            (side==1?SLOT_PROF_HEIGHT:0),
                            SLOT_PROF_WIDTH-20])
                     rotate([-side*90,90,0])
-                        linear_slider(length=SPACE_X, pos=POS_X, invert=(side==1)){
+                        linear_slider(length=SPACE_X, pos=POS_X,
+                                      invert=(side==1), spacing=PORTAL_SPACING){
                             portal();
                             if (REINFORCEMENT){
                                 translate([0,
@@ -126,16 +128,16 @@ translate([-SLOT_PROF_CORNER+POS_X,
 
         translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
             rotate([90,0,180])
-                linear_slider(length=SPACE_Y-130, pos=POS_Y)
-                    for (y_shift=[0,100])
+                linear_slider(length=SPACE_Y-130, pos=POS_Y, spacing=BRIDGE_SPACING)
+                    for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
                         translate([0,y_shift,0])
                             bridge(reinforcement=REINFORCEMENT);
 
         translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
             rotate([90,0,90])
-                linear_slider(length=SPACE_Y-130, pos=POS_Y)
+                linear_slider(length=SPACE_Y-130, pos=POS_Y, spacing=BRIDGE_SPACING)
                     rotate([0,0,180])
-                        for (y_shift=[0,100])
+                        for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
                             translate([0,-y_shift,0])
                                 bridge_reinforcement();
 
