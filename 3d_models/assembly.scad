@@ -14,6 +14,7 @@ use <components/bridge_reinforcement.scad>
 use <components/motor_mount.scad>
 use <components/bearing_mount.scad>
 use <components/column.scad>
+use <components/column_connector.scad>
 
 
 /*
@@ -160,5 +161,9 @@ for (y_shift=[0,BASE_WIDTH+BRIDGE_SPACING])
 translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS,
            POS_Y+101,
            POS_Z])
-    rotate([0,0,-90])
+    rotate([0,0,-90]){
         column();
+        translate([2.5,-46,70])
+            rotate([0,90,90])
+                column_connector();
+    }
