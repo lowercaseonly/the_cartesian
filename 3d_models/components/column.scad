@@ -122,14 +122,8 @@ module column_upper(){
         column_plate();
 
     translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-30])
-        rotate([0,180,180])
-            restricted_pillow_block(thickness=BEARING_LEN+5,
-                                    length=COLUMN_BASE_WIDTH-45,
-                                    center_dist=MOTOR_BLOCK_HEIGHT/2-MOTOR_OFFSET,
-                                    diameter=BEARING_DIA_OUTER,
-                                    wall_thick=EFFECTOR_MOUNT_WALL_THICK,
-                                    restrict_dia=5,
-                                    restrict_thick=4);
+        rotate([0,180,0])
+            column_bearing();
 
     translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,220+COLUMN_BASE_DIST])
     rotate([180,0,0])
