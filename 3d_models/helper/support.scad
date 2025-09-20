@@ -4,6 +4,9 @@
   Description: Support Structure Helper Functions
 */
 
+NOTHING = 0.05;
+
+
 
 module support_base(height, length, thickness_height, thickness_length, width){
 
@@ -24,8 +27,8 @@ module support_cutout(trough_len,trough_width,trough_height,corner){
                corner,
                corner])
         minkowski(){
-            cube([trough_len-2*corner,
-                  trough_width-2*corner,
+            cube([trough_len-2*corner+NOTHING,
+                  trough_width-2*corner+NOTHING,
                   trough_height-2*corner]);
             sphere(r=corner);
         };
@@ -33,12 +36,12 @@ module support_cutout(trough_len,trough_width,trough_height,corner){
 }
 
 
-module support(height, length, thickness_height, thickness_length,
+module support(height, length, thickness_height=0, thickness_length=0,
                width, wall_thick, corner){
 
     difference(){
         support_base(height, length, thickness_height, thickness_length, width);
-        translate([thickness_length, thickness_height, wall_thick])
+        translate([thickness_length-NOTHING, thickness_height-NOTHING, wall_thick])
             support_cutout(trough_len=length+corner, trough_width=width+corner,
                            trough_height=width-wall_thick*2, corner=corner);
     }
