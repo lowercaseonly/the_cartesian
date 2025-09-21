@@ -62,10 +62,10 @@ module m_skrew_eject(length=5){
 }
 
 
-module m_nut(hole=false, elongate=false, fitting=0.0){
+module m_nut(hole=false, elongate=false, fitting=0.0, standing=false){
 
     difference(){
-        union(){
+        rotate([0, 0, standing?30:0]){
             cylinder(h=M_NUT_HEIGHT+fitting, d=M_NUT_DIA+fitting, $fn=6);
             if (elongate)
                 translate([-M_NUT_DIA/2, 0, 0])
