@@ -1,4 +1,3 @@
-include <../helper/bom.scad>
 use <wagon_connector.scad>
 include <../helper/linear_wagon.scad>
 
@@ -22,7 +21,7 @@ COL_CON_HEIGHT = 30;
 module column_connector(){
 
     color([0.8,0.6,0.6]){
-        wagon_connector(spacing=BRIDGE_SPACING,$fn=120);
+        wagon_connector(spacing=BRIDGE_SPACING, attachment="COLUMN");
 
         difference(){
             translate([-COL_CON_WIDTH/2,-COL_CON_DEPTH/2,BASE_THICKNESS])
