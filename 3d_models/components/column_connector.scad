@@ -8,13 +8,17 @@ include <../helper/linear_wagon.scad>
 */
 
 BRIDGE_SPACING = 7;
+
 NUT_DIA = 14.5;
 NUT_DIA_INNER = 11;
 NUT_LEN = 30.0;
 NUT_DIST = 10;
+
 COL_CON_WIDTH = 40;
 COL_CON_DEPTH = 37;
 COL_CON_HEIGHT = 30;
+
+FITTING = 0.2;
 
 
 
@@ -32,7 +36,7 @@ module column_connector(){
             translate([-NUT_LEN/2+5.6,0,BASE_THICKNESS+NUT_DIA/2+NUT_DIST])
                 rotate([0,90,0])
                     rotate([0,0,30]){
-                        cylinder(h=NUT_LEN,d=NUT_DIA,$fn=6);
+                        cylinder(h=NUT_LEN, d=NUT_DIA+FITTING, $fn=6);
                         translate([0,0,-20])
                             cylinder(h=NUT_LEN+200,d=NUT_DIA_INNER);
                     }
