@@ -23,7 +23,8 @@ SUPPORT_WALL_THICK = 5;
 SUPPORT_WALL_LEN = 31.3;
 SUPPORT_CORNER = 2;
 
-COL_BEAR_SUP_DIST = 40;
+COL_BEAR_SUP_DIST = 34;
+COL_BEAR_SUP_WALL_THICK = 4;
 COL_BEAR_SUP_HEIGHT = 20;
 COL_BEAR_SUP_LEN = 30;
 
@@ -82,7 +83,7 @@ module column_bearing(){
             support(height=COL_BEAR_SUP_HEIGHT,
                     length=COL_BEAR_SUP_LEN,
                     width=COL_BEAR_SUP_DIST,
-                    wall_thick=SUPPORT_WALL_THICK,
+                    wall_thick=COL_BEAR_SUP_WALL_THICK,
                     corner=SUPPORT_CORNER);
 
 }
