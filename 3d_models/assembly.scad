@@ -40,7 +40,7 @@ PORTAL_HEIGHT = 110; // TODO resolve by SPACE_Z based Formula
 // Printer Head Position
 POS_X = 250;
 POS_Y = 200;
-POS_Z = 100;
+POS_Z = 100; // 110/300: [65-135]
 
 // Counter Axis (Slider/Profile/Component) Dimensions
 OFFSET_Y = 90;
@@ -168,7 +168,7 @@ translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS-2.5,
     rotate([0,0,-90]){
         translate([2.5,0,0])
             column();
-        translate([2.5,-46,70])
+        translate([2.5,-46+2.5,70])
             rotate([0,90,90])
                 column_connector();
     }
