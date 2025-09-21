@@ -18,10 +18,10 @@ COLUMN_BASE_THICK = 10.0;
 
 COLUMN_BASE_DIST = 70.0;
 
-SUPPORT_WALL_DIST = 74;
+SUPPORT_WALL_DIST = 75.2;
 SUPPORT_WALL_THICK = 5;
-SUPPORT_WALL_LEN = 42.5;
-SUPPORT_CORNER = 3;
+SUPPORT_WALL_LEN = 31.3;
+SUPPORT_CORNER = 2;
 
 COL_BEAR_SUP_DIST = 40;
 COL_BEAR_SUP_HEIGHT = 20;
@@ -59,7 +59,7 @@ module column_plate(){
                     rotate([90,0,0])
                         union(){
                             m_skrew_shaft();
-                            m_nut(fitting=FITTING);
+                            m_nut(fitting=FITTING, standing=true);
                         }
     }
 
@@ -107,7 +107,7 @@ module column_lower(reinforcement=true){
 
     translate([SUPPORT_WALL_DIST/2,COLUMN_BASE_THICK,EFFECTOR_MOUNT_LEN])
         rotate([0,-90,0])
-            support(height=SUPPORT_WALL_LEN-COLUMN_BASE_THICK,
+            support(height=SUPPORT_WALL_LEN,
                     length=COLUMN_BASE_HEIGHT-EFFECTOR_MOUNT_LEN,
                     width=SUPPORT_WALL_DIST,
                     wall_thick=SUPPORT_WALL_THICK,
