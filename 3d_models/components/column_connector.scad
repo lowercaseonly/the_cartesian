@@ -24,7 +24,9 @@ module column_connector(){
         wagon_connector(spacing=BRIDGE_SPACING, attachment="COLUMN");
 
         difference(){
-            translate([-COL_CON_WIDTH/2,-COL_CON_DEPTH/2,BASE_THICKNESS])
+            translate([-BASE_HEIGHT/2+BASE_CORNER,
+                       -COL_CON_DEPTH/2,
+                       BASE_THICKNESS])
                 cube([COL_CON_WIDTH, COL_CON_DEPTH, COL_CON_HEIGHT]);
 
             translate([-NUT_LEN/2+25,0,BASE_THICKNESS+NUT_DIA/2+NUT_DIST])
