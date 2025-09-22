@@ -164,11 +164,15 @@ for (y_shift=[0,BASE_WIDTH+BRIDGE_SPACING])
 
 translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS-2.5,
            POS_Y+101,
-           POS_Z])
-    rotate([0,0,-90]){
-        translate([2.5,0,0])
-            column();
+           100])
+    rotate([0,0,-90])
         translate([2.5,-46+2.5,70])
             rotate([0,90,90])
                 column_connector();
-    }
+
+translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS-2.5,
+           POS_Y+101,
+           POS_Z])
+    rotate([0,0,-90])
+        translate([2.5,0,0])
+            column();
