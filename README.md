@@ -24,9 +24,9 @@ The basic mechnical structure of the described hardware consists of three linear
 ### General Considerations
 The hardware is based on standard parts around which customized connectors are built. The exact bill of materials can be found in a dedicated file in the root directory of this repository and includes:
 
- - `NUT8` aluminum profiles
- - `M5` screws and nuts
- - `HGH20` linear guide blocks and rails
+ - `NUT8` aluminum profiles (more about [T-Slot structural Framing](https://en.wikipedia.org/wiki/T-slot_structural_framing))
+ - `M5` screws and nuts (more about [metric screws](https://en.wikipedia.org/wiki/ISO_metric_screw_thread))
+ - `HGH20` linear guide blocks and rails (more about [HIWIN](https://www.hiwin.tw/))
  - `NEMA 23` stepper motors (more about the [NEMA](https://www.nema.org/Standards/view/Motion-Position-Control-Motors-Controls-and-Feedback-Devices) Standard)
 
 
