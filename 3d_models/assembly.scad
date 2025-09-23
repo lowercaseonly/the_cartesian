@@ -67,7 +67,8 @@ for (rail=[0,1])
                            SLOT_PROF_WIDTH-20])
                     rotate([-side*90,90,0])
                         linear_slider(length=SPACE_X, pos=POS_X,
-                                      invert=(side==1), spacing=PORTAL_SPACING){
+                                      invert=(side==1),
+                                      spacing=PORTAL_SPACING){
                             portal();
                             if (REINFORCEMENT){
                                 translate([0,
@@ -87,7 +88,9 @@ for (rail=[0,1])
 
 for (rail=[0,1])
     translate([-80,
-               MOTOR_FLANGE_WIDTH-(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2+rail*(SPACE_Y-SLOT_PROF_HEIGHT),
+               MOTOR_FLANGE_WIDTH
+               -(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2
+               +rail*(SPACE_Y-SLOT_PROF_HEIGHT),
                SLOT_PROF_WIDTH]){
         rotate([0,0,-90])
             motor_mount();
@@ -130,14 +133,16 @@ translate([-SLOT_PROF_CORNER+POS_X,
 
         translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
             rotate([90,0,180])
-                linear_slider(length=SPACE_Y-130, pos=POS_Y, spacing=BRIDGE_SPACING)
+                linear_slider(length=SPACE_Y-130,
+                              pos=POS_Y, spacing=BRIDGE_SPACING)
                     for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
                         translate([0,y_shift,0])
                             bridge(reinforcement=REINFORCEMENT);
 
         translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
             rotate([90,0,90])
-                linear_slider(length=SPACE_Y-130, pos=POS_Y, spacing=BRIDGE_SPACING)
+                linear_slider(length=SPACE_Y-130,
+                              pos=POS_Y, spacing=BRIDGE_SPACING)
                     rotate([0,0,180]){
                         for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
                             translate([0,-y_shift,0])
