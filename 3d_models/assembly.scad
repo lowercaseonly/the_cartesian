@@ -47,70 +47,73 @@ OFFSET_Y = 90;
 
 
 
-// frame
-for (rail=[0,1])
-    translate([rail*(SPACE_X+80),SLOT_PROF_HEIGHT,0])
-        rotate([90,0,180])
-            NUT8_45x2(length=SPACE_Y-2*SLOT_PROF_HEIGHT,
-                      inventorize=true);
+module portal_assembly(){
 
-// portal
-for (rail=[0,1])
-    translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)]){
-            rotate([90,0,90])
-                    NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
-                              inventorize=true);
+    // frame
+    for (rail=[0,1])
+        translate([rail*(SPACE_X+80),SLOT_PROF_HEIGHT,0])
+            rotate([90,0,180])
+                NUT8_45x2(length=SPACE_Y-2*SLOT_PROF_HEIGHT,
+                          inventorize=true);
 
-            for (side=[-1,1])
-                translate([MOTOR_SPACE+(side==1?SPACE_X:0),
-                           (side==1?SLOT_PROF_HEIGHT:0),
-                           SLOT_PROF_WIDTH-20])
-                    rotate([-side*90,90,0])
-                        linear_slider(length=SPACE_X, pos=POS_X,
-                                      invert=(side==1),
-                                      spacing=PORTAL_SPACING){
-                            portal();
-                            if (REINFORCEMENT){
-                                translate([0,
-                                           side*(BASE_WIDTH+PORTAL_SPACING)/2,
-                                           0])
-                                    color([0.6,0.6,0.4])
-                                        wagon_connector(spacing=PORTAL_SPACING);
+    // main rails
+    for (rail=[0,1])
+        translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)]){
+                rotate([90,0,90])
+                        NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
+                                  inventorize=true);
 
-                                translate([0,
-                                           side*(BASE_WIDTH+PORTAL_SPACING),
-                                           0])
-                                    portal_reinforcement();
+                for (side=[-1,1])
+                    translate([MOTOR_SPACE+(side==1?SPACE_X:0),
+                               (side==1?SLOT_PROF_HEIGHT:0),
+                               SLOT_PROF_WIDTH-20])
+                        rotate([-side*90,90,0])
+                            linear_slider(length=SPACE_X, pos=POS_X,
+                                          invert=(side==1),
+                                          spacing=PORTAL_SPACING){
+                                portal();
+                                if (REINFORCEMENT){
+                                    translate([0,
+                                               side*(BASE_WIDTH+PORTAL_SPACING)/2,
+                                               0])
+                                        color([0.6,0.6,0.4])
+                                            wagon_connector(spacing=PORTAL_SPACING);
+
+                                    translate([0,
+                                               side*(BASE_WIDTH+PORTAL_SPACING),
+                                               0])
+                                        portal_reinforcement();
+                                }
                             }
-                        }
 
+            };
+
+    for (rail=[0,1])
+        translate([-80,
+                   MOTOR_FLANGE_WIDTH
+                   -(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2
+                   +rail*(SPACE_Y-SLOT_PROF_HEIGHT),
+                   SLOT_PROF_WIDTH]){
+            rotate([0,0,-90])
+                motor_mount();
+            rotate([0,0,-90])
+                motor();
+            for (x_shift=[60,SPACE_X+100])
+                translate([x_shift,-28,0])
+                    rotate([0,0,-90])
+                        bearing_mount();
         };
 
-for (rail=[0,1])
-    translate([-80,
-               MOTOR_FLANGE_WIDTH
-               -(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2
-               +rail*(SPACE_Y-SLOT_PROF_HEIGHT),
-               SLOT_PROF_WIDTH]){
-        rotate([0,0,-90])
-            motor_mount();
-        rotate([0,0,-90])
-            motor();
-        for (x_shift=[60,SPACE_X+100])
-            translate([x_shift,-28,0])
-                rotate([0,0,-90])
-                    bearing_mount();
-    };
+    if (REINFORCEMENT){
 
-if (REINFORCEMENT){
+        translate([POS_X+37,-SLIDER_HEIGHT,97])
+            rotate([180,0,90])
+                color([0.6,0.6,0.4])
+                    nut_mount();
 
-    translate([POS_X+37,-SLIDER_HEIGHT,97])
-        rotate([180,0,90])
-            color([0.6,0.6,0.4])
-                nut_mount();
+    }
 
 }
-
 
 //bridge
 translate([-SLOT_PROF_CORNER+POS_X,
@@ -181,3 +184,6 @@ translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS-2.5,
     rotate([0,0,-90])
         translate([2.5,0,0])
             column();
+
+
+portal_assembly();
