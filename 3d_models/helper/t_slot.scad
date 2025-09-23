@@ -111,6 +111,10 @@ module NUT8_mount(height=SLOT_MOUNT_HEIGHT, length=SLOT_MOUNT_LENGTH,
             }
     }
 
+    translate([0,SLOT_PROF_WIDTH,height])
+        rotate([180,0,0])
+            children();
+
 }
 
 
