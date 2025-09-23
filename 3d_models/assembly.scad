@@ -71,7 +71,14 @@ module portal_assembly(){
                             linear_slider(length=SPACE_X, pos=POS_X,
                                           invert=(side==1),
                                           spacing=PORTAL_SPACING){
-                                portal();
+
+                                if ((rail==0)&&(side==-1)){
+                                    portal()
+                                        children();
+                                } else {
+                                    portal();
+                                }
+
                                 if (REINFORCEMENT){
                                     translate([0,
                                                side*(BASE_WIDTH+PORTAL_SPACING)/2,
