@@ -143,10 +143,13 @@ module bridge_assembly(){
     translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
         rotate([90,0,180])
             linear_slider(length=SPACE_Y-130,
-                          pos=POS_Y, spacing=BRIDGE_SPACING)
-                for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
-                    translate([0,y_shift,0])
-                        bridge(reinforcement=REINFORCEMENT);
+                          pos=POS_Y, spacing=BRIDGE_SPACING){
+                translate([0,-BASE_WIDTH-BRIDGE_SPACING,0])
+                    bridge(reinforcement=REINFORCEMENT);
+                translate([0,0,0])
+                    bridge(reinforcement=REINFORCEMENT)
+                        children();
+            }
 
     translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
         rotate([90,0,90])
@@ -165,35 +168,24 @@ module bridge_assembly(){
 
 
 module column_assembly(){
-    
-    for (y_shift=[0,BASE_WIDTH+BRIDGE_SPACING])
-        translate([POS_X+2*SLIDER_HEIGHT
-                   +SLOT_PROF_WIDTH+BASE_THICKNESS-2.5,
-                   POS_Y-40+y_shift+100-2.5,
-                   POS_Z])
-            rotate([90,0,-90])
+
+    for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
+        translate([120.2+POS_Z, y_shift, WAGON_HEIGHT+WAGON_OFFSET])
+            rotate([0,180,90])
                 linear_slider(length=SPACE_Z,
-                              pos=-POS_Z+SPACE_Z-2*BASE_WIDTH,
+                              pos=POS_Z,
                               spacing=COLUMN_SPACING);
 
-    translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS-2.5,
-               POS_Y+101,
-               100])
-        rotate([0,0,-90])
-            translate([2.5,-46+2.5,70])
-                rotate([0,90,90])
-                    column_connector();
+    translate([-12.0, -BASE_WIDTH/2-BRIDGE_SPACING/2, -BASE_THICKNESS])
+        column_connector();
 
-    translate([POS_X+SLOT_PROF_WIDTH+2*SLIDER_HEIGHT+BASE_THICKNESS-2.5,
-               POS_Y+101,
-               POS_Z])
-        rotate([0,0,-90])
-            translate([2.5,0,0])
+    translate([POS_Z-180,-41,WAGON_HEIGHT+WAGON_OFFSET])
+        rotate([90,0,90])
                 column();
 
 }
 
 
 portal_assembly()
-    bridge_assembly();
-column_assembly();
+    bridge_assembly()
+        column_assembly();

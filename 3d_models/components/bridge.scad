@@ -39,6 +39,9 @@ module bridge(reinforcement=true){
 
     }
 
+    translate([WAGON_OFFSET,0,BASE_THICKNESS])
+        children();
+
 };
 
 
