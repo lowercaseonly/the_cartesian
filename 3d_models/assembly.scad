@@ -143,10 +143,13 @@ module bridge_assembly(){
     translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
         rotate([90,0,180])
             linear_slider(length=SPACE_Y-130,
-                          pos=POS_Y, spacing=BRIDGE_SPACING)
-                for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
-                    translate([0,y_shift,0])
-                        bridge(reinforcement=REINFORCEMENT);
+                          pos=POS_Y, spacing=BRIDGE_SPACING){
+                translate([0,-BASE_WIDTH-BRIDGE_SPACING,0])
+                    bridge(reinforcement=REINFORCEMENT);
+                translate([0,0,0])
+                    bridge(reinforcement=REINFORCEMENT)
+                        children();
+            }
 
     translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
         rotate([90,0,90])
