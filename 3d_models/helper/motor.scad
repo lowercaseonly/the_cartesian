@@ -44,6 +44,12 @@ module motor(){
 
         }
 
+    translate([MOTOR_BLOCK_WIDTH/2,
+               MOTOR_SHAFT_LEN+MOTOR_CON_LEN,
+               MOTOR_BLOCK_HEIGHT/2])
+        rotate([-90,0,0])
+            children();
+
 };
 
 // Sample Usage
