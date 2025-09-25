@@ -57,11 +57,10 @@ module column_plate(){
                            COLUMN_BASE_THICK+NOTHING,
                            RAIL_MOUNT_HOLE_SHIFT
                            +shift_y*RAIL_MOUNT_HOLE_DIST])
-                    rotate([90,0,0])
-                        union(){
-                            m_skrew_shaft();
-                            m_nut(fitting=FITTING, standing=true);
-                        }
+                    rotate([90,0,0]){
+                        m_skrew_shaft();
+                        m_nut(fitting=FITTING, standing=true);
+                    }
     }
 
 }
