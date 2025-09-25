@@ -29,8 +29,7 @@ module motor(){
                     cube([MOTOR_BLOCK_WIDTH,MOTOR_BLOCK_LENGTH,MOTOR_BLOCK_HEIGHT]);
 
                 translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
-                    rotate([-90,0,0])
-                        union(){
+                    rotate([-90,0,0]){
                             cylinder(h=MOTOR_CON_LEN,d=MOTOR_CON_DIA);
                             cylinder(h=MOTOR_SHAFT_LEN+MOTOR_CON_LEN,
                                      d=MOTOR_SHAFT_DIA);
