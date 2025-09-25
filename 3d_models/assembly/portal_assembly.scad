@@ -1,4 +1,9 @@
 
+/*
+  Author: Johannes Bayer, 2025
+  License: MIT
+  Description: X-Axis (Portal) Assembly
+*/
 
 
 module portal_assembly(){

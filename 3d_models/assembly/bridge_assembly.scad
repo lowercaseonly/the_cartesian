@@ -1,3 +1,10 @@
+/*
+  Author: Johannes Bayer, 2025
+  License: MIT
+  Description: Y-Axis (Bridge) Assembly
+*/
+
+
 module bridge_assembly(){
 
     NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100,

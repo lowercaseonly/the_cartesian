@@ -1,3 +1,10 @@
+/*
+  Author: Johannes Bayer, 2025
+  License: MIT
+  Description: Z-Axis (Column) Assembly
+*/
+
+
 module column_assembly(){
 
     for (y_shift=[0,-BASE_WIDTH-BRIDGE_SPACING])
