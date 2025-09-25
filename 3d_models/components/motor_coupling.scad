@@ -1,8 +1,8 @@
 include <../helper/bom.scad>
 include <../helper/motor.scad>
+include <../helper/threaded_rod.scad>
 
 
-THEADED_ROD_DIA_OUTER = 8.0;
 THEADED_ROD_LEN_ATTACH = 16.0;
 THEADED_ROD_MOTOR_DIST = 8.0;
 
