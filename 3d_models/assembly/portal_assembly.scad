@@ -31,7 +31,7 @@ module portal_assembly(){
                           inventorize=true);
 
     // main rails
-    for (rail=[0,1])
+    for (rail=[0,1]){
         translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)]){
                 rotate([90,0,90])
                         NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
@@ -69,6 +69,17 @@ module portal_assembly(){
 
             };
 
+        if (REINFORCEMENT)
+            for (y_shift=[0,PORTAL_SPACING+BASE_WIDTH])
+                translate([POS_X+37.3+y_shift,
+                           -SLIDER_HEIGHT+rail*(SPACE_Y-SLOT_PROF_HEIGHT),
+                           94.3])
+                    rotate([180,0,90])
+                        color([0.6,0.6,0.4])
+                            nut_mount();
+
+    }
+
     for (rail=[0,1])
         translate([-80,
                    MOTOR_FLANGE_WIDTH
@@ -84,15 +95,6 @@ module portal_assembly(){
                     rotate([0,0,-90])
                         bearing_mount();
         };
-
-    if (REINFORCEMENT){
-
-        translate([POS_X+37,-SLIDER_HEIGHT,97])
-            rotate([180,0,90])
-                color([0.6,0.6,0.4])
-                    nut_mount();
-
-    }
 
 }
 
