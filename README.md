@@ -7,15 +7,20 @@
 
 ```
 .
-│   README.md                  # This File
-│   bom.csv                    # Bill of Materials
-└───3d_models                  # Hardware 3D Models
-│   │   assembly.scad          # Overall Mechanical Assembly
-│   └───helper                 # Helper Models (Shared between different Machine Parts)
+│   README.md                      # This File
+│   bom.csv                        # Bill of Materials
+└───3d_models                      # Hardware 3D Models
+│   └───assembly                   # Compositions of Components
+│   │   │   parameter.scad         # Global Assembly Parameters
+│   │   │   portal_assembly.scad   # X-Axis Assembly
+│   │   │   bridge_assembly.scad   # Y-Axis Assembly
+│   │   │   column_assembly.scad   # Z-Axis Assembly
+│   │   │   assembly.scad          # Overall Assembly
+│   └───helper                     # Helper Models (Shared between different Machine Parts)
 │   │   ...
-│   └───components             # Printable Component Models
+│   └───components                 # Printable Component Models
 │       ...
-└───src                        # Source Code
+└───src                            # Source Code
 ```
 
 ## Mechanical Setup
