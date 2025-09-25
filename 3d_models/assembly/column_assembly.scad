@@ -1,8 +1,21 @@
+include <parameter.scad>
+
+include <../helper/t_slot.scad>
+include <../helper/linear_wagon.scad>
+include <../helper/motor_flange.scad>
+include <../helper/motor.scad>
+
+use <../components/motor_mount.scad>
+use <../components/bearing_mount.scad>
+use <../components/column.scad>
+use <../components/column_connector.scad>
+
 /*
   Author: Johannes Bayer, 2025
   License: MIT
   Description: Z-Axis (Column) Assembly
 */
+
 
 
 module column_assembly(){
@@ -22,3 +35,6 @@ module column_assembly(){
                 column();
 
 }
+
+
+column_assembly();

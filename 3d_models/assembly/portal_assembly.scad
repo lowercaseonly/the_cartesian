@@ -1,9 +1,23 @@
+include <parameter.scad>
+
+include <../helper/t_slot.scad>
+include <../helper/linear_wagon.scad>
+include <../helper/motor_flange.scad>
+include <../helper/motor.scad>
+
+use <../components/portal.scad>
+use <../components/portal_reinforcement.scad>
+use <../components/nut_mount.scad>
+use <../components/wagon_connector.scad>
+use <../components/motor_mount.scad>
+use <../components/bearing_mount.scad>
 
 /*
   Author: Johannes Bayer, 2025
   License: MIT
   Description: X-Axis (Portal) Assembly
 */
+
 
 
 module portal_assembly(){
@@ -80,3 +94,5 @@ module portal_assembly(){
     }
 
 }
+
+portal_assembly();
