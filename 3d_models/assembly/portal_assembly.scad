@@ -4,6 +4,7 @@ include <../helper/t_slot.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/motor_flange.scad>
 include <../helper/motor.scad>
+include <../helper/threaded_rod.scad>
 
 use <../components/portal.scad>
 use <../components/portal_reinforcement.scad>
@@ -77,7 +78,8 @@ module portal_assembly(){
             rotate([0,0,-90])
                 motor_mount();
             rotate([0,0,-90])
-                motor();
+                motor()
+                    threaded_rod(length=SPACE_X);
             for (x_shift=[60,SPACE_X+100])
                 translate([x_shift,-28,0])
                     rotate([0,0,-90])
