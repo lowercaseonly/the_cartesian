@@ -29,9 +29,9 @@ module bridge_assembly(){
                2*SLOT_PROF_HEIGHT+SLOT_WIDTH,
                SPACE_Y+70])
         rotate([-90,0,-90]){
-            motor()
-                threaded_rod(length=SPACE_Y);
-            motor_mount(double_t_slot=true);
+            motor_mount(double_t_slot=true)
+                motor()
+                    threaded_rod(length=SPACE_Y);
             for (y_shift=[70,SPACE_Y+20])
                 translate([28.2,y_shift,0])
                     rotate([0,0,180])
