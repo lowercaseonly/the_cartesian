@@ -1,8 +1,8 @@
 $fn=20;
 
-use <assembly/portal_assembly.scad>
-use <assembly/bridge_assembly.scad>
-use <assembly/column_assembly.scad>
+use <portal_assembly.scad>
+use <bridge_assembly.scad>
+use <column_assembly.scad>
 
 /*
   Author: Johannes Bayer, 2025
