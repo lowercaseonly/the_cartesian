@@ -43,7 +43,7 @@ Please Note:
 
 ### Overall Assembly
 ![Overall Assembly](./docs/assembly.png)
-In order to validate the designs of individual components as well as for simulation and illustration purposes, the assembly of the overall machine has been created aggregating the models of individual components. Assembly files can be found in the `3d_models/assembly` folder.
+In order to validate the designs of individual components as well as for simulation and illustration purposes, the assembly of the overall machine has been created aggregating the models of individual (printable and off-the-shelf) components. Assembly files can be found in the `3d_models/assembly` folder. Here, the overall `assembly.scad` file utilizes the individual axis assemblies by geometrically linking them (using OpenSCAD's  `children()` transform).
 
 
 ### The Portal (X-Axis)
