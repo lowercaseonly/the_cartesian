@@ -35,16 +35,17 @@ The hardware is based on standard parts around which customized connectors are b
  - `NEMA 23` stepper motors (more about the [NEMA](https://www.nema.org/Standards/view/Motion-Position-Control-Motors-Controls-and-Feedback-Devices) Standard)
 
 
-Please Note:
+### Design Principles
+The hardware of this project is designed adhering to some basic principles:
 
  - The 3D Models are given as [OpenSCAD](https://openscad.org/) Files
  - All numerical values in the 3D model files are given in [mm](https://en.wikipedia.org/wiki/Millimetre)
  - Parametrization is used whenever possible. For example, the exact printing area can be specified by three individual parameters
+ - A [tagging function](./3d_models/helper/bom.scad) is used in all component functions generate the bill of material automatically
 
 ### Overall Assembly
 ![Overall Assembly](./docs/assembly.png)
 In order to validate the designs of individual components as well as for simulation and illustration purposes, the assembly of the overall machine has been created aggregating the models of individual (printable and off-the-shelf) components. All assembly files can be found in the [3d_models/assembly](./3d_models/assembly) folder. Here, the overall [assembly.scad](./3d_models/assembly/assembly.scad) file utilizes the individual axis assemblies by geometrically linking them (using OpenSCAD's  `children()` transform).
-
 
 ### The Portal (X-Axis)
 The X-Axis (also referred to as `portal`) consists of the main structural, rectangular frame build from T-slotted (aluminum) profiles. On this frame, two pairs of linear guide rails are mounted which commonly carry another T-slotted profile (the bridge). Each pair of guide rails is driven by a dedicated motor.
