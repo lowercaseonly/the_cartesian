@@ -34,6 +34,10 @@ module nut_mount(){
                     nut_mount_connector(length=MOUNT_HEIGHT+2*TOLERANCE);
     };
 
+    translate([0,-20,0])
+        rotate([0,180,0])
+            children();
+
 }
 
 
