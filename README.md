@@ -41,6 +41,11 @@ Please Note:
  - All numerical values in the 3D model files are given in [mm](https://en.wikipedia.org/wiki/Millimetre)
  - Parametrization is used whenever possible. For example, the exact printing area can be specified by three individual parameters
 
+### Overall Assembly
+
+![Overall Assembly](./docs/assembly.png)
+
+
 
 ### The Portal (X-Axis)
 The X-Axis (also referred to as `portal`) consists of the main structural, rectangular frame build from T-slotted (aluminum) profiles. On this frame, two pairs of linear guide rails are mounted which commonly carry another T-slotted profile (the bridge). Each pair of guide rails is driven by a dedicated motor.
