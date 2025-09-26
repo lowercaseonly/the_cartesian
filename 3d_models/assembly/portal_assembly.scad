@@ -9,6 +9,7 @@ include <../helper/threaded_rod.scad>
 use <../components/portal.scad>
 use <../components/portal_reinforcement.scad>
 use <../components/nut_mount.scad>
+use <../components/thread_nut_mount.scad>
 use <../components/wagon_connector.scad>
 use <../components/motor_mount.scad>
 use <../components/bearing_mount.scad>
@@ -76,7 +77,8 @@ module portal_assembly(){
                            94.3])
                     rotate([180,0,90])
                         color([0.6,0.6,0.4])
-                            nut_mount();
+                            nut_mount()
+                                thread_nut_mount();
 
     }
 
