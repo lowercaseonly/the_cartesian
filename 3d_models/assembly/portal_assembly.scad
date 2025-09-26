@@ -72,7 +72,7 @@ module portal_assembly(){
         if (REINFORCEMENT)
             for (y_shift=[0,PORTAL_SPACING+BASE_WIDTH])
                 translate([POS_X+37.3+y_shift,
-                           -SLIDER_HEIGHT+rail*(SPACE_Y-SLOT_PROF_HEIGHT),
+                           -SLIDER_HEIGHT+rail*(SPACE_Y-SLOT_PROF_HEIGHT)+50,
                            94.3])
                     rotate([180,0,90])
                         color([0.6,0.6,0.4])
