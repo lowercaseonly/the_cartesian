@@ -42,9 +42,8 @@ Please Note:
  - Parametrization is used whenever possible. For example, the exact printing area can be specified by three individual parameters
 
 ### Overall Assembly
-
 ![Overall Assembly](./docs/assembly.png)
-
+In order to validate the designs of individual components as well as for simulation and illustration purposes, the assembly of the overall machine has been created aggregating the models of individual components. Assembly files can be found in the `3d_models/assembly` folder.
 
 
 ### The Portal (X-Axis)
