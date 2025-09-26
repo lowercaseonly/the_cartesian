@@ -12,9 +12,9 @@
 └───3d_models                      # Hardware 3D Models
 │   └───assembly                   # Compositions of Components
 │   │   │   parameter.scad         # Global Assembly Parameters
-│   │   │   portal_assembly.scad   # X-Axis Assembly
-│   │   │   bridge_assembly.scad   # Y-Axis Assembly
-│   │   │   column_assembly.scad   # Z-Axis Assembly
+│   │   │   portal_assembly.scad   # X-Axis
+│   │   │   bridge_assembly.scad   # Y-Axis
+│   │   │   column_assembly.scad   # Z-Axis
 │   │   │   assembly.scad          # Overall Assembly
 │   └───helper                     # Helper Models (Shared between different Machine Parts)
 │   │   ...
