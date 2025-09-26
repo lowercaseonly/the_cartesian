@@ -41,7 +41,7 @@ The hardware of this project is designed adhering to some basic principles:
  - The 3D Models are given as [OpenSCAD](https://openscad.org/) Files
  - All numerical values in the 3D model files are given in [mm](https://en.wikipedia.org/wiki/Millimetre)
  - Parametrization is used whenever possible. For example, the exact printing area can be specified by three individual parameters
- - A [tagging function](./3d_models/helper/bom.scad) is used in all component functions generate the bill of material automatically
+ - A [tagging function](./3d_models/helper/bom.scad) is used in all component functions to generate the bill of material automatically
 
 ### Overall Assembly
 ![Overall Assembly](./docs/assembly.png)
