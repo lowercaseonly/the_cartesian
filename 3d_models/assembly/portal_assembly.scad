@@ -58,8 +58,7 @@ module portal_assembly(){
                                     translate([0,
                                                side*(BASE_WIDTH+PORTAL_SPACING)/2,
                                                0])
-                                        color([0.6,0.6,0.4])
-                                            wagon_connector(spacing=PORTAL_SPACING);
+                                        wagon_connector(spacing=PORTAL_SPACING);
 
                                     translate([0,
                                                side*(BASE_WIDTH+PORTAL_SPACING),

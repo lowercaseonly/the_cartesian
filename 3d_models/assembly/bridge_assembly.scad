@@ -58,8 +58,7 @@ module bridge_assembly(){
                         translate([0,-y_shift,0])
                             bridge_reinforcement();
                     translate([0,BASE_WIDTH/2+BRIDGE_SPACING/2,0])
-                        color([0.6,0.6,0.4])
-                            wagon_connector(spacing=BRIDGE_SPACING);
+                        wagon_connector(spacing=BRIDGE_SPACING);
                 };
 
 }
