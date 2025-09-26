@@ -76,10 +76,9 @@ module portal_assembly(){
                            -SLIDER_HEIGHT+rail*(SPACE_Y-SLOT_PROF_HEIGHT)+50,
                            94.3])
                     rotate([180,0,90])
-                        color([0.6,0.6,0.4])
-                            nut_mount()
-                                thread_nut_mount();
-
+                        nut_mount()
+                            thread_nut_mount()
+                                thread_nut();
     }
 
     for (rail=[0,1])
