@@ -51,12 +51,11 @@ module thread_nut_mount(){
                                 restrict_thick=THREAD_NUT_LEN_TOTAL-
                                                THREAD_NUT_LEN_OUTER);
 
+    translate([0,-15,13.4])
+        rotate([-90,0,0])
+            children();
 }
 
 thread_nut_mount($fn=120);
-
-//translate([0,-15,12])
-//    rotate([-90,0,0])
-//        color([0.3,0.6,0.3])
-//            thread_nut($fn=120);
-
+//    color([0.3,0.6,0.3])
+//        thread_nut($fn=120);
