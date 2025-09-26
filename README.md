@@ -34,7 +34,6 @@ The hardware is based on standard parts around which customized connectors are b
  - `HGH20` linear guide blocks and rails (more about [HIWIN](https://www.hiwin.tw/))
  - `NEMA 23` stepper motors (more about the [NEMA](https://www.nema.org/Standards/view/Motion-Position-Control-Motors-Controls-and-Feedback-Devices) Standard)
 
-
 ### Design Principles
 The hardware of this project is designed adhering to some basic principles:
 
@@ -45,7 +44,12 @@ The hardware of this project is designed adhering to some basic principles:
 
 ### Overall Assembly
 ![Overall Assembly](./docs/assembly.png)
-In order to validate the designs of individual components as well as for simulation and illustration purposes, the assembly of the overall machine has been created aggregating the models of individual (printable and off-the-shelf) components. All assembly files can be found in the [3d_models/assembly](./3d_models/assembly) folder. Here, the overall [assembly.scad](./3d_models/assembly/assembly.scad) file utilizes the individual axis assemblies by geometrically linking them (using OpenSCAD's  `children()` transform).
+In order to validate the designs of individual components as well as for simulation and illustration purposes, the assembly of the overall machine has been created aggregating the models of individual (printable and off-the-shelf) components. All assembly files can be found in the [3d_models/assembly](./3d_models/assembly) folder. More precisely:
+
+ - The overall [assembly.scad](./3d_models/assembly/assembly.scad) file utilizes the individual axis assemblies by geometrically linking them (using OpenSCAD's `children()` transform).
+ - The assembly parameters are stored globally in [parameter.scad](./3d_models/assembly/parameter.scad). Here, multiple aspects can be adjusted:
+   - The individual axis dimensions: `SPACE_X`, `SPACE_Y`, `SPACE_Z`
+   - The end effector position: `POS_X`, `POS_Y`, `POS_Z`
 
 ### The Portal (X-Axis)
 The X-Axis (also referred to as `portal`) consists of the main structural, rectangular frame build from T-slotted (aluminum) profiles. On this frame, two pairs of linear guide rails are mounted which commonly carry another T-slotted profile (the bridge). Each pair of guide rails is driven by a dedicated motor.
