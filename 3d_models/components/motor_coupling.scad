@@ -24,15 +24,16 @@ module motor_coupling(){
             translate([0,0,-MOTOR_SHAFT_LEN-MOTOR_CON_LEN])
                 motor_shaft();
             translate([0,0,MOTOR_COUPLING_LEN-MOTOR_COUPLING_SHAFT_ATTACH
-                           -MOTOR_COUPLING_ROD_ATTACH+NOTHING]){
+                           -MOTOR_COUPLING_ROD_ATTACH+NOTHING])
                 cylinder(h=MOTOR_COUPLING_ROD_ATTACH, d=THEADED_ROD_DIA_OUTER);
-                children();
-            }
 
         }
 
-
     }
+
+    translate([0,0,MOTOR_COUPLING_LEN-MOTOR_COUPLING_SHAFT_ATTACH
+                   -MOTOR_COUPLING_ROD_ATTACH+NOTHING])
+        children();
 
 }
 
