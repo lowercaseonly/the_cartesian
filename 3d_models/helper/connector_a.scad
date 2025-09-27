@@ -6,6 +6,7 @@
 */
 
 CONN_THICK = 10;
+CONN_SINK = 5;
 CONN_HEAD_DIA = 7;
 CONN_HEAD_COUNT = 3;
 CONN_HEAD_DIST = 10;
@@ -19,7 +20,7 @@ module connector(shift_x, shift_y, angle, shaft_len=30, male=false){
         rotate([0,0,angle])
             for (head=[(-CONN_HEAD_COUNT/2)+.5:CONN_HEAD_COUNT/2])
                 translate([head*CONN_HEAD_DIST,
-                           5,
+                           CONN_SINK,
                            BASE_THICKNESS-CONN_THICK+0.01+(male?TIGHT_FIT:0)]){
                     cylinder(d=CONN_HEAD_DIA-(male?TIGHT_FIT:0),
                              h=CONN_THICK-(male?TIGHT_FIT:0));
