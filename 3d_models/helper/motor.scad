@@ -22,14 +22,13 @@ MOTOR_SHAFT_CUT_LEN = 20.0;
 module motor_shaft(){
 
     difference(){
-        translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
             rotate([-90,0,0])
                 cylinder(h=MOTOR_SHAFT_LEN+MOTOR_CON_LEN,
                          d=MOTOR_SHAFT_DIA);
 
-        translate([MOTOR_BLOCK_WIDTH/2-MOTOR_SHAFT_DIA/2,
+        translate([-MOTOR_SHAFT_DIA/2,
                    MOTOR_SHAFT_LEN+MOTOR_CON_LEN-MOTOR_SHAFT_CUT_LEN,
-                   MOTOR_BLOCK_HEIGHT/2+MOTOR_SHAFT_DIA/2-MOTOR_SHAFT_DIA+MOTOR_SHAFT_CUT_DIA])
+                   MOTOR_SHAFT_DIA/2-MOTOR_SHAFT_DIA+MOTOR_SHAFT_CUT_DIA])
             cube([MOTOR_SHAFT_DIA,MOTOR_SHAFT_CUT_LEN,MOTOR_SHAFT_DIA]);
     }
 
@@ -47,11 +46,13 @@ module motor(){
                   MOTOR_BLOCK_LENGTH,
                   MOTOR_BLOCK_HEIGHT]);
 
-        translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
+        translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2]){
+
             rotate([-90,0,0])
                 cylinder(h=MOTOR_CON_LEN,d=MOTOR_CON_DIA);
 
-        motor_shaft();
+            motor_shaft();
+        }
 
     }
 
