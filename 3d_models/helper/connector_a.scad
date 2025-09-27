@@ -12,7 +12,7 @@ CONN_HEAD_DIST = 10;
 CONN_SHAFT_DIA = 4;
 CONN_SHAFT_THICK = 11;
 
-TIGHT_FIT = 0.2;
+TIGHT_FIT = 0.1;
 
 module connector(shift_x, shift_y, angle, shaft_len=30, male=false){
     translate([shift_x, shift_y, 0])
