@@ -21,7 +21,7 @@ module motor_coupling(){
             rotate([-90,0,0])
                 cylinder(h=MOTOR_COUPLING_LEN,d=MOTOR_COUPLING_DIA);
         union(){
-            motor();
+            motor_shaft();
             translate([MOTOR_BLOCK_WIDTH/2,
                        MOTOR_CON_LEN+MOTOR_SHAFT_LEN+THEADED_ROD_MOTOR_DIST,
                        MOTOR_BLOCK_HEIGHT/2])
