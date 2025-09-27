@@ -15,19 +15,20 @@ module motor_coupling(){
     bom_item("MOTOR_COUPLING");
 
     difference(){
-        translate([MOTOR_BLOCK_WIDTH/2,
-                       MOTOR_CON_LEN+MOTOR_SHAFT_LEN+THEADED_ROD_MOTOR_DIST-25,
-                       MOTOR_BLOCK_HEIGHT/2])
-            rotate([-90,0,0])
-                cylinder(h=MOTOR_COUPLING_LEN,d=MOTOR_COUPLING_DIA);
+
+        translate([0,0,-10])
+            cylinder(h=MOTOR_COUPLING_LEN,d=MOTOR_COUPLING_DIA);
+
         union(){
-            motor_shaft();
-            translate([MOTOR_BLOCK_WIDTH/2,
-                       MOTOR_CON_LEN+MOTOR_SHAFT_LEN+THEADED_ROD_MOTOR_DIST,
-                       MOTOR_BLOCK_HEIGHT/2])
-                rotate([-90,0,0])
-                    cylinder(h=THEADED_ROD_LEN_ATTACH, d=THEADED_ROD_DIA_OUTER);
+
+            translate([0,0,-MOTOR_SHAFT_LEN-MOTOR_CON_LEN])
+                motor_shaft();
+
+            cylinder(h=THEADED_ROD_LEN_ATTACH+200, d=THEADED_ROD_DIA_OUTER);
+
         }
+
+
     }
 
 }
