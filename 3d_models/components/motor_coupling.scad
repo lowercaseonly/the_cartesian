@@ -3,10 +3,11 @@ include <../helper/motor.scad>
 include <../helper/threaded_rod.scad>
 
 
-MOTOR_COUPLING_ROD_ATTACH = 10.0;
-MOTOR_COUPLING_SHAFT_ATTACH = 5.0;
+
 MOTOR_COUPLING_DIA = 25;
 MOTOR_COUPLING_LEN = 20;
+MOTOR_COUPLING_ROD_ATTACH = 10.0;
+MOTOR_COUPLING_SHAFT_ATTACH = 5.0;
 
 
 
