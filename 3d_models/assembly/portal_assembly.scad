@@ -12,6 +12,7 @@ use <../components/nut_mount.scad>
 use <../components/thread_nut_mount.scad>
 use <../components/wagon_connector.scad>
 use <../components/motor_mount.scad>
+use <../components/motor_coupling.scad>
 use <../components/bearing_mount.scad>
 
 /*
@@ -89,7 +90,8 @@ module portal_assembly(){
             rotate([0,0,-90])
                 motor_mount()
                     motor()
-                        threaded_rod(length=SPACE_X);
+                        motor_coupling()
+                            threaded_rod(length=SPACE_X);
             for (x_shift=[60,SPACE_X+100])
                 translate([x_shift,-28,0])
                     rotate([0,0,-90])
