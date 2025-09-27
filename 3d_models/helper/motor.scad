@@ -17,19 +17,20 @@ MOTOR_SHAFT_LEN = 22.5;
 MOTOR_SHAFT_CUT_DIA = 9.5;
 MOTOR_SHAFT_CUT_LEN = 20.0;
 
+NOTHING = 0.01;
+
 
 
 module motor_shaft(){
 
     difference(){
-            rotate([-90,0,0])
-                cylinder(h=MOTOR_SHAFT_LEN+MOTOR_CON_LEN,
-                         d=MOTOR_SHAFT_DIA);
+        cylinder(h=MOTOR_SHAFT_LEN+MOTOR_CON_LEN,
+                 d=MOTOR_SHAFT_DIA);
 
         translate([-MOTOR_SHAFT_DIA/2,
-                   MOTOR_SHAFT_LEN+MOTOR_CON_LEN-MOTOR_SHAFT_CUT_LEN,
-                   MOTOR_SHAFT_DIA/2-MOTOR_SHAFT_DIA+MOTOR_SHAFT_CUT_DIA])
-            cube([MOTOR_SHAFT_DIA,MOTOR_SHAFT_CUT_LEN,MOTOR_SHAFT_DIA]);
+                   -MOTOR_SHAFT_DIA*1.5+(MOTOR_SHAFT_DIA-MOTOR_SHAFT_CUT_DIA),
+                   MOTOR_SHAFT_LEN+MOTOR_CON_LEN-MOTOR_SHAFT_CUT_LEN+NOTHING])
+            cube([MOTOR_SHAFT_DIA,MOTOR_SHAFT_DIA,MOTOR_SHAFT_CUT_LEN]);
     }
 
 }
@@ -46,12 +47,10 @@ module motor(){
                   MOTOR_BLOCK_LENGTH,
                   MOTOR_BLOCK_HEIGHT]);
 
-        translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2]){
-
-            rotate([-90,0,0])
+        translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
+            rotate([-90,0,0]){
                 cylinder(h=MOTOR_CON_LEN,d=MOTOR_CON_DIA);
-
-            motor_shaft();
+                motor_shaft();
         }
 
     }
