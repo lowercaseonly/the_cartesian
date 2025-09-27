@@ -24,9 +24,11 @@ THREAD_NUT_LEN_TOTAL = 15.0;
 
 module thread_nut(){
 
-    cylinder(h=THREAD_NUT_LEN_OUTER, d=THREAD_NUT_DIA_OUTER);
-    translate([0,0,-THREAD_NUT_LEN_OUTER])
-        cylinder(h=THREAD_NUT_LEN_TOTAL, d=THREAD_NUT_DIA_INNER);
+    color([0.3,0.6,0.3]){
+        cylinder(h=THREAD_NUT_LEN_OUTER, d=THREAD_NUT_DIA_OUTER);
+        translate([0,0,-THREAD_NUT_LEN_OUTER])
+            cylinder(h=THREAD_NUT_LEN_TOTAL, d=THREAD_NUT_DIA_INNER);
+    }
 
 }
 
@@ -51,12 +53,10 @@ module thread_nut_mount(){
                                 restrict_thick=THREAD_NUT_LEN_TOTAL-
                                                THREAD_NUT_LEN_OUTER);
 
+    translate([0,-15,13.4])
+        rotate([-90,0,0])
+            children();
 }
 
 thread_nut_mount($fn=120);
-
-//translate([0,-15,12])
-//    rotate([-90,0,0])
-//        color([0.3,0.6,0.3])
-//            thread_nut($fn=120);
-
+//    thread_nut($fn=120);

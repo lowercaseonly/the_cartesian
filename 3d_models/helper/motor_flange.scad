@@ -44,16 +44,15 @@ module motor_flange_cutout(){
                        (cy-0.5)*MOTOR_FLANGE_HEIGHT
                        -(cy-0.5)*2*(MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST
                                     + MOTOR_FLANGE_MOUNT_HOLE_DIA/2),
-                       0])
-                union(){
-                    cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_HOLE,
-                             d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
-                             center=true);
-                    rotate([0,0,45+90*((cx==1&&cy==1)?2:cx-cy)])
-                        translate([0,0,MOTOR_FLANGE_THICKNESS-
-                                       MOTOR_FLANGE_SCREW_SINK])
-                        m_nut(elongate=true);
-                }
+                       0]){
+                cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_HOLE,
+                         d=MOTOR_FLANGE_MOUNT_HOLE_DIA,
+                         center=true);
+                rotate([0,0,45+90*((cx==1&&cy==1)?2:cx-cy)])
+                    translate([0,0,MOTOR_FLANGE_THICKNESS-
+                                   MOTOR_FLANGE_SCREW_SINK])
+                    m_nut(elongate=true);
+            }
 
 }
 

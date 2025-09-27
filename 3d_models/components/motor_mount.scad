@@ -31,6 +31,8 @@ module motor_mount(double_t_slot=false){
                 motor_flange_cutout();
     };
 
+    children();
+
 }
 
 motor_mount($fn=100, double_t_slot=false);

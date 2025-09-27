@@ -17,13 +17,15 @@ module wagon_connector(spacing=5, attachment=""){
     bom_item(str("WAGON_CONNECTOR", (attachment==""?"":str("_", attachment))),
              "SPACING", spacing);
 
-    connector(shift_x=0, shift_y=spacing/2, angle=0, shaft_len=10, male=true);
-    connector(shift_x=0, shift_y=-spacing/2, angle=180, shaft_len=10, male=true);
+    color([0.6,0.6,0.4]){
+        connector(shift_x=0, shift_y=spacing/2, angle=0, shaft_len=10, male=true);
+        connector(shift_x=0, shift_y=-spacing/2, angle=180, shaft_len=10, male=true);
 
-    translate([BASE_CORNER-BASE_HEIGHT/2,-spacing/2,0])
-        cube([BASE_HEIGHT-2*BASE_CORNER,
-              spacing,
-              BASE_THICKNESS]);
+        translate([BASE_CORNER-BASE_HEIGHT/2,-spacing/2,0])
+            cube([BASE_HEIGHT-2*BASE_CORNER,
+                  spacing,
+                  BASE_THICKNESS]);
+    }
 
 }
 
