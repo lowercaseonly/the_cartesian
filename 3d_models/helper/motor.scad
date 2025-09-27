@@ -44,7 +44,9 @@ module motor(){
     color([0.8,0.15,0.15]){
 
         translate([0,-MOTOR_BLOCK_LENGTH,0])
-            cube([MOTOR_BLOCK_WIDTH,MOTOR_BLOCK_LENGTH,MOTOR_BLOCK_HEIGHT]);
+            cube([MOTOR_BLOCK_WIDTH,
+                  MOTOR_BLOCK_LENGTH,
+                  MOTOR_BLOCK_HEIGHT]);
 
         translate([MOTOR_BLOCK_WIDTH/2,0,MOTOR_BLOCK_HEIGHT/2])
             rotate([-90,0,0])
