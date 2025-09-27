@@ -12,7 +12,7 @@ TOLERANCE = 0.01;
 
 
 
-module wagon_connector(spacing=5, attachment=""){
+module wagon_connector(spacing=8, attachment="", overhang=0){
 
     bom_item(str("WAGON_CONNECTOR", (attachment==""?"":str("_", attachment))),
              "SPACING", spacing);
@@ -22,7 +22,7 @@ module wagon_connector(spacing=5, attachment=""){
         connector(shift_x=0, shift_y=-spacing/2, angle=180, shaft_len=10, male=true);
 
         translate([BASE_CORNER-BASE_HEIGHT/2,-spacing/2,0])
-            cube([BASE_HEIGHT-2*BASE_CORNER,
+            cube([BASE_HEIGHT-2*BASE_CORNER+overhang,
                   spacing,
                   BASE_THICKNESS]);
     }
