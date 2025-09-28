@@ -1,6 +1,7 @@
 include <../helper/bom.scad>
 include <../helper/nut_mount_connector.scad>
 include <../helper/pillow_block.scad>
+include <../helper/threaded_nut.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -9,28 +10,10 @@ include <../helper/pillow_block.scad>
 */
 
 MOUNT_HEIGHT = 9;
-
 THREAD_NUT_BLOCK_WIDTH = 60;
 THREAD_NUT_WALL_THICK = 6;
-
 THREAD_NUT_PLAIN_DIST = 2.33;
 
-THREAD_NUT_DIA_OUTER = 22.0;
-THREAD_NUT_DIA_INNER = 10.20;
-THREAD_NUT_LEN_OUTER = 3.5;
-THREAD_NUT_LEN_INNER = 10.0;
-THREAD_NUT_LEN_TOTAL = 15.0;
-
-
-module thread_nut(){
-
-    color([0.3,0.6,0.3]){
-        cylinder(h=THREAD_NUT_LEN_OUTER, d=THREAD_NUT_DIA_OUTER);
-        translate([0,0,-THREAD_NUT_LEN_OUTER])
-            cylinder(h=THREAD_NUT_LEN_TOTAL, d=THREAD_NUT_DIA_INNER);
-    }
-
-}
 
 
 module thread_nut_mount(){
