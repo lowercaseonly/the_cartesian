@@ -5,11 +5,12 @@ include <../helper/linear_wagon.scad>
 include <../helper/motor_flange.scad>
 include <../helper/motor.scad>
 include <../helper/threaded_rod.scad>
+include <../helper/threaded_nut.scad>
 
 use <../components/motor_mount.scad>
 use <../components/motor_coupling.scad>
 use <../components/bearing_mount.scad>
-use <../components/wagon_connector.scad>
+use <../components/bridge_connector.scad>
 use <../components/bridge.scad>
 use <../components/bridge_reinforcement.scad>
 
@@ -60,7 +61,8 @@ module bridge_assembly(){
                         translate([0,-y_shift,0])
                             bridge_reinforcement();
                     translate([0,BASE_WIDTH/2+BRIDGE_SPACING/2,0])
-                        wagon_connector(spacing=BRIDGE_SPACING);
+                        bridge_connector()
+                            thread_nut();
                 };
 
 }
