@@ -7,6 +7,7 @@ include <../helper/motor.scad>
 include <../helper/threaded_rod.scad>
 
 use <../components/motor_mount.scad>
+use <../components/motor_coupling.scad>
 use <../components/bearing_mount.scad>
 use <../components/wagon_connector.scad>
 use <../components/bridge.scad>
@@ -31,7 +32,8 @@ module bridge_assembly(){
         rotate([-90,0,-90]){
             motor_mount(double_t_slot=true)
                 motor()
-                    threaded_rod(length=SPACE_Y);
+                    motor_coupling()
+                        threaded_rod(length=SPACE_Y);
             for (y_shift=[70,SPACE_Y+20])
                 translate([28.2,y_shift,0])
                     rotate([0,0,180])
