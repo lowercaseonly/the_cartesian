@@ -11,9 +11,9 @@ include <../helper/m_skrew.scad>
 
 TOLERANCE = 0.01;
 DIST_WAGON_Y_WAGON_Z = 69.0;
-DIST_WAGON_Y_THREAD = 19.0;
-SINK_THREAD = -4;
-THREAD_DIA = 10;
+DIST_WAGON_Y_THREAD = 17.85;
+SINK_THREAD = -2;
+THREAD_DIA = 13;
 
 
 
@@ -30,7 +30,7 @@ module bridge_reinforcement(){
         }
         translate([DIST_WAGON_Y_THREAD+BASE_HEIGHT/2,0,SINK_THREAD])
             rotate([90,0,0])
-                cylinder(h=300, r=THREAD_DIA, center=true);
+                cylinder(h=300, d=THREAD_DIA, center=true);
     }
 
 };
