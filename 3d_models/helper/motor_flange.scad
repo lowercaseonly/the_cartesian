@@ -16,8 +16,10 @@ MOTOR_FLANGE_MOUNT_HOLE_DIA = 5.25;
 MOTOR_FLANGE_MOUNT_HOLE_BORDER_DIST = 2.0;
 MOTOR_FLANGE_THICKNESS = 8.0;
 MOTOR_FLANGE_SCREW_SINK = 3.78;
-MOTOR_FLANGE_CUTOUT_LEN_INNER = 50;
+MOTOR_FLANGE_CUTOUT_LEN_INNER = 16;
 MOTOR_FLANGE_CUTOUT_LEN_HOLE = 10;
+
+NOTHING = 0.01;
 
 
 
@@ -33,9 +35,17 @@ module motor_flange_base(){
 
 module motor_flange_cutout(){
 
+    // Central Hole
     cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_INNER,
              d=MOTOR_FLANGE_INNER_DIA,center=true);
 
+    // Central Hole (Continuation in Motor Shaft Direction)
+    translate([0,0,MOTOR_FLANGE_CUTOUT_LEN_INNER/2-NOTHING])
+        cylinder(h=MOTOR_FLANGE_CUTOUT_LEN_INNER*2,
+                 d1=MOTOR_FLANGE_INNER_DIA,
+                 d2=0);
+
+    // Cutouts for Mounting Screws
     for (cx=[0,1])
         for (cy=[0,1])
             translate([(cx-0.5)*MOTOR_FLANGE_WIDTH
