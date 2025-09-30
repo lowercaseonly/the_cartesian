@@ -2,9 +2,11 @@ include <parameter.scad>
 
 include <../helper/linear_wagon.scad>
 include <../helper/motor.scad>
+include <../helper/threaded_rod.scad>
 
 use <../components/column.scad>
 use <../components/column_connector.scad>
+use <../components/motor_coupling.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -29,6 +31,12 @@ module column_assembly(){
     translate([POS_Z-180,-41,WAGON_HEIGHT+WAGON_OFFSET])
         rotate([90,0,90])
                 column();
+
+    translate([210,-68,-10])
+        rotate([0,0,90])
+            motor()
+                motor_coupling()
+                    threaded_rod(length=SPACE_Z);
 
 }
 
