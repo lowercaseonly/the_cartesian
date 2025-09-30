@@ -68,6 +68,15 @@ module motor_flange_cutout(){
 }
 
 
+module motor_flange_trans(){
+
+    translate([-MOTOR_BLOCK_WIDTH/2,MOTOR_BLOCK_HEIGHT/2,0])
+        rotate([90,0,0])
+            children();
+
+}
+
+
 module motor_flange(){
 
     difference(){
@@ -75,8 +84,7 @@ module motor_flange(){
         motor_flange_cutout();
     }
 
-    translate([-MOTOR_BLOCK_WIDTH/2,MOTOR_BLOCK_HEIGHT/2,0])
-        rotate([90,0,0])
-            children();
+    motor_flange_trans()
+        children();
 
 };
