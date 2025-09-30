@@ -29,14 +29,13 @@ module column_assembly(){
         column_connector();
 
     translate([POS_Z-180,-41,WAGON_HEIGHT+WAGON_OFFSET])
-        rotate([90,0,90])
-                column();
-
-    translate([210,-68,-10])
-        rotate([0,0,90])
-            motor()
+        rotate([90,0,90]){
+            column_upper()
+                motor()
                 motor_coupling()
                     threaded_rod(length=SPACE_Z);
+            column_lower();
+        }
 
 }
 
