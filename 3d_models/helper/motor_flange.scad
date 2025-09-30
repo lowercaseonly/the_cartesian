@@ -1,6 +1,7 @@
 
 use <../helper/base_plate.scad>
 include <../helper/m_skrew.scad>
+include <../helper/motor.scad>
 
 /*
   Author: Johannes Bayer, 2025
@@ -68,10 +69,14 @@ module motor_flange_cutout(){
 
 
 module motor_flange(){
-    
+
     difference(){
         motor_flange_base();
         motor_flange_cutout();
     }
+
+    translate([-MOTOR_BLOCK_WIDTH/2,MOTOR_BLOCK_HEIGHT/2,0])
+        rotate([90,0,0])
+            children();
 
 };
