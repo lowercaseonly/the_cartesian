@@ -146,8 +146,9 @@ module column_upper(){
             column_bearing();
 
     translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,220+COLUMN_BASE_DIST])
-    rotate([180,0,0])
-        motor_flange();
+        rotate([180,0,0])
+            motor_flange()
+                children();
 
 }
 
