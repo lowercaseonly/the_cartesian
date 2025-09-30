@@ -28,6 +28,11 @@ COL_BEAR_SUP_WALL_THICK = 4;
 COL_BEAR_SUP_HEIGHT = 25;
 COL_BEAR_SUP_LEN = 10;
 
+COL_MOTOR_SUP_HEIGHT = 34;
+COL_MOTOR_SUP_LEN = 44;
+COL_MOTOR_SUP_WALL_THICK = 5;
+COL_MOTOR_SUP_WALL_CORNER = 4;
+
 EFFECTOR_MOUNT_DIA = 43.0;
 EFFECTOR_MOUNT_LEN = 22.0;
 EFFECTOR_MOUNT_WALL_THICK = 10.0;
@@ -118,10 +123,25 @@ module column_lower(reinforcement=true){
 
 module column_upper(){
 
-    translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT])
-        column_plate();
+    difference(){
+        union(){
+            translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT])
+                column_plate();
+            translate([MOTOR_FLANGE_WIDTH/2,0,BEARING_LEN+275])
+                rotate([0,90,180])
+                    support(height=COL_MOTOR_SUP_HEIGHT,
+                            length=COL_MOTOR_SUP_LEN,
+                            width=MOTOR_FLANGE_WIDTH,
+                            wall_thick=COL_MOTOR_SUP_WALL_THICK,
+                            corner=COL_MOTOR_SUP_WALL_CORNER);
+        }
 
-    translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-30])
+        translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,220+COLUMN_BASE_DIST])
+            rotate([180,0,0])
+                motor_flange_cutout();
+    }
+
+    translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-40])
         rotate([0,180,0])
             column_bearing();
 
@@ -142,4 +162,4 @@ module column(){
 }
 
 
-column($fn=100);
+column($fn=200);
