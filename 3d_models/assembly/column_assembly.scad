@@ -32,8 +32,8 @@ module column_assembly(){
         rotate([90,0,90]){
             column_upper()
                 motor()
-                motor_coupling()
-                    threaded_rod(length=SPACE_Z);
+                    motor_coupling()
+                        threaded_rod(length=SPACE_Z);
             column_lower();
         }
 
