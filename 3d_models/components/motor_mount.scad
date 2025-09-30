@@ -16,7 +16,8 @@ module motor_mount(double_t_slot=false){
 
     translate([MOTOR_FLANGE_WIDTH/2,0,MOTOR_FLANGE_HEIGHT/2])
         rotate([90,0,180])
-            motor_flange();
+            motor_flange()
+                children();
 
     difference(){
         translate([SLOT_PROF_HEIGHT/2+MOTOR_FLANGE_WIDTH/2
@@ -30,8 +31,6 @@ module motor_mount(double_t_slot=false){
             rotate([90,0,180])
                 motor_flange_cutout();
     };
-
-    children();
 
 }
 
