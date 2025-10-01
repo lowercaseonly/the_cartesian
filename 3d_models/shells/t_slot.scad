@@ -22,7 +22,42 @@ NOTHING = 0.01;
 
 
 
-module NUT8_45x2(length=SLOT_PROF_LEN, inventorize=false){
+module t_slot_trans(slot_nbr){
+    
+    if (slot_nbr==0)
+        translate([SLOT_PROF_HEIGHT/2,0,0])
+            rotate([180,0,0])
+                children();
+
+    if (slot_nbr==1)
+        translate([SLOT_PROF_HEIGHT,SLOT_PROF_WIDTH/2-SLOT_DIST/2-(SLOT_WIDTH/2),0])
+            rotate([180,0,90])
+                children();
+
+    if (slot_nbr==2)
+        translate([SLOT_PROF_HEIGHT,SLOT_PROF_WIDTH/2+SLOT_DIST/2+(SLOT_WIDTH/2),0])
+            rotate([180,0,90])
+                children();
+
+    if (slot_nbr==3)
+        translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,0])
+            rotate([180,0,180])
+                children();
+
+    if (slot_nbr==4)
+        translate([0,SLOT_PROF_WIDTH/2+SLOT_DIST/2+(SLOT_WIDTH/2),0])
+            rotate([180,0,-90])
+                children();
+
+    if (slot_nbr==5)
+        translate([0,SLOT_PROF_WIDTH/2-SLOT_DIST/2-(SLOT_WIDTH/2),0])
+            rotate([180,0,-90])
+                children();
+
+}
+
+
+module NUT8_45x2(length=SLOT_PROF_LEN, inventorize=false, child_slots=[]){
 
     if (inventorize)
         bom_item("T-SLOT_PROFILE_NUT_8_45x2", "length", length);
@@ -54,7 +89,25 @@ module NUT8_45x2(length=SLOT_PROF_LEN, inventorize=false){
                           length+2*NOTHING]);
     }
 
+    for (child_nbr=[0:len(child_slots)-1])
+        t_slot_trans(child_slots[child_nbr])
+            children(child_nbr);
+
 }
 
+module coord_marker(msg){
+
+    text(msg);
+
+}
+
+
 // Sample Usage
-//NUT8_45x2($fn=120);
+/*NUT8_45x2($fn=120, child_slots=[0,1,2,3,4,5]){
+    coord_marker("0");
+    coord_marker("1");
+    coord_marker("2");
+    coord_marker("3");
+    coord_marker("4");
+    coord_marker("5");
+}*/
