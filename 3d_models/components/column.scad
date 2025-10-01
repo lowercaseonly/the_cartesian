@@ -153,14 +153,5 @@ module column_upper(){
 }
 
 
-module column(){
-
-    color([0.6,0.8,0.8]){
-        column_lower();
-        column_upper();
-    }
-
-}
-
-
-column($fn=200);
+column_upper($fn=200);
+column_lower($fn=200);
