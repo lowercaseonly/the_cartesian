@@ -2,9 +2,10 @@ include <parameter.scad>
 
 include <../helper/t_slot.scad>
 include <../helper/linear_wagon.scad>
-include <../helper/motor.scad>
-include <../helper/threaded_rod.scad>
-include <../helper/threaded_nut.scad>
+
+include <../shells/motor.scad>
+include <../shells/threaded_rod.scad>
+include <../shells/threaded_nut.scad>
 
 use <../components/motor_mount.scad>
 use <../components/motor_coupling.scad>

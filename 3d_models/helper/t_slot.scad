@@ -1,7 +1,7 @@
 include <../helper/bom.scad>
 use <../helper/base_plate.scad>
 use <../helper/support.scad>
-include <../helper/m_skrew.scad>
+include <../shells/m_skrew.scad>
 
 /*
   Author: Johannes Bayer, 2025

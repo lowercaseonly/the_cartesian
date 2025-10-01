@@ -1,7 +1,7 @@
 
 use <../helper/base_plate.scad>
-include <../helper/m_skrew.scad>
-include <../helper/motor.scad>
+include <../shells/m_skrew.scad>
+include <../shells/motor.scad>
 
 /*
   Author: Johannes Bayer, 2025

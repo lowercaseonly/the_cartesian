@@ -1,10 +1,12 @@
 include <../helper/bom.scad>
 include <../helper/support.scad>
-include <../helper/m_skrew.scad>
 include <../helper/pillow_block.scad>
-include <../helper/motor.scad>
 include <../helper/motor_flange.scad>
-include <../helper/bearing.scad>
+
+include <../shells/m_skrew.scad>
+include <../shells/motor.scad>
+include <../shells/bearing.scad>
+
 
 /*
   Author: Johannes Bayer, 2025

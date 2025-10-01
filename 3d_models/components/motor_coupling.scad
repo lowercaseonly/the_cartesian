@@ -1,6 +1,7 @@
 include <../helper/bom.scad>
-include <../helper/motor.scad>
-include <../helper/threaded_rod.scad>
+
+include <../shells/motor.scad>
+include <../shells/threaded_rod.scad>
 
 
 

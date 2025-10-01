@@ -1,8 +1,9 @@
 include <parameter.scad>
 
 include <../helper/linear_wagon.scad>
-include <../helper/motor.scad>
-include <../helper/threaded_rod.scad>
+
+include <../shells/motor.scad>
+include <../shells/threaded_rod.scad>
 
 use <../components/column.scad>
 use <../components/column_connector.scad>
