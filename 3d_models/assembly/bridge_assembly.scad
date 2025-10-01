@@ -26,24 +26,9 @@ use <../components/bridge_reinforcement.scad>
 module bridge_assembly(){
 
     NUT8_45x2(length=SPACE_Y+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE-100,
-              inventorize=true);
+              inventorize=true, child_slots=[3,1,2,2]){
 
-    translate([SLOT_PROF_HEIGHT,
-               2*SLOT_PROF_HEIGHT+SLOT_WIDTH,
-               SPACE_Y+70])
-        rotate([-90,0,-90]){
-            motor_mount(double_t_slot=true)
-                motor()
-                    motor_coupling()
-                        threaded_rod(length=SPACE_Y);
-            for (y_shift=[70,SPACE_Y+20])
-                translate([28.2,y_shift,0])
-                    rotate([0,0,180])
-                        bearing_mount(double_t_slot=true);
-            }
-
-    translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,OFFSET_Y])
-        rotate([90,0,180])
+        translate([0,OFFSET_Y,0])
             linear_slider(length=SPACE_Y-130,
                           pos=POS_Y, spacing=BRIDGE_SPACING){
                 translate([0,-BASE_WIDTH-BRIDGE_SPACING,0])
@@ -52,8 +37,7 @@ module bridge_assembly(){
                     children();
             }
 
-    translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
-        rotate([90,0,90])
+        translate([0,OFFSET_Y,0])
             linear_slider(length=SPACE_Y-130,
                           pos=POS_Y, spacing=BRIDGE_SPACING)
                 rotate([0,0,180]){
@@ -65,8 +49,20 @@ module bridge_assembly(){
                             thread_nut();
                 };
 
-}
+        translate([0,SPACE_Y+OFFSET_Y-25,0])
+            rotate([0,0,180])
+                motor_mount(double_t_slot=true)
+                    motor()
+                        motor_coupling()
+                            threaded_rod(length=SPACE_Y);
 
+        for (y_shift=[60,SPACE_Y])
+            translate([0,y_shift,0])
+                    bearing_mount(double_t_slot=true);
+
+    }
+
+}
 
 
 bridge_assembly();
