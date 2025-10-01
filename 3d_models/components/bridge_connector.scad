@@ -1,6 +1,6 @@
 use <wagon_connector.scad>
 
-include <../helper/threaded_nut.scad>
+include <../shells/threaded_nut.scad>
 
 /*
   Author: Johannes Bayer, 2025

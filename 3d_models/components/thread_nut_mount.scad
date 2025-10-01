@@ -1,7 +1,8 @@
 include <../helper/bom.scad>
 include <../helper/nut_mount_connector.scad>
 include <../helper/pillow_block.scad>
-include <../helper/threaded_nut.scad>
+
+include <../shells/threaded_nut.scad>
 
 /*
   Author: Johannes Bayer, 2025
