@@ -95,28 +95,30 @@ module column_bearing(){
 
 module column_lower(reinforcement=true){
 
-    bom_item("COLUMN");
+    bom_item("COLUMN_LOWER");
 
-    column_plate();
+    color([0.6,0.8,0.8]){
+        column_plate();
 
-    column_bearing();
+        column_bearing();
 
-    translate([0,COLUMN_BASE_THICK,0])
-        pillow_block(thickness=EFFECTOR_MOUNT_LEN,
-                     length=COLUMN_BASE_WIDTH,
-                     center_dist=EFFECTOR_MOUNT_BASE_DIST,
-                     diameter=EFFECTOR_MOUNT_DIA,
-                     wall_thick=EFFECTOR_MOUNT_WALL_THICK,
-                     gap=true);
+        translate([0,COLUMN_BASE_THICK,0])
+            pillow_block(thickness=EFFECTOR_MOUNT_LEN,
+                         length=COLUMN_BASE_WIDTH,
+                         center_dist=EFFECTOR_MOUNT_BASE_DIST,
+                         diameter=EFFECTOR_MOUNT_DIA,
+                         wall_thick=EFFECTOR_MOUNT_WALL_THICK,
+                         gap=true);
 
 
-    translate([SUPPORT_WALL_DIST/2,COLUMN_BASE_THICK,EFFECTOR_MOUNT_LEN])
-        rotate([0,-90,0])
-            support(height=SUPPORT_WALL_LEN,
-                    length=COLUMN_BASE_HEIGHT-EFFECTOR_MOUNT_LEN,
-                    width=SUPPORT_WALL_DIST,
-                    wall_thick=SUPPORT_WALL_THICK,
-                    corner=SUPPORT_CORNER);
+        translate([SUPPORT_WALL_DIST/2,COLUMN_BASE_THICK,EFFECTOR_MOUNT_LEN])
+            rotate([0,-90,0])
+                support(height=SUPPORT_WALL_LEN,
+                        length=COLUMN_BASE_HEIGHT-EFFECTOR_MOUNT_LEN,
+                        width=SUPPORT_WALL_DIST,
+                        wall_thick=SUPPORT_WALL_THICK,
+                        corner=SUPPORT_CORNER);
+    }
 
 };
 
