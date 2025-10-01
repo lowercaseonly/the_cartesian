@@ -1,11 +1,12 @@
 include <parameter.scad>
 
-include <../helper/t_slot.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/motor_flange.scad>
+include <../helper/t_slot.scad>
 
 include <../shells/motor.scad>
 include <../shells/threaded_rod.scad>
+include <../shells/t_slot.scad>
 
 use <../components/portal.scad>
 use <../components/portal_reinforcement.scad>

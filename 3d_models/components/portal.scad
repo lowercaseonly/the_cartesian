@@ -3,6 +3,8 @@ include <../helper/t_slot.scad>
 include <../helper/linear_wagon.scad>
 include <../helper/nut_mount_connector.scad>
 
+include <../shells/t_slot.scad>
+
 /*
   Author: Johannes Bayer, 2025
   License: MIT
