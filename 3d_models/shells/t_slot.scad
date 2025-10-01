@@ -89,7 +89,7 @@ module NUT8_45x2(length=SLOT_PROF_LEN, inventorize=false, child_slots=[]){
                           length+2*NOTHING]);
     }
 
-    for (child_nbr=[0:len(child_slots)-1])
+    for (child_nbr=[0:len(child_slots)])
         t_slot_trans(child_slots[child_nbr])
             children(child_nbr);
 
