@@ -48,9 +48,8 @@ module bridge_assembly(){
                           pos=POS_Y, spacing=BRIDGE_SPACING){
                 translate([0,-BASE_WIDTH-BRIDGE_SPACING,0])
                     bridge(reinforcement=REINFORCEMENT);
-                translate([0,0,0])
-                    bridge(reinforcement=REINFORCEMENT)
-                        children();
+                bridge(reinforcement=REINFORCEMENT)
+                    children();
             }
 
     translate([SLOT_PROF_HEIGHT,20,OFFSET_Y])
