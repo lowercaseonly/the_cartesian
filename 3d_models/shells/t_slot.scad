@@ -26,32 +26,32 @@ module t_slot_trans(slot_nbr){
     
     if (slot_nbr==0)
         translate([SLOT_PROF_HEIGHT/2,0,0])
-            rotate([180,0,0])
+            rotate([90,0,0])
                 children();
 
     if (slot_nbr==1)
         translate([SLOT_PROF_HEIGHT,SLOT_PROF_WIDTH/2-SLOT_DIST/2-(SLOT_WIDTH/2),0])
-            rotate([180,0,90])
+            rotate([90,0,90])
                 children();
 
     if (slot_nbr==2)
         translate([SLOT_PROF_HEIGHT,SLOT_PROF_WIDTH/2+SLOT_DIST/2+(SLOT_WIDTH/2),0])
-            rotate([180,0,90])
+            rotate([90,0,90])
                 children();
 
     if (slot_nbr==3)
         translate([SLOT_PROF_HEIGHT/2,SLOT_PROF_WIDTH,0])
-            rotate([180,0,180])
+            rotate([90,0,180])
                 children();
 
     if (slot_nbr==4)
         translate([0,SLOT_PROF_WIDTH/2+SLOT_DIST/2+(SLOT_WIDTH/2),0])
-            rotate([180,0,-90])
+            rotate([90,0,-90])
                 children();
 
     if (slot_nbr==5)
         translate([0,SLOT_PROF_WIDTH/2-SLOT_DIST/2-(SLOT_WIDTH/2),0])
-            rotate([180,0,-90])
+            rotate([90,0,-90])
                 children();
 
 }
