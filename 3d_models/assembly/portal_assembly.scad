@@ -38,8 +38,17 @@ module portal_assembly(){
     for (rail=[0,1]){
         translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)]){
                 rotate([90,0,90])
-                        NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
-                                  inventorize=true);
+                    NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
+                              inventorize=true, child_slots=[3,3]){
+                        translate([0,115,0])
+                            motor_mount()
+                                motor()
+                                    motor_coupling()
+                                        threaded_rod(length=SPACE_X);
+                        for (shift=[MOTOR_SPACE,MOTOR_SPACE+SPACE_X])
+                            translate([0,shift,0])
+                                bearing_mount();
+                    }
 
                 for (side=[-1,1])
                     translate([MOTOR_SPACE+(side==1?SPACE_X:0),
@@ -82,23 +91,6 @@ module portal_assembly(){
                             thread_nut_mount()
                                 thread_nut();
     }
-
-    for (rail=[0,1])
-        translate([-80,
-                   MOTOR_FLANGE_WIDTH
-                   -(MOTOR_FLANGE_WIDTH-SLOT_PROF_HEIGHT)/2
-                   +rail*(SPACE_Y-SLOT_PROF_HEIGHT),
-                   SLOT_PROF_WIDTH]){
-            rotate([0,0,-90])
-                motor_mount()
-                    motor()
-                        motor_coupling()
-                            threaded_rod(length=SPACE_X);
-            for (x_shift=[60,SPACE_X+100])
-                translate([x_shift,-28,0])
-                    rotate([0,0,-90])
-                        bearing_mount();
-        };
 
 }
 
