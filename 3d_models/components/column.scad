@@ -29,7 +29,7 @@ COL_BEAR_SUP_HEIGHT = 25;
 COL_BEAR_SUP_LEN = 10;
 
 COL_MOTOR_SUP_HEIGHT = 34;
-COL_MOTOR_SUP_LEN = 44;
+COL_MOTOR_SUP_LEN = 54;
 COL_MOTOR_SUP_WALL_THICK = 5;
 COL_MOTOR_SUP_WALL_CORNER = 4;
 
@@ -147,7 +147,7 @@ module column_upper(){
                     motor_flange_cutout();
         }
 
-        translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-40])
+        translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-50])
             rotate([0,180,0])
                 column_bearing();
 
