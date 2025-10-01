@@ -125,32 +125,41 @@ module column_lower(reinforcement=true){
 
 module column_upper(){
 
-    difference(){
-        union(){
-            translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT])
-                column_plate();
-            translate([MOTOR_FLANGE_WIDTH/2,0,BEARING_LEN+275])
-                rotate([0,90,180])
-                    support(height=COL_MOTOR_SUP_HEIGHT,
-                            length=COL_MOTOR_SUP_LEN,
-                            width=MOTOR_FLANGE_WIDTH,
-                            wall_thick=COL_MOTOR_SUP_WALL_THICK,
-                            corner=COL_MOTOR_SUP_WALL_CORNER);
+    bom_item("COLUMN_UPPER");
+
+    color([0.6,0.8,0.8]){
+
+        difference(){
+            union(){
+                translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT])
+                    column_plate();
+                translate([MOTOR_FLANGE_WIDTH/2,0,BEARING_LEN+275])
+                    rotate([0,90,180])
+                        support(height=COL_MOTOR_SUP_HEIGHT,
+                                length=COL_MOTOR_SUP_LEN,
+                                width=MOTOR_FLANGE_WIDTH,
+                                wall_thick=COL_MOTOR_SUP_WALL_THICK,
+                                corner=COL_MOTOR_SUP_WALL_CORNER);
+            }
+
+            translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,220+COLUMN_BASE_DIST])
+                rotate([180,0,0])
+                    motor_flange_cutout();
         }
+
+        translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-40])
+            rotate([0,180,0])
+                column_bearing();
 
         translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,220+COLUMN_BASE_DIST])
             rotate([180,0,0])
-                motor_flange_cutout();
+                motor_flange();
     }
-
-    translate([0,0,COLUMN_BASE_DIST+COLUMN_BASE_HEIGHT*2-40])
-        rotate([0,180,0])
-            column_bearing();
 
     translate([0,-MOTOR_FLANGE_WIDTH/2+MOTOR_OFFSET,220+COLUMN_BASE_DIST])
         rotate([180,0,0])
-            motor_flange()
-                children();
+            motor_flange_trans()
+            children();
 
 }
 
