@@ -6,6 +6,7 @@ include <../helper/linear_wagon.scad>
 include <../shells/motor.scad>
 include <../shells/threaded_rod.scad>
 include <../shells/threaded_nut.scad>
+include <../shells/t_slot.scad>
 
 use <../components/motor_mount.scad>
 use <../components/motor_coupling.scad>
