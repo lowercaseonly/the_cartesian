@@ -1,4 +1,12 @@
+include <../helper/bom.scad>
+
 use <../helper/base_plate.scad>
+
+/*
+  Author: Johannes Bayer, 2025
+  License: MIT
+  Description: Linear Slider (Rail and Support Wagon) HGH20CA
+*/
 
 BASE_WIDTH = 75;
 BASE_HEIGHT = 44;
@@ -15,6 +23,8 @@ SLIDER_HEIGHT = WAGON_OFFSET + WAGON_HEIGHT;
 
 module HGH20CA(){
 
+    bom_item("HGH20CA");
+
     color([0.22,0.22,0.22])
         base_plate(BASE_WIDTH,BASE_HEIGHT,WAGON_HEIGHT,BASE_CORNER);
 
@@ -22,6 +32,8 @@ module HGH20CA(){
 
 
 module HGH20(length){
+
+    bom_item("HGH20", "length", length);
 
     color([0.22,0.22,0.22])
         translate([-RAIL_WIDTH/2,0,0])
