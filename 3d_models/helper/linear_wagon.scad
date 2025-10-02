@@ -57,5 +57,5 @@ module HGH20CA_plate(overhang=0, connector_left=true, connector_right=true){
 //HGH20CA_plate($fn=120);
 
 // Sample Usage
-linear_slider(length=300, pos=60)
-    HGH20CA_plate($fn=120);
+//linear_slider(length=300, pos=60, $fn=120)
+//    HGH20CA_plate($fn=120);
