@@ -24,19 +24,27 @@ use <../components/bearing_mount.scad>
 
 
 
+module motor_assembly(){
+
+    translate([0,115,0])
+        motor_mount()
+            motor()
+                motor_coupling()
+                    threaded_rod(length=SPACE_X);
+
+    for (shift=[MOTOR_SPACE,MOTOR_SPACE+SPACE_X])
+        translate([0,shift,0])
+            bearing_mount();
+
+}
+
+
 module portal_rail(){
 
     NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
               inventorize=true,
-              child_slots=[3,3]){
-        translate([0,115,0])
-            motor_mount()
-                motor()
-                    motor_coupling()
-                        threaded_rod(length=SPACE_X);
-        for (shift=[MOTOR_SPACE,MOTOR_SPACE+SPACE_X])
-            translate([0,shift,0])
-                bearing_mount();
+              child_slots=[3]){
+          motor_assembly();
     }
 
 }
