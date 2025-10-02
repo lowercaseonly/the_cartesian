@@ -24,6 +24,24 @@ use <../components/bearing_mount.scad>
 
 
 
+module portal_rail(){
+
+    NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
+              inventorize=true,
+              child_slots=[3,3]){
+        translate([0,115,0])
+            motor_mount()
+                motor()
+                    motor_coupling()
+                        threaded_rod(length=SPACE_X);
+        for (shift=[MOTOR_SPACE,MOTOR_SPACE+SPACE_X])
+            translate([0,shift,0])
+                bearing_mount();
+    }
+
+}
+
+
 module portal_assembly(){
 
     // frame
@@ -37,17 +55,7 @@ module portal_assembly(){
     for (rail=[0,1]){
         translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)]){
             rotate([90,0,90])
-                NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
-                          inventorize=true, child_slots=[3,3]){
-                    translate([0,115,0])
-                        motor_mount()
-                            motor()
-                                motor_coupling()
-                                    threaded_rod(length=SPACE_X);
-                    for (shift=[MOTOR_SPACE,MOTOR_SPACE+SPACE_X])
-                        translate([0,shift,0])
-                            bearing_mount();
-                }
+                portal_rail();
 
             for (side=[-1,1])
                 translate([MOTOR_SPACE+(side==1?SPACE_X:0),
