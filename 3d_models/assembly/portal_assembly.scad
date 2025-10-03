@@ -39,6 +39,35 @@ module motor_assembly(){
 }
 
 
+module portal_side(rail,side){
+
+    linear_slider(length=SPACE_X, pos=POS_X,
+                  invert=(side==1),
+                  spacing=PORTAL_SPACING){
+
+        if ((rail==0)&&(side==-1)){
+            portal()
+                children();
+        } else {
+            portal();
+        }
+
+        if (REINFORCEMENT){
+            translate([0,
+                       side*(BASE_WIDTH+PORTAL_SPACING)/2,
+                       0])
+                wagon_connector(spacing=PORTAL_SPACING);
+
+            translate([0,
+                       side*(BASE_WIDTH+PORTAL_SPACING),
+                       0])
+                portal_reinforcement();
+        }
+    }
+
+}
+
+
 module portal_rail(){
 
     NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
@@ -70,29 +99,7 @@ module portal_assembly(){
                            (side==1?SLOT_PROF_HEIGHT:0),
                            SLOT_PROF_WIDTH-20])
                     rotate([-side*90,90,0])
-                        linear_slider(length=SPACE_X, pos=POS_X,
-                                      invert=(side==1),
-                                      spacing=PORTAL_SPACING){
-
-                            if ((rail==0)&&(side==-1)){
-                                portal()
-                                    children();
-                            } else {
-                                portal();
-                            }
-
-                            if (REINFORCEMENT){
-                                translate([0,
-                                           side*(BASE_WIDTH+PORTAL_SPACING)/2,
-                                           0])
-                                    wagon_connector(spacing=PORTAL_SPACING);
-
-                                translate([0,
-                                           side*(BASE_WIDTH+PORTAL_SPACING),
-                                           0])
-                                    portal_reinforcement();
-                            }
-                        }
+                        portal_side(rail,side);
 
             };
 
