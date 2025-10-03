@@ -50,25 +50,19 @@ module portal_side(side_t){
                       spacing=PORTAL_SPACING){
 
             if ((rail==0)&&(side==-1)){
-                    rotate([0,0,side_t*180])
-
-                portal()
-                    children();
+                rotate([0,0,side_t*180])
+                    portal()
+                        children();
             } else {
-                    rotate([0,0,side_t*180])
-
-                portal();
+                rotate([0,0,side_t*180])
+                    portal();
             }
 
             if (REINFORCEMENT){
-                translate([0,
-                           side*(BASE_WIDTH+PORTAL_SPACING)/2,
-                           0])
+                translate([0,-(BASE_WIDTH+PORTAL_SPACING)/2,0])
                     wagon_connector(spacing=PORTAL_SPACING);
 
-                translate([0,
-                           side*(BASE_WIDTH+PORTAL_SPACING),
-                           0])
+                translate([0,-BASE_WIDTH-PORTAL_SPACING,0])
                     rotate([0,0,side_t*180])
                         portal_reinforcement();
             }
