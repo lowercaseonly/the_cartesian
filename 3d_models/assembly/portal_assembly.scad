@@ -41,21 +41,13 @@ module motor_assembly(){
 
 module portal_side(side_t){
 
-    rail=0;
-    side=-1;
-
     translate([0,MOTOR_SPACE,0])
         linear_slider(length=SPACE_X, pos=POS_X,
                       spacing=PORTAL_SPACING){
 
-            if ((rail==0)&&(side==-1)){
-                rotate([0,0,side_t*180])
-                    portal()
-                        children();
-            } else {
-                rotate([0,0,side_t*180])
-                    portal();
-            }
+            rotate([0,0,side_t*180])
+                portal()
+                    children();
 
             if (REINFORCEMENT){
                 translate([0,-(BASE_WIDTH+PORTAL_SPACING)/2,0])
@@ -74,10 +66,11 @@ module portal_rail(){
 
     NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
               inventorize=true,
-              child_slots=[3,4,2]){
+              child_slots=[3,2,4]){
         motor_assembly();
-        portal_side(0);
         portal_side(1);
+        portal_side(0)
+            children();
     }
 
 }
@@ -96,7 +89,10 @@ module portal_assembly(){
     for (rail=[0,1]){
         translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
             rotate([90,0,90])
-                portal_rail();
+                portal_rail()
+                    if (rail==0)
+                        children();
+
 
         if (REINFORCEMENT)
             for (y_shift=[0,PORTAL_SPACING+BASE_WIDTH])
