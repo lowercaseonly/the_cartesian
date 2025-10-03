@@ -41,29 +41,30 @@ module motor_assembly(){
 
 module portal_side(rail,side){
 
-    linear_slider(length=SPACE_X, pos=POS_X,
-                  invert=(side==1),
-                  spacing=PORTAL_SPACING){
+    translate([0,MOTOR_SPACE,0])
+        linear_slider(length=SPACE_X, pos=POS_X,
+                      invert=(side==1),
+                      spacing=PORTAL_SPACING){
 
-        if ((rail==0)&&(side==-1)){
-            portal()
-                children();
-        } else {
-            portal();
+            if ((rail==0)&&(side==-1)){
+                portal()
+                    children();
+            } else {
+                portal();
+            }
+
+            if (REINFORCEMENT){
+                translate([0,
+                           side*(BASE_WIDTH+PORTAL_SPACING)/2,
+                           0])
+                    wagon_connector(spacing=PORTAL_SPACING);
+
+                translate([0,
+                           side*(BASE_WIDTH+PORTAL_SPACING),
+                           0])
+                    portal_reinforcement();
+            }
         }
-
-        if (REINFORCEMENT){
-            translate([0,
-                       side*(BASE_WIDTH+PORTAL_SPACING)/2,
-                       0])
-                wagon_connector(spacing=PORTAL_SPACING);
-
-            translate([0,
-                       side*(BASE_WIDTH+PORTAL_SPACING),
-                       0])
-                portal_reinforcement();
-        }
-    }
 
 }
 
@@ -92,10 +93,9 @@ module portal_assembly(){
 
     // main rails
     for (rail=[0,1]){
-        translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)]){
+        translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
             rotate([90,0,90])
                 portal_rail();
-            };
 
         if (REINFORCEMENT)
             for (y_shift=[0,PORTAL_SPACING+BASE_WIDTH])
