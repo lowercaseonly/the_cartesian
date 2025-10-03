@@ -72,8 +72,10 @@ module portal_rail(){
 
     NUT8_45x2(length=SPACE_X+2*SLOT_MOUNT_HEIGHT+MOTOR_SPACE,
               inventorize=true,
-              child_slots=[3]){
-          motor_assembly();
+              child_slots=[3,4,2]){
+        motor_assembly();
+        portal_side(0,-1);
+        portal_side(0,-1);
     }
 
 }
@@ -93,14 +95,6 @@ module portal_assembly(){
         translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)]){
             rotate([90,0,90])
                 portal_rail();
-
-            for (side=[-1,1])
-                translate([MOTOR_SPACE+(side==1?SPACE_X:0),
-                           (side==1?SLOT_PROF_HEIGHT:0),
-                           SLOT_PROF_WIDTH-20])
-                    rotate([-side*90,90,0])
-                        portal_side(rail,side);
-
             };
 
         if (REINFORCEMENT)
