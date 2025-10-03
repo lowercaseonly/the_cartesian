@@ -46,7 +46,6 @@ module portal_side(side_t){
 
     translate([0,MOTOR_SPACE,0])
         linear_slider(length=SPACE_X, pos=POS_X,
-                      invert=(side==1),
                       spacing=PORTAL_SPACING){
 
             if ((rail==0)&&(side==-1)){
