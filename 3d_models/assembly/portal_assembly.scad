@@ -1,8 +1,8 @@
 include <parameter.scad>
 
-include <../helper/linear_wagon.scad>
 include <../helper/t_slot.scad>
 
+include <../shells/linear_slider.scad>
 include <../shells/motor.scad>
 include <../shells/threaded_rod.scad>
 include <../shells/t_slot.scad>
