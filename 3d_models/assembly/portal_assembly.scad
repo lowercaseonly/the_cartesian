@@ -39,7 +39,10 @@ module motor_assembly(){
 }
 
 
-module portal_side(rail,side){
+module portal_side(side_t){
+
+    rail=0;
+    side=-1;
 
     translate([0,MOTOR_SPACE,0])
         linear_slider(length=SPACE_X, pos=POS_X,
@@ -47,9 +50,13 @@ module portal_side(rail,side){
                       spacing=PORTAL_SPACING){
 
             if ((rail==0)&&(side==-1)){
+                    rotate([0,0,side_t*180])
+
                 portal()
                     children();
             } else {
+                    rotate([0,0,side_t*180])
+
                 portal();
             }
 
@@ -62,7 +69,8 @@ module portal_side(rail,side){
                 translate([0,
                            side*(BASE_WIDTH+PORTAL_SPACING),
                            0])
-                    portal_reinforcement();
+                    rotate([0,0,side_t*180])
+                        portal_reinforcement();
             }
         }
 
@@ -75,8 +83,8 @@ module portal_rail(){
               inventorize=true,
               child_slots=[3,4,2]){
         motor_assembly();
-        portal_side(0,-1);
-        portal_side(0,-1);
+        portal_side(0);
+        portal_side(1);
     }
 
 }
