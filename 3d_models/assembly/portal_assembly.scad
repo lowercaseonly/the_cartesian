@@ -49,6 +49,13 @@ module portal_side(side_t){
                 portal()
                     children();
 
+            if (side_t==1)
+                    translate([-35,0,-50])
+                        rotate([0,-90,180])
+                            nut_mount()
+                                thread_nut_mount()
+                                    thread_nut();
+
             if (REINFORCEMENT){
                 translate([0,-(BASE_WIDTH+PORTAL_SPACING)/2,0])
                     wagon_connector(spacing=PORTAL_SPACING);
@@ -56,6 +63,14 @@ module portal_side(side_t){
                 translate([0,-BASE_WIDTH-PORTAL_SPACING,0])
                     rotate([0,0,side_t*180])
                         portal_reinforcement();
+
+                if (side_t==1)
+                    translate([-35,-PORTAL_SPACING-BASE_WIDTH,-50])
+                        rotate([0,-90,180])
+                            nut_mount()
+                                thread_nut_mount()
+                                    thread_nut();
+
             }
         }
 
@@ -86,24 +101,12 @@ module portal_assembly(){
                           inventorize=true);
 
     // main rails
-    for (rail=[0,1]){
+    for (rail=[0,1])
         translate([-MOTOR_SPACE,rail*(SPACE_Y-SLOT_PROF_HEIGHT)])
             rotate([90,0,90])
                 portal_rail()
                     if (rail==0)
                         children();
-
-
-        if (REINFORCEMENT)
-            for (y_shift=[0,PORTAL_SPACING+BASE_WIDTH])
-                translate([POS_X+37.3+y_shift,
-                           -SLIDER_HEIGHT+rail*(SPACE_Y-SLOT_PROF_HEIGHT)+50,
-                           94.3])
-                    rotate([180,0,90])
-                        nut_mount()
-                            thread_nut_mount()
-                                thread_nut();
-    }
 
 }
 
