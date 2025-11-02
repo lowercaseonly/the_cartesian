@@ -50,11 +50,11 @@ module portal_side(side_t){
                     children();
 
             if (side_t==1)
-                    translate([-35,0,-50])
-                        rotate([0,-90,180])
-                            nut_mount()
-                                thread_nut_mount()
-                                    thread_nut();
+                translate([-35,0,-50])
+                    rotate([0,-90,180])
+                        nut_mount()
+                            thread_nut_mount()
+                                thread_nut();
 
             if (REINFORCEMENT){
                 translate([0,-(BASE_WIDTH+PORTAL_SPACING)/2,0])
